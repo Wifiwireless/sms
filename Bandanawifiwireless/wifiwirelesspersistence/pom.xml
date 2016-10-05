@@ -11,7 +11,11 @@
         <version>5.0.1.Final</version>
         
     </dependency>
-		
+		 <dependency>
+   <groupId>javax.ejb</groupId>
+   <artifactId>javax.ejb-api</artifactId>
+   <version>3.2</version>
+  </dependency>
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>eclipselink</artifactId>

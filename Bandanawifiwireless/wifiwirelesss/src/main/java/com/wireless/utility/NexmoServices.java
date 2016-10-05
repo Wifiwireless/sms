@@ -1,7 +1,6 @@
 package com.wireless.utility;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,14 +11,16 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.google.gson.Gson;
+import com.wifiwireless.constant.JndiLookup;
+import com.wifiwireless.interfaces.NumberDetailsInterface;
 import com.wireless.bean.AcquireResponse;
-import com.wireless.bean.BuyNumber;
 import com.wireless.bean.NumberResponse;
+import com.wireless.bean.SendMessage;
+import com.wireless.bean.SendMessageResponse;
 
 public class NexmoServices {
 
@@ -77,7 +78,7 @@ public class NexmoServices {
 	}
 	
 	
-public static String buyNumber(String country,String msisdn){
+public static String buyNumber(String country,String msisdn,String username,String password){
 		
 		
 		
@@ -110,7 +111,12 @@ post.setEntity(new UrlEncodedFormEntity(urlParameters));
 				System.out.println(responseString);	
 				
 				if(responseString.equals("200")){
+					NumberDetailsInterface numberInterface=JndiLookup.getNumberDetailsDao();
+					numberInterface.checkandUpdate(msisdn,username,password);
+					
 					return "Virtual number rented!";
+					
+					
 					//update db
 				}
 				else{
@@ -119,6 +125,7 @@ post.setEntity(new UrlEncodedFormEntity(urlParameters));
 			
 				
 		}	else {
+			
 					System.out.println("ERROR - CODE ["
 									+ response.getStatusLine().getStatusCode() + "]");
  return "HTTP Response: " + response.getStatusLine();
@@ -139,11 +146,57 @@ post.setEntity(new UrlEncodedFormEntity(urlParameters));
 	
 	
 	
-	
+
+
+
+
+public static SendMessageResponse sendMessage(SendMessage message){
+ 
+ HttpClient httpClient = new DefaultHttpClient();
+ Gson gson = new Gson();
+ HttpGet get = new HttpGet("https://rest.nexmo.com/sms/search?api_key=596e18cd&api_secret=8b4a428e&to="+message.getTo()+"&from="+message.getFrom()+"&text="+message.getText());
+ try {
+  HttpResponse response;
+
+ response = httpClient.execute(get);
+
+ if (response.getStatusLine().getStatusCode() == 200) {
+
+  String responseString;
+ 
+   responseString = IOUtils.toString(response.getEntity()
+     .getContent(), "UTF-8");
+   System.out.println(responseString); 
+   
+   SendMessageResponse msgResponse= gson.fromJson(responseString, SendMessageResponse.class);
+   
+   return msgResponse;
+   
+ } else {
+    System.out.println("ERROR - CODE ["
+        + response.getStatusLine().getStatusCode() + "]");
+
+     }
+  } catch (IllegalStateException e) {
+   // TODO Auto-generated catch block
+   e.printStackTrace();
+  } catch (IOException e) {
+   // TODO Auto-generated catch block
+   
+   e.printStackTrace();
+  }
+ return null;
+
+ 
+
+}
+
+ 
+
 	
 	public static void main(String[] args) {
 		
-		buyNumber("US", "16192596886");
+		buyNumber("US", "16192596886","abc","123");
 	}
 	
 }

@@ -6,6 +6,12 @@
   <packaging>war</packaging>
   <dependencies>
   <dependency>
+		<groupId>com.persistence</groupId>
+  <artifactId>wifiwirelesspersistence</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+		
+		</dependency>
+  <dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>
 			<version>3.0.7.Final</version>

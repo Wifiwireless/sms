@@ -8,6 +8,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "NumberDetails")
 public class NumberDetails  extends PL4Base implements Serializable{
+	public NumberDetails(String username, String password, String country, String pattern, Boolean paidflag,
+			String phnno) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.country = country;
+		this.pattern = pattern;
+		this.paidflag = paidflag;
+		Phnno = phnno;
+	}
+	public NumberDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Column(name = "username")
 	private String username;
 	@Column(name = "password")
