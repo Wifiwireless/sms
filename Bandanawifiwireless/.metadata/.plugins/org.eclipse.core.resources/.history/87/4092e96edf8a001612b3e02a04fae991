@@ -1,0 +1,5 @@
+package com.wireless.bean;
+
+public class AcquireNumber {
+
+}
