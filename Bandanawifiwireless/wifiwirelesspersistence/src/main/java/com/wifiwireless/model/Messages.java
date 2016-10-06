@@ -1,6 +1,7 @@
 package com.wifiwireless.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -49,6 +50,15 @@ public class Messages extends PL4Base implements Serializable{
 	private String username;
 	@Column(name = "password")
 	private String password;
+	@Column(name = "messagetime")
+	private Date messagetime;
+	
+	public Date getMessagetime() {
+		return messagetime;
+	}
+	public void setMessagetime(Date messagetime) {
+		this.messagetime = messagetime;
+	}
 	public String getSource() {
 		return source;
 	}

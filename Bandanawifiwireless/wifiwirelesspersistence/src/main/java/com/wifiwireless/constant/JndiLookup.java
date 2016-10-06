@@ -6,6 +6,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import com.wifiwireless.interfaces.MessageRecieptsInterface;
 import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
 
@@ -13,10 +14,14 @@ public class JndiLookup {
 
 	private static String EJB_NUMBER_DETAILS="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/NumberDetailsDao!com.wifiwireless.interfaces.NumberDetailsInterface";
 	private static String EJB_MESSAGES="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/MessagesDao!com.wifiwireless.interfaces.MessagesInterface";
+	private static String EJB_MESSAGES_RECIEPTS="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/MessageRecieptsDao!com.wifiwireless.interfaces.MessageRecieptsInterface";
 	
 	
 	
 	
+	public static String getEJB_MESSAGES_RECIEPTS() {
+		return EJB_MESSAGES_RECIEPTS;
+	}
 	public static String getEJB_MESSAGES() {
 		return EJB_MESSAGES;
 	}
@@ -62,5 +67,19 @@ public class JndiLookup {
 		return messagesInterface;
 
 	}	
+	
+	public static MessageRecieptsInterface getMessageRecieptsDao() {
+
+		MessageRecieptsInterface messageRecieptsInterface = null;
+		try {
+			messageRecieptsInterface = (MessageRecieptsInterface) getContext().lookup(
+					EJB_MESSAGES_RECIEPTS);
+		} catch (NamingException e) {
+		
+		}
+		return messageRecieptsInterface;
+
+	}	
+	
 	
 }

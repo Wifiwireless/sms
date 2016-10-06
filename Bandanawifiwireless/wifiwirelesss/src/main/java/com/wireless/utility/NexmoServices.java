@@ -2,6 +2,7 @@ package com.wireless.utility;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -182,6 +183,7 @@ public static SendMessageResponse sendMessage(SendMessage message){
 	   messagesdatabase.setSource(message.getFrom());
 	   messagesdatabase.setDestination(message.getTo());
 	   messagesdatabase.setText(message.getText());
+	   messagesdatabase.setMessagetime(new Date());
 	   messageinterface.addMesages(messagesdatabase);
    }
    
