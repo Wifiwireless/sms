@@ -45,8 +45,25 @@ public class Messages extends PL4Base implements Serializable{
 	private String message_price;
 	@Column(name = "network")
 	private String network;
+	@Column(name = "username")
+	private String username;
+	@Column(name = "password")
+	private String password;
 	public String getSource() {
 		return source;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public void setSource(String source) {
 		this.source = source;

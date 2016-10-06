@@ -11,7 +11,19 @@ public class SendMessageResponse implements Serializable {
  String messageCount;
  
  ArrayList<MessageResponse> messages;
+  String error;
+ 
+  public SendMessageResponse(String error) {
+   super();
+   this.error = error;
+  }
+  public String getError() {
+   return error;
+  }
 
+  public void setError(String error) {
+   this.error = error;
+  }
 public String getMessageCount() {
 	return messageCount;
 }

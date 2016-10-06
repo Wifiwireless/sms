@@ -8,8 +8,18 @@ public class NumberResponse implements Serializable {
 	public String country;
 	public String msisdn;
 	public String cost;
+	public String error;
 	
-	
+	 public NumberResponse(String error) {
+		  super();
+		  this.error = error;
+		 }
+	  public String getError() {
+		  return error;
+		 }
+		 public void setError(String error) {
+		  this.error = error;
+		 }
 	public NumberResponse() {
 		super();
 		// TODO Auto-generated constructor stub

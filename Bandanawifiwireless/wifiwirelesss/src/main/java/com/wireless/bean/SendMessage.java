@@ -10,7 +10,8 @@ public class SendMessage implements Serializable{
   String to;
   String from;
   String text;
-  
+  String username;
+  String password;
   
  public SendMessage(String to, String from, String text) {
   super();
@@ -24,7 +25,23 @@ public class SendMessage implements Serializable{
   // TODO Auto-generated constructor stub
  }
 
- public String getTo() {
+ public String getUsername() {
+	return username;
+}
+
+public void setUsername(String username) {
+	this.username = username;
+}
+
+public String getPassword() {
+	return password;
+}
+
+public void setPassword(String password) {
+	this.password = password;
+}
+
+public String getTo() {
   return to;
  }
  public void setTo(String to) {

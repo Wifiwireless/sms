@@ -20,6 +20,7 @@ import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
 import com.wifiwireless.model.Messages;
 import com.wireless.bean.AcquireResponse;
+import com.wireless.bean.BuyNumberResponse;
 import com.wireless.bean.NumberResponse;
 import com.wireless.bean.SendMessage;
 import com.wireless.bean.SendMessageResponse;
@@ -80,7 +81,7 @@ public class NexmoServices {
 	}
 	
 	
-public static String buyNumber(String country,String msisdn,String username,String password){
+public static BuyNumberResponse buyNumber(String country,String msisdn,String username,String password){
 		
 		
 		
@@ -106,32 +107,32 @@ post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
 		if (response.getStatusLine().getStatusCode() == 200) {
 
-			String responseString;
 		
-				responseString = IOUtils.toString(response.getEntity()
-						.getContent(), "UTF-8");
-				System.out.println(responseString);	
-				
-				if(responseString.equals("200")){
 					NumberDetailsInterface numberInterface=JndiLookup.getNumberDetailsDao();
 					numberInterface.checkandUpdate(msisdn,username,password);
 					
-					return "Virtual number rented!";
+					 BuyNumberResponse byNumResp = new BuyNumberResponse();
+				     byNumResp.setSuccess("your purchase is successful");
+				     
+				     return byNumResp;
 					
 					
 					//update db
-				}
-				else{
-					return "HTTP Response: " + response.getStatusLine();
-				}
-			
 				
-		}	else {
-			
-					System.out.println("ERROR - CODE ["
-									+ response.getStatusLine().getStatusCode() + "]");
- return "HTTP Response: " + response.getStatusLine();
-						}
+				
+		}else if(response.getStatusLine().getStatusCode() == 401) {
+
+			   BuyNumberResponse byNumResp = new BuyNumberResponse();
+			  byNumResp.setError("you supplied incorrect security and authentication information");
+			   
+			  return byNumResp;
+			      }
+			  else{
+			   BuyNumberResponse byNumResp = new BuyNumberResponse();
+			   byNumResp.setError("you supplied incorrect parameters");
+			   return byNumResp;
+			   
+			  }
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -176,7 +177,12 @@ public static SendMessageResponse sendMessage(SendMessage message){
    if(msgResponse.getMessages().size()>0 && msgResponse.getMessages()!=null)
    {
 	   Messages messagesdatabase=new Messages(msgResponse.getMessages().get(0).getStatus(), msgResponse.getMessages().get(0).getMessageId(), msgResponse.getMessages().get(0).getRemainingBalance(), msgResponse.getMessages().get(0).getMessagePrice(), msgResponse.getMessages().get(0).getNetwork());
-       messageinterface.addMesages(messagesdatabase);
+	   messagesdatabase.setUsername(message.getUsername());
+	   messagesdatabase.setPassword(message.getPassword());
+	   messagesdatabase.setSource(message.getFrom());
+	   messagesdatabase.setDestination(message.getTo());
+	   messagesdatabase.setText(message.getText());
+	   messageinterface.addMesages(messagesdatabase);
    }
    
    return msgResponse;
