@@ -25,6 +25,21 @@ public class MessageReciepts  extends PL4Base implements Serializable{
 	private String err_code;
 	@Column(name = "message_timestamp")
 	private Date message_timestamp;
+	
+	
+	
+	public MessageReciepts(String msisdn, String to, String network_code, String messageId, String status, String scts,
+			String err_code, Date message_timestamp) {
+		super();
+		this.msisdn = msisdn;
+		this.to = to;
+		this.network_code = network_code;
+		this.messageId = messageId;
+		this.status = status;
+		this.scts = scts;
+		this.err_code = err_code;
+		this.message_timestamp = message_timestamp;
+	}
 	public String getMsisdn() {
 		return msisdn;
 	}
