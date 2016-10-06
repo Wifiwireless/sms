@@ -5,11 +5,12 @@ import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 
+import com.wifiwireless.interfaces.MessageRecieptsInterface;
 import com.wifiwireless.model.MessageReciepts;
 import com.wifiwireless.model.Messages;
 
 @Stateless
-public class MessageRecieptsDao extends PL4BaseDAO implements Serializable{
+public class MessageRecieptsDao extends PL4BaseDAO implements Serializable,MessageRecieptsInterface{
 	
 	EntityManager em = null;
 

@@ -7,6 +7,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.wifiwireless.constant.JndiLookup;
@@ -84,9 +85,14 @@ public class Webservices {
 	@GET
 	 @Path("getReceipts")
 	 @Produces(MediaType.APPLICATION_JSON)
-	 public void getReceipts(@PathParam("msisdn") String msisdn, @PathParam("to") String to,@PathParam("network-code") String networkcode,@PathParam("messageId") String messageId,@PathParam("price") String price,@PathParam("status") String status,@PathParam("scts") String scts,@PathParam("err-code") String errorCode,@PathParam("message-timestamp") String messagetimestamp) {
+	 public void getReceipts(@QueryParam("msisdn") String msisdn, @QueryParam("to") String to,@QueryParam("network-code") String networkcode,@QueryParam("messageId") String messageId,@QueryParam("price") String price,@QueryParam("status") String status,@QueryParam("scts") String scts,@QueryParam("err-code") String errorCode,@QueryParam("message-timestamp") String messagetimestamp) {
+		 System.out.println("Receipt received------------------------");
+		  System.out.println("msisdn" + msisdn+"netwr"+networkcode+errorCode+messageId+messagetimestamp+msisdn+networkcode+ price+scts+status+to);
+		  
 
-		MessageReciepts msgReciepts=new MessageReciepts(msisdn, to, networkcode, messageId, status, scts, errorCode, new Date(messagetimestamp));
+		  System.out.println("status "+status);
+		  System.out.println("Receipt received------------------------");
+		MessageReciepts msgReciepts=new MessageReciepts(msisdn, to, networkcode, messageId, status, scts, errorCode, new Date());
 		MessageRecieptsInterface messageREcieptsInteface=JndiLookup.getMessageRecieptsDao();
 		messageREcieptsInteface.addMesages(msgReciepts);
 		

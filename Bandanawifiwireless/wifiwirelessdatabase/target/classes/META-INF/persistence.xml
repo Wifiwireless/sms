@@ -9,7 +9,7 @@
 		<class>com.wifiwireless.model.NumberDetails</class>
 <class>com.wifiwireless.model.Messages</class>
 
-
+<class>com.wifiwireless.model.MessageReciepts</class>
 		<!-- <shared-cache-element>ENABLE_SELECTIVE</shared-cache-element> -->
 		<properties>
 
@@ -24,7 +24,7 @@
 			<property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="root" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 
 			<property name="hibernate.id.new_generator_mappings" value="true" />
 

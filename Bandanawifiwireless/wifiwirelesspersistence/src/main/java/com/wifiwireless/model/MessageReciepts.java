@@ -11,8 +11,8 @@ import javax.persistence.Table;
 public class MessageReciepts  extends PL4Base implements Serializable{
 	@Column(name = "msisdn")
 	private String msisdn;
-	@Column(name = "to")
-	private String to;
+	@Column(name = "source")
+	private String source;
 	@Column(name = "network_code")
 	private String network_code;
 	@Column(name = "messageId")
@@ -28,11 +28,11 @@ public class MessageReciepts  extends PL4Base implements Serializable{
 	
 	
 	
-	public MessageReciepts(String msisdn, String to, String network_code, String messageId, String status, String scts,
+	public MessageReciepts(String msisdn, String source, String network_code, String messageId, String status, String scts,
 			String err_code, Date message_timestamp) {
 		super();
 		this.msisdn = msisdn;
-		this.to = to;
+		this.source = source;
 		this.network_code = network_code;
 		this.messageId = messageId;
 		this.status = status;
@@ -46,11 +46,11 @@ public class MessageReciepts  extends PL4Base implements Serializable{
 	public void setMsisdn(String msisdn) {
 		this.msisdn = msisdn;
 	}
-	public String getTo() {
-		return to;
+	public String getsource() {
+		return source;
 	}
-	public void setTo(String to) {
-		this.to = to;
+	public void setsource(String source) {
+		this.source = source;
 	}
 	public String getNetwork_code() {
 		return network_code;
