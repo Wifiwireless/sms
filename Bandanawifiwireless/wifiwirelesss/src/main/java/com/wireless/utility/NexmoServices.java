@@ -16,7 +16,9 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.google.gson.Gson;
 import com.wifiwireless.constant.JndiLookup;
+import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
+import com.wifiwireless.model.Messages;
 import com.wireless.bean.AcquireResponse;
 import com.wireless.bean.NumberResponse;
 import com.wireless.bean.SendMessage;
@@ -154,6 +156,8 @@ public static SendMessageResponse sendMessage(SendMessage message){
  
  HttpClient httpClient = new DefaultHttpClient();
  Gson gson = new Gson();
+
+ MessagesInterface messageinterface=JndiLookup.getMessageDao();
  HttpGet get = new HttpGet("https://rest.nexmo.com/sms/search?api_key=596e18cd&api_secret=8b4a428e&to="+message.getTo()+"&from="+message.getFrom()+"&text="+message.getText());
  try {
   HttpResponse response;
@@ -169,6 +173,11 @@ public static SendMessageResponse sendMessage(SendMessage message){
    System.out.println(responseString); 
    
    SendMessageResponse msgResponse= gson.fromJson(responseString, SendMessageResponse.class);
+   if(msgResponse.getMessages().size()>0 && msgResponse.getMessages()!=null)
+   {
+	   Messages messagesdatabase=new Messages(msgResponse.getMessages().get(0).getStatus(), msgResponse.getMessages().get(0).getMessageId(), msgResponse.getMessages().get(0).getRemainingBalance(), msgResponse.getMessages().get(0).getMessagePrice(), msgResponse.getMessages().get(0).getNetwork());
+       messageinterface.addMesages(messagesdatabase);
+   }
    
    return msgResponse;
    

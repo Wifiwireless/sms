@@ -6,12 +6,20 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
 
 public class JndiLookup {
 
 	private static String EJB_NUMBER_DETAILS="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/NumberDetailsDao!com.wifiwireless.interfaces.NumberDetailsInterface";
-
+	private static String EJB_MESSAGES="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/MessagesDao!com.wifiwireless.interfaces.MessagesInterface";
+	
+	
+	
+	
+	public static String getEJB_MESSAGES() {
+		return EJB_MESSAGES;
+	}
 	public String getEJB_NUMBER_DETAILS() {
 		return EJB_NUMBER_DETAILS;
 	}
@@ -39,6 +47,19 @@ public class JndiLookup {
 		
 		}
 		return numberDetailsInterface;
+
+	}	
+	
+	public static MessagesInterface getMessageDao() {
+
+		MessagesInterface messagesInterface = null;
+		try {
+			messagesInterface = (MessagesInterface) getContext().lookup(
+					EJB_MESSAGES);
+		} catch (NamingException e) {
+		
+		}
+		return messagesInterface;
 
 	}	
 	
