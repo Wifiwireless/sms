@@ -1,6 +1,7 @@
 package com.wireless.utility;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -93,8 +94,8 @@ public static BuyNumberResponse buyNumber(String country,String msisdn,String us
 	List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 	urlParameters.add(new BasicNameValuePair("country",country));
 	urlParameters.add(new BasicNameValuePair("msisdn",msisdn));
-	urlParameters.add(new BasicNameValuePair("api_key","596e18cd"));
-	urlParameters.add(new BasicNameValuePair("api_secret","8b4a428e"));
+	urlParameters.add(new BasicNameValuePair("api_key",apikey));
+	urlParameters.add(new BasicNameValuePair("api_secret",api_secret));
 
 	
 		HttpClient httpClient = new DefaultHttpClient();
@@ -163,7 +164,7 @@ public static SendMessageResponse sendMessage(SendMessage message){
  Gson gson = new Gson();
 
  MessagesInterface messageinterface=JndiLookup.getMessageDao();
- HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key="+apikey+"&api_secret="+api_secret+"&to="+message.getTo()+"&from="+message.getFrom()+"&text="+message.getText());
+ HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key="+apikey+"&api_secret="+api_secret+"&to="+message.getTo()+"&from="+message.getFrom()+"&text="+URLEncoder.encode(message.getText()));
  try {
   HttpResponse response;
 

@@ -3,8 +3,10 @@ package com.wireless.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.google.gson.annotations.SerializedName;
-
+@JsonInclude(Include.NON_NULL)
 public class SendMessageResponse implements Serializable {
 
  @SerializedName("message-count")

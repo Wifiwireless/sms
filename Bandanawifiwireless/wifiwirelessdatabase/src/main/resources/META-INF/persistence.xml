@@ -17,16 +17,17 @@
 
 
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/wifiwireless" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/admin_site" />
+			<!-- <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/wifiwireless" /> -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.listeners.envers.autoRegister"
 				value="false" />
 			<!-- <property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="root" /> -->
 			<property name="hibernate.connection.username" value="admin" />
-			<property name="hibernate.connection.password" value="root" />
+			<property name="hibernate.connection.password" value="Ws63Hu" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
 
 			<property name="hibernate.id.new_generator_mappings" value="true" />
 
