@@ -163,7 +163,7 @@ public static SendMessageResponse sendMessage(SendMessage message){
  Gson gson = new Gson();
 
  MessagesInterface messageinterface=JndiLookup.getMessageDao();
- HttpGet get = new HttpGet("https://rest.nexmo.com/sms/search?api_key="+apikey+"&api_secret="+api_secret+"&to="+message.getTo()+"&from="+message.getFrom()+"&text="+message.getText());
+ HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key="+apikey+"&api_secret="+api_secret+"&to="+message.getTo()+"&from="+message.getFrom()+"&text="+message.getText());
  try {
   HttpResponse response;
 
@@ -216,7 +216,9 @@ public static SendMessageResponse sendMessage(SendMessage message){
 	
 	public static void main(String[] args) {
 		
-		buyNumber("US", "16192596886","abc","123");
+		SendMessage message=new SendMessage("17324475273", "12132944052", "testing");
+		sendMessage(message);
+		//buyNumber("US", "16192596886","abc","123");
 	}
 	
 }

@@ -13,7 +13,7 @@ public class MessageResponse implements Serializable{
  String network;
  @SerializedName("message-id")
  String messageId;
- @SerializedName("message-id")
+ @SerializedName("clientref")
  String clientref;
  @SerializedName("remaining-balance")
  String remainingBalance;
