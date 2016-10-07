@@ -29,6 +29,9 @@ import com.wireless.bean.SendMessageResponse;
 public class NexmoServices {
 
 	
+	private static String apikey="13e20103";
+	private static String api_secret="6ace27c0f1cf63e0";
+	
 	public static NumberResponse acquireNumber(String country,String pattern){
 		
 		
@@ -40,7 +43,7 @@ public class NexmoServices {
 
 		HttpClient httpClient = new DefaultHttpClient();
 		Gson gson = new Gson();
-		HttpGet get = new HttpGet("https://rest.nexmo.com/number/search?api_key=596e18cd&api_secret=8b4a428e&country="+country+"&pattern="+pattern+"&search_pattern=0&features=sms,voice&size=1");
+		HttpGet get = new HttpGet("https://rest.nexmo.com/number/search?api_key="+apikey+"&api_secret="+api_secret+"&country="+country+"&pattern="+pattern+"&search_pattern=0&features=sms,voice&size=1");
 		try {
 			HttpResponse response;
 	
@@ -160,7 +163,7 @@ public static SendMessageResponse sendMessage(SendMessage message){
  Gson gson = new Gson();
 
  MessagesInterface messageinterface=JndiLookup.getMessageDao();
- HttpGet get = new HttpGet("https://rest.nexmo.com/sms/search?api_key=596e18cd&api_secret=8b4a428e&to="+message.getTo()+"&from="+message.getFrom()+"&text="+message.getText());
+ HttpGet get = new HttpGet("https://rest.nexmo.com/sms/search?api_key="+apikey+"&api_secret="+api_secret+"&to="+message.getTo()+"&from="+message.getFrom()+"&text="+message.getText());
  try {
   HttpResponse response;
 
