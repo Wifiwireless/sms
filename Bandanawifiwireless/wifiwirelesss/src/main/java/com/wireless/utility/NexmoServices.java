@@ -164,7 +164,7 @@ public static SendMessageResponse sendMessage(SendMessage message){
  Gson gson = new Gson();
 
  MessagesInterface messageinterface=JndiLookup.getMessageDao();
- HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key="+apikey+"&api_secret="+api_secret+"&to="+message.getTo()+"&from="+message.getFrom()+"&text="+URLEncoder.encode(message.getText()));
+ HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key="+apikey+"&api_secret="+api_secret+"&to="+message.getTo()+"&from="+message.getFrom()+"&text="+URLEncoder.encode(message.getBody()));
  try {
   HttpResponse response;
 
@@ -182,11 +182,11 @@ public static SendMessageResponse sendMessage(SendMessage message){
    if(msgResponse.getMessages().size()>0 && msgResponse.getMessages()!=null)
    {
 	   Messages messagesdatabase=new Messages(msgResponse.getMessages().get(0).getStatus(), msgResponse.getMessages().get(0).getMessageId(), msgResponse.getMessages().get(0).getRemainingBalance(), msgResponse.getMessages().get(0).getMessagePrice(), msgResponse.getMessages().get(0).getNetwork());
-	   messagesdatabase.setUsername(message.getUsername());
+	   messagesdatabase.setUsername(message.getFrom());
 	   messagesdatabase.setPassword(message.getPassword());
 	   messagesdatabase.setSource(message.getFrom());
 	   messagesdatabase.setDestination(message.getTo());
-	   messagesdatabase.setText(message.getText());
+	   messagesdatabase.setText(message.getBody());
 	   messagesdatabase.setMessagetime(new Date());
 	   messageinterface.addMesages(messagesdatabase);
    }
