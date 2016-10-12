@@ -7,4 +7,5 @@ import com.wifiwireless.model.Messages;
 public interface MessagesInterface {
 	public void addMesages(Messages messages);
 	public void mergeNumber(Messages messages);
+	public String checkNumber(String username,String password);
 }

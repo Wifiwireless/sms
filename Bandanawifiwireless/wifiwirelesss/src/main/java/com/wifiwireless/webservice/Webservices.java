@@ -13,6 +13,7 @@ import org.jboss.resteasy.annotations.ResponseObject;
 
 import com.wifiwireless.constant.JndiLookup;
 import com.wifiwireless.interfaces.MessageRecieptsInterface;
+import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
 import com.wifiwireless.model.MessageReciepts;
 import com.wifiwireless.model.NumberDetails;
@@ -73,10 +74,23 @@ public class Webservices {
 	@Path("send_message")
 	@Produces(MediaType.APPLICATION_JSON)
 	public SendMessageResponse sendMessage(SendMessage sendMessage) {
+		
+		MessagesInterface messageinterface=JndiLookup.getMessageDao();
+		String msidn=messageinterface.checkNumber(sendMessage.getFrom(), sendMessage.getPassword());
+		
+		
+		
 		if(sendMessage.getFrom()!=null&&sendMessage.getPassword()!=null&&sendMessage.getTo()!=null&&sendMessage.getBody()!=null) {
 		// System.out.println("country is " + buyNumber.getCountry());
+			if(msidn!=""){
+				sendMessage.setFrom(msidn);
+				return NexmoServices.sendMessage(sendMessage);
+			}
+			else{
+			    SendMessageResponse messageResponse = new SendMessageResponse("Please Buy A Number Before Sending A Message");
+			    return messageResponse;
+			  }
 
-		return NexmoServices.sendMessage(sendMessage);
 		}
 		else{
 		    SendMessageResponse messageResponse = new SendMessageResponse("Please provide all required parameters");

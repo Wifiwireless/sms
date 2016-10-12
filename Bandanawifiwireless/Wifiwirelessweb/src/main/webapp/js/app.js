@@ -1081,13 +1081,13 @@ app
 							};
 							$scope.buyNumber = function() {
 								debugger;
-								$scope.buynumber.username=$scope.formData.Username;
+								$scope.buynumber.username=$scope.formData.username;
 								$scope.buynumber.password= $scope.formData.password;
-								$scope.buynumber.country=$scope.response.country;
-									$scope.buynumber.msisdn=$scope.response.msisdn;
+								$scope.buynumber.country=$scope.smscArr.country;
+									$scope.buynumber.msisdn=$scope.smscArr.msisdn;
 							
 
-								var response = $http.post('70.182.179.17:8080/wifiwireless/buy/number',
+								var response = $http.post('http://70.182.179.17:8080/wifiwireless/buy/number',
 										$scope.buynumber);
 								response.success(function(data, status,
 										headers, config) {
@@ -1095,15 +1095,20 @@ app
 
 										$('#form').hide();
 										$scope.buynumberResponse=data;
-										if($scope.buynumberResponse.success=true)
+										if($scope.buynumberResponse.success=true){
 										$('#successResponsepanel').show();
+										$('#successpanel').show();
+										$('#form').hide();
+										}
 										else
 											$('#FailPanel').show();
-
+										$('#successpanel').show();
+										$('#form').hide();
 										
 									} else {
 										$('#form').hide();
-
+										$('#successpanel').show();
+										$('#form').hide();
 										$('#failpanel').show();
 
 									}

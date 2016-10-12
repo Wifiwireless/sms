@@ -49,12 +49,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<input
 							type="text" ng-model="formData.mobileNumber" placeholder="Mobile Number"
 							required="">
-							<span1 ng-bind="span2" style="color:red;"></span1> <select ng-model="formData.country">
+							<span1 ng-bind="span2" style="color:red;"></span1> 
+							<select ng-model="formData.country" class="select">
 							<option value="">-- Select a Country --</option>
 							<option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
 						</select> 
 						<span1 ng-bind="span3" style="color:red;"></span1>
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn-primary"
 												ng-click="processForm()" data-dismiss="modal">Acquire Number</button>
 
 					</form>
@@ -63,13 +64,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			
 			<div class="panel panel-success panel-drop" id="successpanel"
-						style="display: none;background-color: white; ">
+						style="display:none;background-color: white; ">
 						<div class="panel-heading">
-							<header class="panel-title">
-								<b>This is The available Number: {{smscArr.msisdn}} Click To buy</b>
+							<header class="panel-title" >
+								<h5><b>This is The available Number: {{smscArr.msisdn}}</h5>
+								</br> Click To confirm</b>
 							</header></br>
-							<button type="button" class="btn btn-primary"
-												ng-click="buyNumber()" data-dismiss="modal">Buy Number</button>
+							<button type="button" class="btn-primary"
+												ng-click="buyNumber()" data-dismiss="modal">Confirm Number</button>
 						</div>
 					
 					</div>
@@ -77,7 +79,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						style="display: none">
 						<div class="panel-heading">
 							<header class="panel-title">
-								<b>The Number Purchased Successfully</b>
+							<h5><b>The Number Confirmed Successfully</b></h5>
+							</br>
+							Your Message Tab is activated now
+								
 							</header>
 							
 						</div>
