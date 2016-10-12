@@ -1053,17 +1053,16 @@ app
 
 							
 
-								var response = $http.post('http://localhost:8080/wifiwireless/get/number',
+								var response = $http.post('http://70.182.179.17:8080/wifiwireless/get/number',
 										$scope.formData, {'Content-Type': 'application/json'} );
 								response.success(function(data, status,
 										headers, config) {
-									if (data == 'true') {
+									if (data != '') {
 
 										$('#form').hide();
 										$scope.smscArr=data;
 										$('#successpanel').show();
 
-										window.location = "viewClient"
 									} else {
 										$('#form').hide();
 
@@ -1088,11 +1087,11 @@ app
 									$scope.buynumber.msisdn=$scope.response.msisdn;
 							
 
-								var response = $http.post('localhost:8080/wifiwireless/buy/number',
+								var response = $http.post('70.182.179.17:8080/wifiwireless/buy/number',
 										$scope.buynumber);
 								response.success(function(data, status,
 										headers, config) {
-									if (data == 'true') {
+									if (data != '') {
 
 										$('#form').hide();
 										$scope.buynumberResponse=data;

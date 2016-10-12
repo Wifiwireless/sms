@@ -9,6 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import org.jboss.resteasy.annotations.ResponseObject;
+
 import com.wifiwireless.constant.JndiLookup;
 import com.wifiwireless.interfaces.MessageRecieptsInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
@@ -28,7 +30,7 @@ public class Webservices {
 	@POST
 	@Path("get/number")
 	@Produces(MediaType.APPLICATION_JSON)
-	public NumberResponse getNumber(AcquireNumber acquireNumber) {
+		public @ResponseObject NumberResponse getNumber(AcquireNumber acquireNumber) {
 		System.out.println("in get number");
 		NumberResponse numberResponse = null;
 		if (acquireNumber.getUsername() != null && acquireNumber.getPassword() != null
@@ -58,7 +60,7 @@ public class Webservices {
 	@POST
 	@Path("buy/number")
 	@Produces(MediaType.APPLICATION_JSON)
-	public BuyNumberResponse buyNumber(BuyNumber buyNumber) {
+	public @ResponseObject BuyNumberResponse buyNumber(BuyNumber buyNumber) {
 
 		System.out.println("country is " + buyNumber.getCountry());
 

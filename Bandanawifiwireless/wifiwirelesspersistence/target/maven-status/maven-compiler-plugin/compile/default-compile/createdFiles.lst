@@ -1,8 +1,0 @@
-com\wifiwireless\model\MessageReciepts.class
-com\wifiwireless\model\Messages.class
-com\wifiwireless\model\PL4Base.class
-com\wifiwireless\constant\JndiLookup.class
-com\wifiwireless\model\NumberDetails.class
-com\wifiwireless\interfaces\MessageRecieptsInterface.class
-com\wifiwireless\interfaces\NumberDetailsInterface.class
-com\wifiwireless\interfaces\MessagesInterface.class
