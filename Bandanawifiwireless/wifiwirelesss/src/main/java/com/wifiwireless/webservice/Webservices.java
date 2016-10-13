@@ -75,8 +75,8 @@ public class Webservices {
 	@Produces(MediaType.APPLICATION_JSON)
 	public SendMessageResponse sendMessage(SendMessage sendMessage) {
 		
-		MessagesInterface messageinterface=JndiLookup.getMessageDao();
-		String msidn=messageinterface.checkNumber(sendMessage.getFrom(), sendMessage.getPassword());
+		NumberDetailsInterface numberInterface=JndiLookup.getNumberDetailsDao();
+		String msidn=numberInterface.checkNumber(sendMessage.getFrom(), sendMessage.getPassword());
 		
 		
 		

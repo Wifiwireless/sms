@@ -59,43 +59,7 @@ public class MessagesDao extends PL4BaseDAO implements MessagesInterface,Seriali
 
 	}
 	
-	public String checkNumber(String username,String password) {
-		em = getEm();
-		
-		try {
-
-			String qlString = "SELECT number FROM NumberDetails number  "
-					+ "WHERE  number.username=:username and number.password=:password";
-
-			TypedQuery<NumberDetails> query = em.createQuery(qlString,
-					NumberDetails.class);
-
-			query.setParameter("username", username);
-			query.setParameter("password", password);
-			if (query.getResultList().size() > 0){
-				
-				NumberDetails numbers=query.getSingleResult();
-				System.out.println(numbers.getPaidflag());
-				if(numbers.getPaidflag())	
-				{
-					return numbers.getMsisdn();
-					
-				}
-				else{
-					return "";
-				}
-			// if(query.getResultList()!=null && query.getResultList().size()>0)
-			}
-			
-		} catch (Exception exception) {
-			//LOG.error(exception);
-		} finally {
-
-			em.close();
-		}
-		return "";
-
-	}
+	
 
 	
 

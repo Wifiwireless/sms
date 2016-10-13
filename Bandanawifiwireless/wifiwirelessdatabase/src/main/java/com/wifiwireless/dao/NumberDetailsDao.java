@@ -58,7 +58,46 @@ public class NumberDetailsDao extends PL4BaseDAO implements NumberDetailsInterfa
 		}
 
 	}
+	public String checkNumber(String username,String password) {
+		em = getEm();
+		
+		try {
 
+			String qlString = "SELECT number FROM NumberDetails number  "
+					+ "WHERE  number.username=:username and number.password=:password";
+
+			TypedQuery<NumberDetails> query = em.createQuery(qlString,
+					NumberDetails.class);
+
+			query.setParameter("username", username);
+			query.setParameter("password", password);
+			if (query.getResultList().size() > 0){
+				
+				NumberDetails numbers=query.getSingleResult();
+				System.out.println(numbers.getPaidflag());
+				if(numbers.getPaidflag())	
+				{
+					System.out.println("in true");
+					return numbers.getMsisdn();
+					
+				}
+				else{
+					
+					return "";
+				}
+			// if(query.getResultList()!=null && query.getResultList().size()>0)
+			}
+			
+		} catch (Exception exception) {
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return "";
+
+	}
 	
 	public Boolean checkandUpdate(String msisdn,String username,String password) {
 		em = getEm();
