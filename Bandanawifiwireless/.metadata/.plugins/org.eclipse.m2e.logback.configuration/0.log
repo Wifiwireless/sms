@@ -1,0 +1,846 @@
+2016-10-05 14:12:59,321 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ H:\Bandana\wifiwireless\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 14:13:01,066 [Worker-5] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /wifiwirelesss/src/main/java
+2016-10-05 14:13:01,067 [Worker-5] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /wifiwirelesss/src/main/resources
+2016-10-05 14:13:01,068 [Worker-5] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /wifiwirelesss/src/test/java
+2016-10-05 14:13:01,068 [Worker-5] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /wifiwirelesss/src/test/resources
+2016-10-05 14:13:04,547 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:13:04,582 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:13:04,583 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:13:04,588 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:17:14,379 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:17:14,394 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:17:14,395 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:17:14,399 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:17:21,896 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:17:21,901 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:17:21,902 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:17:21,905 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:17:30,066 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ H:\Bandana\wifiwireless\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 14:17:30,866 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:17:30,877 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:17:30,879 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:17:30,886 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:17:30,886 [Worker-5] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 14:17:30,887 [Worker-5] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 14:17:30,891 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:18:00,794 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:18:00,799 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:18:00,800 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:18:00,803 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:48:26,796 [Worker-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.2.1/httpclient-4.2.1.jar
+2016-10-05 14:48:28,589 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 14:48:28,589 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 14:48:28,693 [Worker-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.2.1/httpclient-4.2.1.jar
+2016-10-05 14:48:28,954 [Worker-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.2.1/httpcore-4.2.1.jar
+2016-10-05 14:48:29,240 [Worker-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.2.1/httpcore-4.2.1.jar
+2016-10-05 14:48:30,583 [Worker-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.2.1/httpclient-4.2.1.jar
+2016-10-05 14:48:30,765 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.2.1/httpclient-4.2.1.jar
+2016-10-05 14:48:32,276 [Worker-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.2.1/httpclient-4.2.1.jar
+2016-10-05 14:48:32,330 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.2.1/httpclient-4.2.1.jar
+2016-10-05 14:48:32,733 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.2.1/httpcore-4.2.1.jar
+2016-10-05 14:48:32,734 [Worker-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.2.1/httpcore-4.2.1.jar
+2016-10-05 14:48:33,034 [Worker-6] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.2.1/httpcore-4.2.1.jar
+2016-10-05 14:48:33,046 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.2.1/httpcore-4.2.1.jar
+2016-10-05 14:48:33,504 [Worker-5] WARN  o.e.a.i.i.DefaultRepositoryEventDispatcher - Failed to dispatch repository event to org.eclipse.m2e.core.internal.embedder.EclipseRepositoryListener: null
+2016-10-05 14:48:37,085 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:48:37,089 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\main\resources
+2016-10-05 14:48:37,091 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:48:37,095 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:48:38,474 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 14:48:39,506 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:48:39,510 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\main\resources
+2016-10-05 14:48:39,512 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:48:39,516 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:49:02,577 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 14:49:02,911 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:49:02,918 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\main\resources
+2016-10-05 14:49:02,920 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:49:02,924 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:49:02,925 [Worker-12] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 14:49:02,925 [Worker-12] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 14:49:02,930 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:49:10,244 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:49:10,253 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\main\resources
+2016-10-05 14:49:10,254 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:49:10,260 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:51:50,689 [Worker-15] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 14:51:50,745 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 14:51:50,803 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 14:51:51,067 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 14:51:51,167 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:51:51,172 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\main\resources
+2016-10-05 14:51:51,173 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:51:51,178 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:51:51,178 [Worker-15] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 14:51:51,178 [Worker-15] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 14:51:51,181 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:53:09,848 [Worker-21] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 14:53:09,894 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 14:53:09,949 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 14:53:10,397 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /wifiwirelesss/src/main/java
+2016-10-05 14:53:10,397 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /wifiwirelesss/src/test/java
+2016-10-05 14:53:10,704 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 14:53:10,723 [Worker-21] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 1 sec
+2016-10-05 14:53:11,406 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 14:53:11,445 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:53:11,471 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\main\resources
+2016-10-05 14:53:11,475 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:53:11,480 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:56:00,902 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:56:00,926 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:56:00,927 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:56:00,932 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:56:23,284 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:56:23,303 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:56:23,303 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:56:23,308 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:56:56,044 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:56:56,054 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:56:56,056 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:56:56,069 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:57:20,117 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:57:20,125 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:57:20,126 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:57:20,131 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:57:31,751 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:57:31,758 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:57:31,759 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:57:31,765 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:58:05,418 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:05,441 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:58:05,442 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:05,449 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:58:07,876 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:07,882 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:58:07,885 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:07,889 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:58:16,741 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:16,778 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:58:16,779 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:16,794 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:58:42,938 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:42,947 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:58:42,949 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:42,955 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:58:53,110 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:53,115 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:58:53,116 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:58:53,121 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:59:00,154 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:00,157 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:59:00,158 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:00,162 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:59:08,076 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:08,082 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:59:08,083 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:08,092 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:59:38,694 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:38,698 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:59:38,699 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:38,703 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:59:41,520 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:41,524 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:59:41,525 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:41,528 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 14:59:59,872 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:59,876 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 14:59:59,877 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 14:59:59,881 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:00:05,023 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:00:05,035 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:00:05,036 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:00:05,040 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:00:18,526 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:00:18,534 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:00:18,535 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:00:18,542 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:00:22,136 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:00:22,144 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:00:22,146 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:00:22,151 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:02:56,423 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:02:56,428 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:02:56,428 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:02:56,433 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:03:51,131 [Worker-28] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.wifiwirelesss.webservice:wifiwirelesss:0.0.1-SNAPSHOT @ F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\pom.xml.
+2016-10-05 15:03:51,185 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 15:03:51,242 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 15:03:51,492 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 15:03:51,908 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:03:51,913 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:03:51,915 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:03:51,918 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:03:51,919 [Worker-28] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 15:03:51,919 [Worker-28] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 15:03:51,921 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:03:56,616 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:03:56,618 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 15:03:58,170 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+2016-10-05 15:03:58,279 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:03:58,284 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:03:58,285 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:03:58,289 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:03:58,290 [Worker-31] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 15:03:58,290 [Worker-31] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 15:03:58,292 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:04:01,951 [Worker-43] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:04:01,952 [Worker-43] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 15:04:30,597 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:04:30,601 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:04:30,602 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:04:30,606 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:07:20,187 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:07:20,201 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:07:20,204 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:07:20,215 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:07:28,897 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:07:28,901 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:07:28,902 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:07:28,907 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:08:12,627 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:12,632 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:08:12,633 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:12,645 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:08:29,891 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:29,897 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:08:29,898 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:29,904 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:08:32,968 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:32,971 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:08:32,972 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:32,976 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:08:43,239 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:43,243 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:08:43,244 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:43,248 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:08:52,518 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:52,523 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:08:52,524 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:08:52,528 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:09:07,330 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:07,338 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:09:07,340 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:07,344 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:09:18,314 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:18,321 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:09:18,323 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:18,326 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:09:24,634 [Worker-33] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:09:24,635 [Worker-33] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 15:09:27,189 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:27,200 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:09:27,202 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:27,206 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:09:27,207 [Worker-49] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 15:09:27,207 [Worker-49] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 15:09:27,237 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:30,052 [Worker-49] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:09:30,053 [Worker-49] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 15:09:35,328 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:35,339 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:09:35,340 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:09:35,348 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:12:33,167 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:12:33,173 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:12:33,174 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:12:33,180 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:12:41,808 [Worker-50] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:12:41,808 [Worker-50] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 15:12:43,312 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:12:43,321 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:12:43,322 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:12:43,328 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:12:43,329 [Worker-38] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 15:12:43,329 [Worker-38] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 15:12:43,334 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:12:44,883 [Worker-39] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:12:44,883 [Worker-39] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 15:12:48,206 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:12:48,219 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:12:48,223 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:12:48,234 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:22:54,820 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:22:54,867 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:22:54,868 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:22:54,872 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:23:35,193 [Worker-58] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:23:35,207 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:23:35,209 [Worker-58] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:23:35,216 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:23:39,490 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:23:39,502 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:23:39,503 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:23:39,509 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:23:59,693 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:23:59,707 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:23:59,709 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:23:59,722 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:24:11,020 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:24:11,026 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:24:11,026 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:24:11,030 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:24:31,214 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:24:31,261 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:24:31,262 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:24:31,267 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:26:00,016 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:26:00,069 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:26:00,070 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:26:00,073 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:27:14,632 [Worker-60] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:27:14,666 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:27:14,667 [Worker-60] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:27:14,670 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:27:23,300 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:27:23,305 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:27:23,306 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:27:23,311 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:27:55,945 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:27:55,950 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:27:55,950 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:27:55,953 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:28:53,723 [Worker-60] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:28:53,727 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:28:53,728 [Worker-60] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:28:53,732 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:29:06,114 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:29:06,119 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:29:06,120 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:29:06,123 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:30:54,464 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:30:54,470 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:30:54,471 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:30:54,475 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:30:59,918 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:30:59,922 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:30:59,923 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:30:59,927 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:31:16,043 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:31:16,082 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:31:16,083 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:31:16,086 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:31:50,037 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:31:50,076 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:31:50,076 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:31:50,080 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:31:53,349 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:31:53,354 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:31:53,355 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:31:53,361 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:32:17,451 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:32:17,455 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:32:17,456 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:32:17,460 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:33:06,787 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:33:06,793 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:33:06,794 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:33:06,801 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:33:12,319 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:33:12,325 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:33:12,326 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:33:12,331 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:33:37,911 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:33:37,915 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:33:37,916 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:33:37,920 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:38:22,846 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:38:22,900 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:38:22,901 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:38:22,913 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:38:34,288 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:38:34,292 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:38:34,293 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:38:34,296 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:38:44,878 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:38:44,882 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:38:44,883 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:38:44,887 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:40:13,261 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:40:13,267 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:40:13,268 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:40:13,272 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:40:30,169 [Worker-64] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:40:30,175 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:40:30,175 [Worker-64] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:40:30,179 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:40:46,241 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:40:46,247 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:40:46,248 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:40:46,254 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:40:56,871 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:40:56,877 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:40:56,879 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:40:56,885 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:41:01,313 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:01,321 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:41:01,322 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:01,328 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:41:12,897 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:12,901 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:41:12,902 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:12,906 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:41:31,941 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:31,945 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:41:31,946 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:31,950 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:41:36,491 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:36,497 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:41:36,498 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:36,503 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:41:50,898 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:50,903 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:41:50,904 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:41:50,908 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:42:27,738 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:42:27,744 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:42:27,745 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:42:27,750 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:42:37,113 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:42:37,118 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:42:37,118 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:42:37,122 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:42:41,048 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:42:41,052 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:42:41,053 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:42:41,088 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:43:01,452 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:43:01,458 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:43:01,459 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:43:01,464 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:44:10,721 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:44:10,727 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:44:10,729 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:44:10,733 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:45:23,120 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:45:23,136 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:45:23,138 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:45:23,142 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:46:35,938 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:46:35,942 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:46:35,943 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:46:35,947 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:47:20,887 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:47:20,894 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:47:20,895 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:47:20,902 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:48:07,069 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:07,074 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:48:07,075 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:07,079 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:48:16,295 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:16,302 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:48:16,303 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:16,307 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:48:21,932 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:21,939 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:48:21,941 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:21,947 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:48:26,529 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:26,535 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:48:26,536 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:26,541 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:48:32,927 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:32,933 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:48:32,933 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:48:32,937 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:49:10,594 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:49:10,601 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:49:10,601 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:49:10,605 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:49:31,787 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:49:31,792 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:49:31,792 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:49:31,796 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:50:34,377 [Worker-62] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:50:34,377 [Worker-62] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 15:50:39,408 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:50:39,409 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 15:53:50,831 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:53:50,861 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:53:50,862 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:53:50,868 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:54:01,446 [Worker-65] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:54:01,446 [Worker-65] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 15:54:03,042 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:54:03,066 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:54:03,067 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:54:03,074 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:54:03,075 [Worker-61] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 15:54:03,075 [Worker-61] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 15:54:03,086 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:54:07,629 [Worker-66] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 15:54:07,630 [Worker-66] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 15:54:11,898 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:54:11,902 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:54:11,903 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:54:11,907 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:57:10,221 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:57:10,226 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:57:10,263 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:57:10,267 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 15:58:06,674 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:58:06,679 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 15:58:06,679 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 15:58:06,684 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:01:01,204 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:01,210 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:01:01,211 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:01,217 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:01:10,534 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:10,537 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:01:10,538 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:10,541 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:01:32,973 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:32,977 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:01:32,977 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:32,980 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:01:41,547 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:41,552 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:01:41,553 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:41,557 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:01:44,813 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:44,818 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:01:44,819 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:01:44,823 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:02:37,676 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:02:37,681 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:02:37,681 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:02:37,685 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:02:38,900 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:02:38,905 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:02:38,905 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:02:38,909 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:02:52,368 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:02:52,374 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:02:52,374 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:02:52,378 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:04:39,504 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:04:39,512 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:04:39,513 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:04:39,519 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:04:53,209 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:04:53,214 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:04:53,215 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:04:53,219 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:06:15,837 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:06:15,842 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:06:15,843 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:06:15,848 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:06:47,846 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:06:47,852 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:06:47,852 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:06:47,856 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:07:07,711 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:07:07,715 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:07:07,716 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:07:07,721 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:07:27,550 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:07:27,556 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:07:27,557 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:07:27,561 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:07:37,918 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:07:37,922 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:07:37,923 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:07:37,947 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:07:42,440 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:07:42,444 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:07:42,445 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:07:42,450 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:08:01,414 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:01,419 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:08:01,420 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:01,425 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:08:09,428 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:09,434 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:08:09,434 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:09,440 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:08:13,356 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:13,362 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:08:13,363 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:13,370 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:08:16,726 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:16,732 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:08:16,733 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:16,738 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:08:35,775 [Worker-55] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:08:35,775 [Worker-55] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 16:08:40,277 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:08:40,277 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 16:08:43,592 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:43,605 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:08:43,607 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:08:43,617 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:08:43,617 [Worker-62] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 16:08:43,617 [Worker-62] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 16:08:43,621 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:20:18,174 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:20:18,232 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:20:18,234 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:20:18,245 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:20:25,955 [Worker-55] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:20:25,955 [Worker-55] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 16:20:27,347 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:20:27,354 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:20:27,355 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:20:27,360 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:20:27,360 [Worker-69] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 16:20:27,360 [Worker-69] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 16:20:27,365 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:20:38,083 [Worker-56] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:20:38,083 [Worker-56] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 16:20:41,204 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:20:41,216 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:20:41,217 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:20:41,222 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:23:11,422 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:23:11,463 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:23:11,464 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:23:11,467 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:23:22,134 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:23:22,140 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:23:22,141 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:23:22,147 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:23:26,834 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:23:26,840 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:23:26,841 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:23:26,845 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:23:34,970 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:23:34,970 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 16:23:36,450 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:23:36,457 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:23:36,459 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:23:36,464 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:23:36,465 [Worker-69] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of wifiwirelesss
+2016-10-05 16:23:36,465 [Worker-69] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for wifiwirelesss
+2016-10-05 16:23:36,470 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:24:01,967 [Worker-56] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:24:01,967 [Worker-56] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 16:24:04,973 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:24:04,982 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:24:04,984 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:24:04,992 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:29:20,729 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:29:20,730 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 16:29:26,729 [Worker-55] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:29:26,729 [Worker-55] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 16:31:08,458 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:31:08,499 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:31:08,501 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:31:08,512 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:31:57,473 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:31:57,479 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:31:57,480 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:31:57,486 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:31:58,615 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:31:58,625 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:31:58,625 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:31:58,631 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:32:01,846 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:32:01,854 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:32:01,856 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:32:01,863 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:32:51,941 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:32:51,947 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:32:51,947 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:32:51,952 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:33:57,024 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:33:57,028 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:33:57,028 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:33:57,032 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:33:58,092 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:33:58,105 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:33:58,106 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:33:58,111 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:34:37,820 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:34:37,826 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:34:37,827 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:34:37,831 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:34:46,857 [Worker-72] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:34:46,858 [Worker-72] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 16:34:52,703 [Worker-74] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:34:52,703 [Worker-74] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 16:41:09,295 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:41:09,331 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:41:09,332 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:41:09,336 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:41:10,413 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:41:10,425 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:41:10,426 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:41:10,437 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:41:13,793 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:41:13,806 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:41:13,808 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:41:13,819 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:41:15,178 [Worker-74] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:41:15,178 [Worker-74] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 16:41:21,575 [Worker-73] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 16:41:21,575 [Worker-73] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 16:44:40,903 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:44:40,956 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:44:40,958 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:44:40,970 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:44:42,058 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:44:42,064 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:44:42,065 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:44:42,070 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:45:01,498 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:45:01,506 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:45:01,507 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:45:01,514 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:45:52,966 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:45:52,972 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:45:52,973 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:45:52,977 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:46:58,165 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:46:58,169 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:46:58,169 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:46:58,173 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:46:59,247 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:46:59,260 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:46:59,262 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:46:59,275 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:47:01,544 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:47:01,557 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:47:01,559 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:47:01,570 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:47:09,889 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:47:09,894 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:47:09,895 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:47:09,899 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:47:32,629 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:47:32,635 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:47:32,636 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:47:32,640 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:53:12,587 [Worker-63] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.httpcomponents:httpcore:4.3.2
+2016-10-05 16:53:12,837 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:53:12,842 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:53:12,842 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:53:12,846 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:53:54,084 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:53:54,089 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:53:54,089 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:53:54,093 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:54:09,687 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:54:09,695 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:54:09,696 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:54:09,702 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:54:21,237 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:54:21,244 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:54:21,246 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:54:21,253 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:54:26,566 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:54:26,573 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:54:26,574 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:54:26,582 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:54:35,194 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:54:35,199 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:54:35,199 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:54:35,203 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:55:29,893 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:55:29,898 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:55:29,898 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:55:29,903 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 16:57:08,551 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:57:08,557 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 16:57:08,558 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 16:57:08,563 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:02:49,096 [Worker-81] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:02:49,164 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:02:49,166 [Worker-81] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:02:49,180 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:02:55,530 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:02:55,535 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:02:55,536 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:02:55,540 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:03:14,205 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:03:14,211 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:03:14,212 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:03:14,217 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:03:20,372 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 17:03:20,372 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 17:03:23,991 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 17:03:23,991 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 17:04:50,627 [Worker-85] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 17:04:50,627 [Worker-85] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 17:04:56,894 [Worker-86] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 17:04:56,894 [Worker-86] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 17:06:12,853 [Worker-81] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:06:12,859 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:06:12,861 [Worker-81] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:06:12,864 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:06:13,935 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:06:13,950 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:06:13,951 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:06:13,965 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:06:16,139 [Worker-84] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 17:06:16,139 [Worker-84] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean
+2016-10-05 17:06:19,877 [Worker-86] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss
+2016-10-05 17:06:19,877 [Worker-86] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B install
+2016-10-05 17:07:00,655 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:07:00,664 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:07:00,665 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:07:00,673 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:07:01,693 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:07:01,706 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:07:01,707 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:07:01,714 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:07:20,480 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:07:20,486 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:07:20,487 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:07:20,492 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:07:21,518 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:07:21,533 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:07:21,534 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:07:21,541 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:10:38,939 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:10:38,947 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:10:38,948 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:10:38,957 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:10:40,207 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:10:40,221 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:10:40,223 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:10:40,235 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:10:53,959 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:10:53,967 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:10:53,968 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:10:53,976 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:11:10,332 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:11:10,337 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:11:10,338 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:11:10,343 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:12:13,822 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:12:13,827 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:12:13,828 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:12:13,832 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:13:04,200 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:04,206 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:13:04,207 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:04,213 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:13:10,054 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:10,061 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:13:10,062 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:10,069 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:13:16,231 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:16,238 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:13:16,239 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:16,244 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:13:30,749 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:30,757 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:13:30,758 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:30,766 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:13:44,842 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:44,847 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:13:44,847 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:44,851 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:13:53,612 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:53,618 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:13:53,619 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:13:53,625 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:14:04,222 [Worker-88] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:14:04,227 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:14:04,227 [Worker-88] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:14:04,232 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources
+2016-10-05 17:14:08,592 [Worker-90] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:14:08,599 [Worker-90] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-10-05 17:14:08,600 [Worker-90] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-10-05 17:14:08,605 [Worker-90] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\WifiWirelessProject\wifiwirelessWorkspace\sms\Bandanawifiwireless\wifiwirelesss\src\test\resources

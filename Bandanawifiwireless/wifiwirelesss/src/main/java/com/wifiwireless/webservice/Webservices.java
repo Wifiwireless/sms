@@ -125,5 +125,14 @@ public class Webservices {
 	 }
 
 	
-	
+	@GET
+	 @Path("getCustomer")
+	 @Produces(MediaType.APPLICATION_JSON)
+	 public void getReceipts() {
+		 System.out.println("Receipt received------------------------");
+		
+	  
+
+	  
+	 }
 }

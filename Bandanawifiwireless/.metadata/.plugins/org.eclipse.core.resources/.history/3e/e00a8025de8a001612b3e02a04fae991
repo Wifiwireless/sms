@@ -1,0 +1,8 @@
+package com.wifiwireless.webservice;
+
+import javax.ws.rs.Path;
+
+@Path("/get")
+public class Webservices {
+
+}

@@ -357,11 +357,11 @@ public static NumberResponse createHook(){
 
 	HttpClient httpClient = new DefaultHttpClient();
 	Gson gson = new Gson();
-	HttpPost post = new HttpPost("https://api.bigcommerce.com/stores/store-wiusit9d78.mybigcommerce.com/v2/hooks");
+	HttpPost post = new HttpPost("https://api.bigcommerce.com/stores/store-wiusit9d78/v2/hooks");
 	
 	List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-	urlParameters.add(new BasicNameValuePair("scope","store/customer/created"));
-//	urlParameters.add(new BasicNameValuePair("destination","http://70.182.179.17:8080/wifiwireless/getCustomer"));
+//	urlParameters.add(new BasicNameValuePair("scope","store_v2_customers"));
+	urlParameters.add(new BasicNameValuePair("destination","http://70.182.179.17:8080/wifiwireless/getCustomer"));
 	urlParameters.add(new BasicNameValuePair("is_active","true"));
 
 
@@ -371,8 +371,8 @@ public static NumberResponse createHook(){
 		post.addHeader("Content-type", "application/json");
 //		post.addHeader("Authorization", "Basic "+new String(Base64.encodeBase64("kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
 		post.addHeader("X-Auth-Client","fykbvd5ar636ilc1stlam2tor51gpgf");
-		post.addHeader("X-Auth-Token","r269xmy3i8upibr12h0myfxee6f0hlx");
-//		post.addHeader("X-Custom-Auth-Header","r269xmy3i8upibr12h0myfxee6f0hlx");
+		post.addHeader("X-Auth-Token","9dnvdx21pp2ya5bf05b2cjxhc56mp0k");
+		post.addHeader("scope","store_v2_customers");
 		post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
 	response = httpClient.execute(post);
@@ -380,12 +380,12 @@ public static NumberResponse createHook(){
 
 	
 	System.out.println(response.toString());
-/*	String responseString = IOUtils.toString(response.getEntity()
+	String responseString = IOUtils.toString(response.getEntity()
 		     .getContent(), "UTF-8");
-//		   System.out.println(responseString); 
-		   ArrayList<CustomerDetails> customerDetails=    gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>(){}.getType());
+		   System.out.println(responseString); 
+	/*	   ArrayList<CustomerDetails> customerDetails=    gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>(){}.getType());
 		   System.out.println(customerDetails.get(0).getFirst_name());
-*/		   
+	*/	   
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -416,8 +416,8 @@ public static NumberResponse oAuth(){
 	List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 	urlParameters.add(new BasicNameValuePair("client_id","fykbvd5ar636ilc1stlam2tor51gpgf"));
 	urlParameters.add(new BasicNameValuePair("client_secret","93go3m7lfq7yoay6kjzpwyfjradkmt1"));
-	urlParameters.add(new BasicNameValuePair("code","r269xmy3i8upibr12h0myfxee6f0hlx"));
-	urlParameters.add(new BasicNameValuePair("scope","store_v2_products"));
+	urlParameters.add(new BasicNameValuePair("code","4qnx26xoco7hvjznuik0cnewjbe9ce5"));
+	urlParameters.add(new BasicNameValuePair("scope","store_v2_customers"));
 	urlParameters.add(new BasicNameValuePair("grant_type","authorization_code"));
 	urlParameters.add(new BasicNameValuePair("redirect_uri","http://70.182.179.17:8080/wifiwireless/getReceipts"));
 	urlParameters.add(new BasicNameValuePair("context","stores/wiusit9d78"));
@@ -465,9 +465,9 @@ public static NumberResponse oAuth(){
 
 	public static void main(String[] args) {
 //test();
-		oAuth();
 //		oAuth();
-		
+//		oAuth();
+		createHook();
 //		testPbx();
 		//buyNumber("US", "16192596886","abc","123");
 	}

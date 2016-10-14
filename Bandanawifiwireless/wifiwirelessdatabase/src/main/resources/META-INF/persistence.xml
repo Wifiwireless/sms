@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="wifiwirelessdatabase">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+
+		<class>com.wifiwireless.model.NumberDetails</class>
+<class>com.wifiwireless.model.Messages</class>
+
+<class>com.wifiwireless.model.MessageReciepts</class>
+<class>com.wifiwireless.model.Users</class>
+		<!-- <shared-cache-element>ENABLE_SELECTIVE</shared-cache-element> -->
+		<properties>
+
+
+
+
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/pbxware" />
+			<!-- <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/wifiwireless" /> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.listeners.envers.autoRegister"
+				value="false" />
+			<!-- <property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="root" /> -->
+			<property name="hibernate.connection.username" value="pbxware" />
+			<property name="hibernate.connection.password" value="fb0ab1cd9b" />
+			<property name="hibernate.show_sql" value="true" />
+		<!-- 	<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+
+			<property name="hibernate.id.new_generator_mappings" value="true" />
+
+
+			<property name="hibernate.enable_lazy_load_no_trans" value="true" />
+
+		</properties>
+	</persistence-unit>
+</persistence>
