@@ -11,6 +11,8 @@
   <version>0.0.1-SNAPSHOT</version>
 		
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
+
 		<dependency>
    <groupId>com.fasterxml.jackson.core</groupId>
    <artifactId>jackson-annotations</artifactId>

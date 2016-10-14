@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -13,13 +14,16 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.wifiwireless.constant.JndiLookup;
 import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
+import com.wifiwireless.model.CustomerDetails;
 import com.wifiwireless.model.Messages;
 import com.wireless.bean.AcquireResponse;
 import com.wireless.bean.BuyNumberResponse;
@@ -212,13 +216,259 @@ public static SendMessageResponse sendMessage(SendMessage message){
 
 }
 
- 
+public static NumberResponse test(){
+	
+	
+	
+
+
+
+	HttpClient httpClient = new DefaultHttpClient();
+	Gson gson = new Gson();
+	HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers");
+	try {
+		HttpResponse response;
+		post.addHeader("Accept", "application/json");
+		post.addHeader("Content-type", "application/json");
+		post.addHeader("Authorization", "Basic "+new String(Base64.encodeBase64("kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+		post.addHeader("X-Auth-Client","EF6GI26V2A1KEO5283A1ZC37HB");
+		post.addHeader("X-Auth-Token","cd10af7566dc4882999d1452b361d1f827629df8");
+
+	response = httpClient.execute(post);
+
 
 	
+	System.out.println(response.toString());
+	String responseString = IOUtils.toString(response.getEntity()
+		     .getContent(), "UTF-8");
+//		   System.out.println(responseString); 
+		   ArrayList<CustomerDetails> customerDetails=    gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>(){}.getType());
+		   System.out.println(customerDetails.get(0).getFirst_name());
+		   
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+	return null;
+
+	
+
+}
+
+
+
+public static NumberResponse testCreate(){
+	
+	
+	
+
+
+
+	HttpClient httpClient = new DefaultHttpClient();
+	Gson gson = new Gson();
+	HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers/created");
+	try {
+		HttpResponse response;
+		post.addHeader("Accept", "application/json");
+		post.addHeader("Content-type", "application/json");
+		post.addHeader("Authorization", "Basic "+new String(Base64.encodeBase64("kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+		post.addHeader("X-Auth-Client","EF6GI26V2A1KEO5283A1ZC37HB");
+		post.addHeader("X-Auth-Token","cd10af7566dc4882999d1452b361d1f827629df8");
+
+	response = httpClient.execute(post);
+
+
+	
+	System.out.println(response.toString());
+	String responseString = IOUtils.toString(response.getEntity()
+		     .getContent(), "UTF-8");
+		   System.out.println(responseString); 
+		   ArrayList<CustomerDetails> customerDetails=    gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>(){}.getType());
+		   System.out.println(customerDetails.get(0).getFirst_name());
+		   
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+	return null;
+
+	
+
+}
+
+
+public static NumberResponse testPbx(){
+	
+	
+	
+
+
+
+	HttpClient httpClient = new DefaultHttpClient();
+	Gson gson = new Gson();
+	HttpGet post = new HttpGet("http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.add&server=&name=kirtiTest&secret=kirti123!&email=kirti.mandwade@wwindia.com&ext=10000098&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip");
+	try {
+		HttpResponse response;
+	/*	post.addHeader("Accept", "application/json");
+		post.addHeader("Content-type", "application/json");
+		post.addHeader("Authorization", "Basic "+new String(Base64.encodeBase64("kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+		post.addHeader("X-Auth-Client","EF6GI26V2A1KEO5283A1ZC37HB");
+		post.addHeader("X-Auth-Token","cd10af7566dc4882999d1452b361d1f827629df8");
+*/
+	response = httpClient.execute(post);
+
+
+	
+	System.out.println(response.toString());
+	String responseString = IOUtils.toString(response.getEntity()
+		     .getContent(), "UTF-8");
+		   System.out.println(responseString); 
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+	return null;
+
+	
+
+}
+
+
+
+
+public static NumberResponse createHook(){
+	
+	
+	
+
+
+
+	HttpClient httpClient = new DefaultHttpClient();
+	Gson gson = new Gson();
+	HttpPost post = new HttpPost("https://api.bigcommerce.com/stores/store-wiusit9d78.mybigcommerce.com/v2/hooks");
+	
+	List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+	urlParameters.add(new BasicNameValuePair("scope","store/customer/created"));
+//	urlParameters.add(new BasicNameValuePair("destination","http://70.182.179.17:8080/wifiwireless/getCustomer"));
+	urlParameters.add(new BasicNameValuePair("is_active","true"));
+
+
+	try {
+		HttpResponse response;
+		post.addHeader("Accept", "application/json");
+		post.addHeader("Content-type", "application/json");
+//		post.addHeader("Authorization", "Basic "+new String(Base64.encodeBase64("kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+		post.addHeader("X-Auth-Client","fykbvd5ar636ilc1stlam2tor51gpgf");
+		post.addHeader("X-Auth-Token","r269xmy3i8upibr12h0myfxee6f0hlx");
+//		post.addHeader("X-Custom-Auth-Header","r269xmy3i8upibr12h0myfxee6f0hlx");
+		post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+	response = httpClient.execute(post);
+
+
+	
+	System.out.println(response.toString());
+/*	String responseString = IOUtils.toString(response.getEntity()
+		     .getContent(), "UTF-8");
+//		   System.out.println(responseString); 
+		   ArrayList<CustomerDetails> customerDetails=    gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>(){}.getType());
+		   System.out.println(customerDetails.get(0).getFirst_name());
+*/		   
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+	return null;
+
+	
+
+}
+
+
+
+public static NumberResponse oAuth(){
+	
+	
+	
+
+
+
+	HttpClient httpClient = new DefaultHttpClient();
+	Gson gson = new Gson();
+	HttpPost post = new HttpPost("https://login.bigcommerce.com/oauth2/token");
+	
+	List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+	urlParameters.add(new BasicNameValuePair("client_id","fykbvd5ar636ilc1stlam2tor51gpgf"));
+	urlParameters.add(new BasicNameValuePair("client_secret","93go3m7lfq7yoay6kjzpwyfjradkmt1"));
+	urlParameters.add(new BasicNameValuePair("code","r269xmy3i8upibr12h0myfxee6f0hlx"));
+	urlParameters.add(new BasicNameValuePair("scope","store_v2_products"));
+	urlParameters.add(new BasicNameValuePair("grant_type","authorization_code"));
+	urlParameters.add(new BasicNameValuePair("redirect_uri","http://70.182.179.17:8080/wifiwireless/getReceipts"));
+	urlParameters.add(new BasicNameValuePair("context","stores/wiusit9d78"));
+
+	
+	try {
+		HttpResponse response;
+//		post.addHeader("Accept", "application/json");
+		post.addHeader("Content-type", "application/x-www-form-urlencoded");
+//		post.addHeader("Authorization", "Basic "+new String(Base64.encodeBase64("kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+		/*post.addHeader("X-Auth-Client","fykbvd5ar636ilc1stlam2tor51gpgf");
+		post.addHeader("X-Auth-Token","cd10af7566dc4882999d1452b361d1f827629df8");
+		post.addHeader("code","r269xmy3i8upibr12h0myfxee6f0hlx");
+	*/	post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+	response = httpClient.execute(post);
+
+
+	
+	System.out.println(response.toString());
+	String responseString = IOUtils.toString(response.getEntity()
+		     .getContent(), "UTF-8");
+		   System.out.println(responseString); 
+/*	String responseString = IOUtils.toString(response.getEntity()
+		     .getContent(), "UTF-8");
+//		   System.out.println(responseString); 
+		   ArrayList<CustomerDetails> customerDetails=    gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>(){}.getType());
+		   System.out.println(customerDetails.get(0).getFirst_name());
+*/		   
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+	return null;
+
+	
+
+}
+
+
+
 	public static void main(String[] args) {
+//test();
+		oAuth();
+//		oAuth();
 		
-		SendMessage message=new SendMessage("17324475273", "12132944052", "testing");
-		sendMessage(message);
+//		testPbx();
 		//buyNumber("US", "16192596886","abc","123");
 	}
 	

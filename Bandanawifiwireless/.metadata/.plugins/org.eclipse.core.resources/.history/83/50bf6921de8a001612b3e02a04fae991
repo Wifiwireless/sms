@@ -1,7 +1,0 @@
-package com.wifiwireless.webservice;
-
-
-@Path("/beacon")
-public class Webservices {
-
-}
