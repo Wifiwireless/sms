@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 @Entity
 @Table(name = "MessageReciepts")
-public class MessageReciepts  extends PL4Base implements Serializable{
+public class MessageReciepts  extends WifiBase implements Serializable{
 	@Column(name = "msisdn")
 	private String msisdn;
 	@Column(name = "source")

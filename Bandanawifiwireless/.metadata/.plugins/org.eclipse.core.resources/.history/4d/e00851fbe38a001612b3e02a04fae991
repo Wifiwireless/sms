@@ -1,9 +1,0 @@
-package com.wireless.bean;
-
-import java.util.ArrayList;
-
-public class AcquireResponse {
-String count;
-
-ArrayList<NumberResponse> nubmers;
-}

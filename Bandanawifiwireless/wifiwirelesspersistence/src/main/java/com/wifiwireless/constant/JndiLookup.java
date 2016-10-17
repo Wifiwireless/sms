@@ -9,14 +9,14 @@ import javax.naming.NamingException;
 import com.wifiwireless.interfaces.MessageRecieptsInterface;
 import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
-import com.wifiwireless.interfaces.UsersInterfaces;
+
 
 public class JndiLookup {
 
 	private static String EJB_NUMBER_DETAILS="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/NumberDetailsDao!com.wifiwireless.interfaces.NumberDetailsInterface";
 	private static String EJB_MESSAGES="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/MessagesDao!com.wifiwireless.interfaces.MessagesInterface";
 	private static String EJB_MESSAGES_RECIEPTS="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/MessageRecieptsDao!com.wifiwireless.interfaces.MessageRecieptsInterface";
-	private static String EJB_Users="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/UsersDao!com.wifiwireless.interfaces.UsersInterfaces";
+	
 	
 	
 	
@@ -56,18 +56,7 @@ public class JndiLookup {
 
 	}	
 	
-	public static UsersInterfaces getUsersDao() {
-
-		UsersInterfaces usersInterfaces = null;
-		try {
-			usersInterfaces = (UsersInterfaces) getContext().lookup(
-					EJB_Users);
-		} catch (NamingException e) {
-		
-		}
-		return usersInterfaces;
-
-	}
+	
 	
 	public static MessagesInterface getMessageDao() {
 

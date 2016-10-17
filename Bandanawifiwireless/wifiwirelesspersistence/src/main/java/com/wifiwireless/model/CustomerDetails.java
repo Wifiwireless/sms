@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CustomerDetails")
-public class CustomerDetails extends PL4Base implements Serializable{
+public class CustomerDetails extends WifiBase implements Serializable{
 	
 
 	@Column(name = "company")

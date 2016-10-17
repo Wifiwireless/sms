@@ -10,7 +10,7 @@ import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.model.Messages;
 import com.wifiwireless.model.NumberDetails;
 @Stateless
-public class MessagesDao extends PL4BaseDAO implements MessagesInterface,Serializable{
+public class MessagesDao extends WifiDao implements MessagesInterface,Serializable{
 	
 	EntityManager em = null;
 

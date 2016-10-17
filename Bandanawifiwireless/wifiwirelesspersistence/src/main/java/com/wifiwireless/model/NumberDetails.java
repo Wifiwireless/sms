@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 @Entity
 @Table(name = "NumberDetails")
-public class NumberDetails  extends PL4Base implements Serializable{
+public class NumberDetails  extends WifiBase implements Serializable{
 	public NumberDetails(String username, String password, String country, String pattern, Boolean paidflag,
 			String phnno) {
 		super();

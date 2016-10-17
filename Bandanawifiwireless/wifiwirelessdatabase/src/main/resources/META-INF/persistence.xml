@@ -10,7 +10,7 @@
 <class>com.wifiwireless.model.Messages</class>
 
 <class>com.wifiwireless.model.MessageReciepts</class>
-<class>com.wifiwireless.model.Users</class>
+
 		<!-- <shared-cache-element>ENABLE_SELECTIVE</shared-cache-element> -->
 		<properties>
 
@@ -18,15 +18,15 @@
 
 
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/pbxware" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/admin_site" />
 			<!-- <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/wifiwireless" /> -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.listeners.envers.autoRegister"
 				value="false" />
 			<!-- <property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="root" /> -->
-			<property name="hibernate.connection.username" value="pbxware" />
-			<property name="hibernate.connection.password" value="fb0ab1cd9b" />
+			<property name="hibernate.connection.username" value="admin" />
+			<property name="hibernate.connection.password" value="Ws63Hu" />
 			<property name="hibernate.show_sql" value="true" />
 		<!-- 	<property name="hibernate.hbm2ddl.auto" value="create" /> -->
 

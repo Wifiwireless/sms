@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
 import com.wifiwireless.model.NumberDetails;
 @Stateless
-public class NumberDetailsDao extends PL4BaseDAO implements NumberDetailsInterface,Serializable{
+public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,Serializable{
 	
 	EntityManager em = null;
 

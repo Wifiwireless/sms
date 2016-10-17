@@ -1,9 +1,0 @@
-package com.wireless.bean;
-
-public class BuyNumber {
-
-	String country;
-	String msisdn;
-	
-	
-}

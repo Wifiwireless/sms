@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Messages")
-public class Messages extends PL4Base implements Serializable{
+public class Messages extends WifiBase implements Serializable{
 	
 	
 	
