@@ -58,9 +58,9 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 		}
 
 	}
-	public String checkNumber(String username,String password) {
+	public String checkNumber(String username,String Passkey) {
 		em = getEm();
-		
+		System.out.println("Username"+username+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
@@ -70,7 +70,7 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 					NumberDetails.class);
 
 			query.setParameter("username", username);
-			query.setParameter("password", password);
+			query.setParameter("password", Passkey);
 			if (query.getResultList().size() > 0){
 				
 				NumberDetails numbers=query.getSingleResult();

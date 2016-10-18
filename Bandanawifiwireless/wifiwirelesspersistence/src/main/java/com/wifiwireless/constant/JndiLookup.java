@@ -6,6 +6,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import com.wifiwireless.interfaces.CustomerCheckDaoInterface;
+import com.wifiwireless.interfaces.CustomerDaoInterface;
 import com.wifiwireless.interfaces.MessageRecieptsInterface;
 import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
@@ -16,10 +18,20 @@ public class JndiLookup {
 	private static String EJB_NUMBER_DETAILS="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/NumberDetailsDao!com.wifiwireless.interfaces.NumberDetailsInterface";
 	private static String EJB_MESSAGES="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/MessagesDao!com.wifiwireless.interfaces.MessagesInterface";
 	private static String EJB_MESSAGES_RECIEPTS="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/MessageRecieptsDao!com.wifiwireless.interfaces.MessageRecieptsInterface";
+	private static String EJB_CUSTOMER_DETAILS="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/CustomerDao!com.wifiwireless.interfaces.CustomerDaoInterface";
+	private static String EJB_CUSTOMER_CHECK="java:global/wifiwirelessdatabase-0.0.1-SNAPSHOT-jar-with-dependencies/CustomerCheckDao!com.wifiwireless.interfaces.CustomerCheckDaoInterface";
 	
 	
 	
-	
+	public static String getEJB_CUSTOMER_CHECK() {
+		return EJB_CUSTOMER_CHECK;
+	}
+	public static void setEJB_CUSTOMER_CHECK(String eJB_CUSTOMER_CHECK) {
+		EJB_CUSTOMER_CHECK = eJB_CUSTOMER_CHECK;
+	}
+	public static String getEJB_CUSTOMER_DETAILS() {
+		return EJB_CUSTOMER_DETAILS;
+	}
 	public static String getEJB_MESSAGES_RECIEPTS() {
 		return EJB_MESSAGES_RECIEPTS;
 	}
@@ -57,6 +69,32 @@ public class JndiLookup {
 	}	
 	
 	
+	public static CustomerDaoInterface getCustomerDetails() {
+
+		CustomerDaoInterface customerDaoInterface = null;
+		try {
+			customerDaoInterface = (CustomerDaoInterface) getContext().lookup(
+					EJB_CUSTOMER_DETAILS);
+		} catch (NamingException e) {
+		
+		}
+		return customerDaoInterface;
+
+	}	
+	
+	
+	public static CustomerCheckDaoInterface getCustomerCheckdao() {
+
+		CustomerCheckDaoInterface customerCheckDaoInterface = null;
+		try {
+			customerCheckDaoInterface = (CustomerCheckDaoInterface) getContext().lookup(
+					EJB_CUSTOMER_CHECK);
+		} catch (NamingException e) {
+		
+		}
+		return customerCheckDaoInterface;
+
+	}	
 	
 	public static MessagesInterface getMessageDao() {
 

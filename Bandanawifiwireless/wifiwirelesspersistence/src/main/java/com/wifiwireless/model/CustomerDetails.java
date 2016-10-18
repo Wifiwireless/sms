@@ -4,12 +4,19 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "CustomerDetails")
-public class CustomerDetails extends WifiBase implements Serializable{
+public class CustomerDetails implements Serializable{
 	
+	 @Id
+	    @GeneratedValue(strategy= GenerationType.AUTO)
+	    @Column(name="cid")
+	    private int cid;
 
 	@Column(name = "company")
 	private String company;
@@ -39,10 +46,47 @@ public class CustomerDetails extends WifiBase implements Serializable{
 	private String taxexemptcategory;
 	@Column(name = "reset_pass_on_login")
 	private String resetpassonlogin;
+	@Column(name = "secret")
+	private String secret;
+	@Column(name = "extension")
+	private String extension;
 	@Column(name = "accepts_marketing")
 	private String acceptsmarketing;
+	@Column(name = "ispbxAccountCreated")
+	private Boolean ispbxAccountCreated ;
 	public String getCompany() {
 		return company;
+	}
+	
+	public String getSecret() {
+		return secret;
+	}
+
+	public int getCid() {
+		return cid;
+	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
+
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+
+	public Boolean getIspbxAccountCreated() {
+		return ispbxAccountCreated;
+	}
+	public void setIspbxAccountCreated(Boolean ispbxAccountCreated) {
+		this.ispbxAccountCreated = ispbxAccountCreated;
 	}
 	public void setCompany(String company) {
 		this.company = company;

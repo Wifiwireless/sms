@@ -10,6 +10,8 @@
 <class>com.wifiwireless.model.Messages</class>
 
 <class>com.wifiwireless.model.MessageReciepts</class>
+<class>com.wifiwireless.model.CustomerDetails</class>
+<class>com.wifiwireless.model.CustomerCheck</class>
 
 		<!-- <shared-cache-element>ENABLE_SELECTIVE</shared-cache-element> -->
 		<properties>
@@ -28,8 +30,8 @@
 			<property name="hibernate.connection.username" value="admin" />
 			<property name="hibernate.connection.password" value="Ws63Hu" />
 			<property name="hibernate.show_sql" value="true" />
-		<!-- 	<property name="hibernate.hbm2ddl.auto" value="create" /> -->
-
+		<!-- 	<property name="hibernate.hbm2ddl.auto" value="create" />
+ -->
 			<property name="hibernate.id.new_generator_mappings" value="true" />
 
 

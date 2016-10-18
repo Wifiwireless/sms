@@ -2,6 +2,7 @@ package com.wifiwireless.webservice;
 
 import java.util.Date;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,7 +32,7 @@ public class Webservices {
 	@POST
 	@Path("get/number")
 	@Produces(MediaType.APPLICATION_JSON)
-		public @ResponseObject NumberResponse getNumber(AcquireNumber acquireNumber) {
+	public @ResponseObject NumberResponse getNumber(AcquireNumber acquireNumber) {
 		System.out.println("in get number");
 		NumberResponse numberResponse = null;
 		if (acquireNumber.getUsername() != null && acquireNumber.getPassword() != null
@@ -74,67 +75,63 @@ public class Webservices {
 	@Path("send_message")
 	@Produces(MediaType.APPLICATION_JSON)
 	public SendMessageResponse sendMessage(SendMessage sendMessage) {
-		
-		NumberDetailsInterface numberInterface=JndiLookup.getNumberDetailsDao();
-		String msidn=numberInterface.checkNumber(sendMessage.getFrom(), sendMessage.getPassword());
-		
-		
-		
-		if(sendMessage.getFrom()!=null&&sendMessage.getPassword()!=null&&sendMessage.getTo()!=null&&sendMessage.getBody()!=null) {
-		// System.out.println("country is " + buyNumber.getCountry());
-			if(msidn!=""){
+
+		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
+		String msidn = numberInterface.checkNumber(sendMessage.getFrom(), sendMessage.getPassword());
+
+		if (sendMessage.getFrom() != null && sendMessage.getPassword() != null && sendMessage.getTo() != null
+				&& sendMessage.getBody() != null) {
+			// System.out.println("country is " + buyNumber.getCountry());
+			if (msidn != "") {
 				sendMessage.setFrom(msidn);
 				return NexmoServices.sendMessage(sendMessage);
+			} else {
+				SendMessageResponse messageResponse = new SendMessageResponse(
+						"Please Buy A Number Before Sending A Message");
+				return messageResponse;
 			}
-			else{
-			    SendMessageResponse messageResponse = new SendMessageResponse("Please Buy A Number Before Sending A Message");
-			    return messageResponse;
-			  }
 
+		} else {
+			SendMessageResponse messageResponse = new SendMessageResponse("Please provide all required parameters");
+			return messageResponse;
 		}
-		else{
-		    SendMessageResponse messageResponse = new SendMessageResponse("Please provide all required parameters");
-		    return messageResponse;
-		  }
 
 	}
-	@GET
-	 @Path("getReceipts")
-	 @Produces(MediaType.APPLICATION_JSON)
-	 public void getReceipts(@QueryParam("msisdn") String msisdn, @QueryParam("to") String to,@QueryParam("network-code") String networkcode,@QueryParam("messageId") String messageId,@QueryParam("price") String price,@QueryParam("status") String status,@QueryParam("scts") String scts,@QueryParam("err-code") String errorCode,@QueryParam("message-timestamp") String messagetimestamp) {
-		 System.out.println("Receipt received------------------------");
-		  System.out.println("msisdn" + msisdn+"netwr"+networkcode+errorCode+messageId+messagetimestamp+msisdn+networkcode+ price+scts+status+to);
-		  
 
-		  System.out.println("status "+status);
-		  System.out.println("Receipt received------------------------");
-		MessageReciepts msgReciepts=new MessageReciepts(msisdn, to, networkcode, messageId, status, scts, errorCode, new Date());
-		MessageRecieptsInterface messageREcieptsInteface=JndiLookup.getMessageRecieptsDao();
+	@GET
+	@Path("getReceipts")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void getReceipts(@QueryParam("msisdn") String msisdn, @QueryParam("to") String to,
+			@QueryParam("network-code") String networkcode, @QueryParam("messageId") String messageId,
+			@QueryParam("price") String price, @QueryParam("status") String status, @QueryParam("scts") String scts,
+			@QueryParam("err-code") String errorCode, @QueryParam("message-timestamp") String messagetimestamp) {
+		System.out.println("Receipt received------------------------");
+		System.out.println("msisdn" + msisdn + "netwr" + networkcode + errorCode + messageId + messagetimestamp + msisdn
+				+ networkcode + price + scts + status + to);
+
+		System.out.println("status " + status);
+		System.out.println("Receipt received------------------------");
+		MessageReciepts msgReciepts = new MessageReciepts(msisdn, to, networkcode, messageId, status, scts, errorCode,
+				new Date());
+		MessageRecieptsInterface messageREcieptsInteface = JndiLookup.getMessageRecieptsDao();
 		messageREcieptsInteface.addMesages(msgReciepts);
-		
-	//  System.out.println("country is " + buyNumber.getCountry());
-	  System.out.println("Receipt received------------------------");
-	  System.out.println("msisdn" + msisdn);
 
-	  System.out.println("status "+status);
-	  System.out.println("Receipt received------------------------");
-	  
-	  
+		// System.out.println("country is " + buyNumber.getCountry());
+		System.out.println("Receipt received------------------------");
+		System.out.println("msisdn" + msisdn);
 
-	  
-	 }
+		System.out.println("status " + status);
+		System.out.println("Receipt received------------------------");
 
-	
-	@GET
-	 @Path("getnew")
-	 @Produces(MediaType.APPLICATION_JSON)
-	 public void getnew() {
-		 System.out.println("Receipt received------------------------");
-		
-	  
-	  
+	}
 
-	  
-	 }
+	@POST
+	@Path("getnew")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void getnew() {
+		System.out.println("Receipt received------------------------");
+		NexmoServices.test();
+
+	}
 
 }
