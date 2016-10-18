@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import com.wifiwireless.interfaces.CustomerCheckDaoInterface;
 import com.wifiwireless.model.CustomerCheck;
@@ -18,7 +19,36 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 	/**
 	 * Default constructor.
 	 */
-	
+	public CustomerCheck getData() {
+		em = getEm();
+		CustomerCheck che=new CustomerCheck();
+		//System.out.println("Username"+username+"   Password"+Passkey);
+		try {
+
+			String qlString = "FROM CustomerCheck";
+			TypedQuery<CustomerCheck> query = em.createQuery(qlString,
+					CustomerCheck.class);
+
+			ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>) query.getResultList();
+			if(check.size()>0)
+			{
+				System.out.println("check ");
+			che=check.get(0);
+			}
+			
+			// if(query.getResultList()!=null && query.getResultList().size()>0)
+			}
+			
+		 catch (Exception exception) {
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return che;
+
+	}
 	public void addCustomerCheck(CustomerCheck check) {
 		em = getEm();
 

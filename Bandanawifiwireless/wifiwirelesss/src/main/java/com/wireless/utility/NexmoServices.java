@@ -218,7 +218,16 @@ public class NexmoServices {
 			System.out.println(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 			// System.out.println(responseString);
-			Date today = new Date();
+			check=checkdao.getData();
+			if(check!=null)
+			{
+				System.out.println("not null"+ check.getDatemodified());
+			}
+			else
+			{
+				System.out.println("in null");
+			}
+			Date today =check.getDatemodified();
 			//Date date2=new Date();
 		//String date = today.toString();
 		//System.out.println(date);
@@ -229,17 +238,37 @@ public class NexmoServices {
 					}.getType());
 			System.out.println(customerDetails.size());
 			ArrayList<CustomerDetails> savecustomerDetails=new ArrayList<CustomerDetails>();
+			ArrayList<CustomerDetails> updatecustomer=new ArrayList<CustomerDetails>();
 			for (CustomerDetails cus : customerDetails) {
-			savecustomerDetails.add(cus);
+				Date d=new Date(cus.getDate_created());
+				if(today.after(d))
+				{System.out.println("old dataa");
+					updatecustomer.add(cus);
+					
+					
+				}
+				else{
+					System.out.println("new dataa");
+					check.setDatemodified(d);
+					check.setLength(customerDetails.size());
+					savecustomerDetails.add(cus);
+				}
+			//savecustomerDetails.add(cus);
 			}
-			customerdao.addCustomer(savecustomerDetails);
-			check.setDatemodified(today);
-			check.setLength(customerDetails.size());
-			checkdao.addCustomerCheck(check);
-			System.out.println(customerDetails.size());
-			/*for (CustomerDetails cus : customerDetails) {
+			if(check.getDatemodified()!=null)
+			checkdao.updateCustomerCheck(check);
+			else
+			{
 				
-			}*/
+			}
+			if(savecustomerDetails.size()>0)
+			customerdao.addCustomer(savecustomerDetails);
+			if(updatecustomer.size()>0)
+			customerdao.updateCustomer(updatecustomer);
+			System.out.println(customerDetails.size());
+			for (CustomerDetails cus : customerDetails) {
+				
+			}
 			System.out.println(customerDetails.get(0).getFirst_name());
 
 		} catch (IllegalStateException e) {
@@ -253,6 +282,61 @@ public class NexmoServices {
 		return null;
 
 	}
+
+	
+/*public static NumberResponse test() {
+
+		
+		CustomerCheck check=new CustomerCheck();
+		CustomerCheckDaoInterface checkdao=JndiLookup.getCustomerCheckdao();
+		CustomerDaoInterface customerdao=JndiLookup.getCustomerDetails();
+		HttpClient httpClient = new DefaultHttpClient();
+		Gson gson = new Gson();
+		HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers");
+		try {
+			HttpResponse response;
+			post.addHeader("Accept", "application/json");
+			post.addHeader("Content-type", "application/json");
+			post.addHeader("Authorization", "Basic "
+					+ new String(Base64.encodeBase64("kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+			post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
+			post.addHeader("X-Auth-Token", "cd10af7566dc4882999d1452b361d1f827629df8");
+
+			response = httpClient.execute(post);
+
+			System.out.println(response.toString());
+			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+			
+			ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
+					new TypeToken<List<CustomerDetails>>() {
+					}.getType());
+			System.out.println(customerDetails.size());
+			ArrayList<CustomerDetails> savecustomerDetails=new ArrayList<CustomerDetails>();
+			ArrayList<CustomerDetails> updatecustomer=new ArrayList<CustomerDetails>();
+			for (CustomerDetails cus : customerDetails) {
+				Date d=new Date(cus.getDate_created());
+					savecustomerDetails.add(cus);
+					check.setDatemodified(d);
+					check.setLength(customerDetails.size());
+				
+			//savecustomerDetails.add(cus);
+			}
+			customerdao.addCustomer(savecustomerDetails);
+			checkdao.addCustomerCheck(check);
+			
+			System.out.println(customerDetails.get(0).getFirst_name());
+
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		return null;
+
+	}*/
 
 	public static NumberResponse testCreate() {
 

@@ -5,10 +5,12 @@ import java.util.ArrayList;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import com.wifiwireless.interfaces.CustomerDaoInterface;
 import com.wifiwireless.model.CustomerDetails;
 import com.wifiwireless.model.MessageReciepts;
+import com.wifiwireless.model.NumberDetails;
 
 @Stateless
 public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInterface {
@@ -18,7 +20,40 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 	/**
 	 * Default constructor.
 	 */
-	
+	public String checkNumber(String email,String secret) {
+		em = getEm();
+		//System.out.println("Username"+username+"   Password"+Passkey);
+		try {
+
+			String qlString = "SELECT number FROM CustomerDetails number  "
+					+ "WHERE  number.email=:email and number.secret=:secret";
+
+			TypedQuery<CustomerDetails> query = em.createQuery(qlString,
+					CustomerDetails.class);
+
+			query.setParameter("email", email);
+			query.setParameter("secret", secret);
+			if (query.getResultList().size() > 0){
+				
+				return "exist";
+			}
+				else{
+					
+					return "";
+				}
+			// if(query.getResultList()!=null && query.getResultList().size()>0)
+			}
+			
+		 catch (Exception exception) {
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return "";
+
+	}
 	public void addCustomer(ArrayList<CustomerDetails> customer) {
 		em = getEm();
 

@@ -13,10 +13,9 @@ import javax.persistence.Table;
 @Table(name = "CustomerDetails")
 public class CustomerDetails implements Serializable{
 	
-	 @Id
-	    @GeneratedValue(strategy= GenerationType.AUTO)
-	    @Column(name="cid")
-	    private int cid;
+	 @Id 
+	    @Column(name="Id")
+	    private int id;
 
 	@Column(name = "company")
 	private String company;
@@ -62,12 +61,14 @@ public class CustomerDetails implements Serializable{
 		return secret;
 	}
 
-	public int getCid() {
-		return cid;
+
+
+	public int getId() {
+		return id;
 	}
 
-	public void setCid(int cid) {
-		this.cid = cid;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setSecret(String secret) {

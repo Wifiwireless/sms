@@ -11,6 +11,7 @@ public interface CustomerDaoInterface {
 
 	public void addCustomer(ArrayList<CustomerDetails> customer);
 	public void updateCustomer(ArrayList<CustomerDetails> customer);
+	public String checkNumber(String email,String secret);
 	
 	
 }

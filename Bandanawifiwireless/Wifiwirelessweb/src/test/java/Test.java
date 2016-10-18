@@ -1,18 +1,17 @@
-/*import java.math.BigInteger;
+import java.math.BigInteger;
+import java.util.Date;
 
 public class Test {
 public static void main(String[] args) {
-	 String s="375b3cb9cbceccd1973cca7919a16726dded6308";
-	 String decryptedText=null;
-     try {
-         cipher.init(Cipher.DECRYPT_MODE, key);
-         byte[] encryptedText = Base64.decodeBase64(encryptedString.getBytes());
-         byte[] plainText = cipher.doFinal(encryptedText);
-         decryptedText= new String(plainText);
-     } catch (Exception e) {
-         e.printStackTrace();
-     }
-   //  return decryptedText;
+	Date today=new Date();
+	Date d =new Date("Wed, 12 Oct 2016 14:34:40 +0000");
+	if(today.after(d))
+	{
+		System.out.println("in if");
+		
+	}
+	else{
+		System.out.println("in else");
+	}
 }
 }
-*/

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.wifiwireless.constant.JndiLookup;
+import com.wifiwireless.interfaces.CustomerCheckDaoInterface;
+import com.wifiwireless.interfaces.CustomerDaoInterface;
 import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
 import java.security.spec.KeySpec;
@@ -110,15 +112,20 @@ public class BrowserServlet extends HttpServlet {
 	       String newpassword=new String(utf8, "UTF8");*/
 	    
 		System.out.println("Username:" + username +"Password:");
-		NumberDetailsInterface numberDetailsInterface = JndiLookup.getNumberDetailsDao();
+		CustomerDaoInterface customerdao = JndiLookup.getCustomerDetails();
 		// System.out.println(msidn);
-		String msisdn = numberDetailsInterface.checkNumber(username, password);
+		NumberDetailsInterface numberDetailsInterface=JndiLookup.getNumberDetailsDao();
+		String number=numberDetailsInterface.checkNumber(username, password);
+		String msisdn = customerdao.checkNumber(username, password);
 		if (msisdn.equals(check)) {
 
 			System.out.println("in else");
-			response.sendRedirect("http://70.182.179.17:8080/Wifiwirelessweb-0.0.1-SNAPSHOT/index.html");
+			response.sendRedirect("http://70.182.179.17:8080/Wifiwirelessweb-0.0.1-SNAPSHOT/main.html");
 
 		} else {
+			if(number.equals(check) )
+				response.sendRedirect("http://70.182.179.17:8080/Wifiwirelessweb-0.0.1-SNAPSHOT/index.html");
+			else
 			response.sendRedirect("http://www.google.com");
 		}
 		System.out.println(request.getParameter("password"));
