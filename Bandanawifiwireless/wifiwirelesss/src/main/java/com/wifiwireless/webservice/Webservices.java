@@ -14,7 +14,6 @@ import org.jboss.resteasy.annotations.ResponseObject;
 
 import com.wifiwireless.constant.JndiLookup;
 import com.wifiwireless.interfaces.MessageRecieptsInterface;
-import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
 import com.wifiwireless.model.MessageReciepts;
 import com.wifiwireless.model.NumberDetails;
