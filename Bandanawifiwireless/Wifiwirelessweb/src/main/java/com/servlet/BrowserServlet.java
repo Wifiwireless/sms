@@ -115,7 +115,7 @@ public class BrowserServlet extends HttpServlet {
 		CustomerDaoInterface customerdao = JndiLookup.getCustomerDetails();
 		// System.out.println(msidn);
 		NumberDetailsInterface numberDetailsInterface=JndiLookup.getNumberDetailsDao();
-		String number=numberDetailsInterface.checkNumber(username, password);
+		
 		String msisdn = customerdao.checkNumber(username, password);
 		if (msisdn.equals(check)) {
 
@@ -123,7 +123,9 @@ public class BrowserServlet extends HttpServlet {
 			response.sendRedirect("http://70.182.179.17:8080/Wifiwirelessweb-0.0.1-SNAPSHOT/main.html");
 
 		} else {
+			String number=numberDetailsInterface.checkNumber(username, password);
 			if(number.equals(check) )
+				
 				response.sendRedirect("http://70.182.179.17:8080/Wifiwirelessweb-0.0.1-SNAPSHOT/index.html");
 			else
 			response.sendRedirect("http://www.google.com");

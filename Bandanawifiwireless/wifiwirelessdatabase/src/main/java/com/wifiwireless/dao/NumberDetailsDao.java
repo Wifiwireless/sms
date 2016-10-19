@@ -89,6 +89,7 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 			}
 			
 		} catch (Exception exception) {
+			exception.printStackTrace();
 			System.out.println(exception);
 			//LOG.error(exception);
 		} finally {

@@ -45,6 +45,7 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 			}
 			
 		 catch (Exception exception) {
+			 exception.printStackTrace();
 			System.out.println(exception);
 			//LOG.error(exception);
 		} finally {
