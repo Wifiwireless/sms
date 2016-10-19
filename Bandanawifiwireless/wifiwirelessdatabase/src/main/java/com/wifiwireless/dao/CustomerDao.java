@@ -20,18 +20,18 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 	/**
 	 * Default constructor.
 	 */
-	public String checkNumber(String email,String secret) {
+	public String checkNumber(String extension,String secret) {
 		em = getEm();
 		//System.out.println("Username"+username+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM CustomerDetails number  "
-					+ "WHERE  number.email=:email and number.secret=:secret";
+					+ "WHERE  number.extension=:extension and number.secret=:secret";
 
 			TypedQuery<CustomerDetails> query = em.createQuery(qlString,
 					CustomerDetails.class);
 
-			query.setParameter("email", email);
+			query.setParameter("extension", extension);
 			query.setParameter("secret", secret);
 			if (query.getResultList().size() > 0){
 				

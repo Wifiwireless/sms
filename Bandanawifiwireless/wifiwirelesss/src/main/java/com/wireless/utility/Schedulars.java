@@ -18,7 +18,8 @@ public class Schedulars {
 		
 		JobDetail job = new JobDetail();
 		job.setName("schedular");
-		job.setJobClass(ScheduledSmsScanner.class);
+		job.setJobClass(CustomerUpdate.class);
+
 
 		
 		
@@ -26,11 +27,11 @@ public class Schedulars {
 		trigger.setName("trigger");
 		trigger.setStartTime(new Date(System.currentTimeMillis() + 1000));
 		trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
-		trigger.setRepeatInterval(Long.parseLong(Pl4smsConstantsInterface.prop.getProperty("ScheduledSmsScannerInterval")));
+		trigger.setRepeatInterval(Long.parseLong());
 		
 		
 	
-		scheduler.scheduleJob(sendMsg,sendMsgTrigger);
+		scheduler.scheduleJob(job,trigger);
 		
 		
 		

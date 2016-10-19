@@ -193,7 +193,7 @@ public class NexmoServices {
 
 	}
 
-	public static NumberResponse test() {
+	public static NumberResponse customerSaveOrUpdate() {
 
 		
 		CustomerCheck check=new CustomerCheck();
@@ -507,7 +507,7 @@ public class NexmoServices {
 	}
 
 	public static void main(String[] args) {
-		test();
+		//test();
 		// oAuth();
 		// oAuth();
 		// createHook();

@@ -40,5 +40,7 @@
 		<servlet-name>Resteasy</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
-
+<listener>
+  <listener-class>com.wireless.utility.Initializer</listener-class>
+ </listener>
 </web-app>
