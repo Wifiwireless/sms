@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;wifiwirelesss/src/main/resources/email(1).ftl&apos; to &apos;email.ftl&apos;" description="Rename resource &apos;email(1).ftl&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/email(1).ftl" name="email.ftl" stamp="1476857157015" updateReferences="true"/>
+</session>

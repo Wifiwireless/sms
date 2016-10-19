@@ -1,13 +1,31 @@
 package com.wireless.utility;
 
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -33,12 +51,13 @@ import com.wireless.bean.NumberResponse;
 import com.wireless.bean.SendMessage;
 import com.wireless.bean.SendMessageResponse;
 
-public class NexmoServices {
+import freemarker.cache.ClassTemplateLoader;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
-	private static String apikey = "13e20103";
-	private static String api_secret = "6ace27c0f1cf63e0";
-	private static Date dateModified;
-	private static int customerList;
+public class NexmoServices implements WifiWirlessConstants {
+
 
 	public static NumberResponse acquireNumber(String country, String pattern) {
 
@@ -193,12 +212,13 @@ public class NexmoServices {
 
 	}
 
-	public static NumberResponse customerSaveOrUpdate() {
+	public static void customerSaveOrUpdate() {
 
 		
 		CustomerCheck check=new CustomerCheck();
 		CustomerCheckDaoInterface checkdao=JndiLookup.getCustomerCheckdao();
 		CustomerDaoInterface customerdao=JndiLookup.getCustomerDetails();
+		
 		HttpClient httpClient = new DefaultHttpClient();
 		Gson gson = new Gson();
 		HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers");
@@ -224,12 +244,13 @@ public class NexmoServices {
 			else
 			{
 				System.out.println("in null");
+				return ;
 			}
 			Date today =check.getDatemodified();
 			//Date date2=new Date();
 		//String date = today.toString();
 		//System.out.println(date);
-			String day = "" + today.getDate();
+//			String day = "" + today.getDate();
 
 			ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
 					new TypeToken<List<CustomerDetails>>() {
@@ -240,15 +261,20 @@ public class NexmoServices {
 			for (CustomerDetails cus : customerDetails) {
 				Date d=new Date(cus.getDate_created());
 				if(today.after(d))
-				{System.out.println("old dataa");
+				{
+					System.out.println("old dataa");
 					updatecustomer.add(cus);
-					
-					
+									
 				}
 				else{
 					System.out.println("new dataa");
 					check.setDatemodified(d);
 					check.setLength(customerDetails.size());
+					
+					ArrayList<String> arrPassAndExt =	callPbx(cus.getFirst_name(),cus.getEmail(),checkdao);
+					cus.setSecret(arrPassAndExt.get(0));
+					cus.setExtension(arrPassAndExt.get(1));
+					cus.setIspbxAccountCreated(true);
 					savecustomerDetails.add(cus);
 				}
 			//savecustomerDetails.add(cus);
@@ -257,16 +283,14 @@ public class NexmoServices {
 			checkdao.updateCustomerCheck(check);
 			else
 			{
-				
+			System.out.println("static modify date is null");	
 			}
 			if(savecustomerDetails.size()>0)
 			customerdao.addCustomer(savecustomerDetails);
 			if(updatecustomer.size()>0)
 			customerdao.updateCustomer(updatecustomer);
 			System.out.println(customerDetails.size());
-			for (CustomerDetails cus : customerDetails) {
-				
-			}
+			
 			System.out.println(customerDetails.get(0).getFirst_name());
 
 		} catch (IllegalStateException e) {
@@ -277,9 +301,154 @@ public class NexmoServices {
 
 			e.printStackTrace();
 		}
-		return null;
 
 	}
+
+	
+	
+
+public static ArrayList<String> callPbx(String name,String emailid,CustomerCheckDaoInterface checkDaoInterface){
+	
+ArrayList<String> arrPassAndExt = new ArrayList<String>();
+	
+	boolean flag=false;
+	int extension=10000033;
+	String password=RandomStringUtils.randomAlphanumeric(8).toUpperCase();
+	CustomerCheck checkExt = checkDaoInterface.getextension();
+	if(checkExt!=null){
+ extension= Integer.parseInt(checkExt.getExtension());	
+	}else
+	{
+		System.out.println("predefined extension is null");
+		return null;
+	}
+while(!flag){
+
+	HttpClient httpClient = new DefaultHttpClient();
+	Gson gson = new Gson();
+	HttpGet post = new HttpGet("http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.add&server=&name="+name+"&secret="+password+"&email="+emailid+"&ext="+""+extension+"&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip");
+	try {
+		HttpResponse response;
+
+	response = httpClient.execute(post);
+
+
+	
+	System.out.println(response.toString());
+	String responseString = IOUtils.toString(response.getEntity()
+		     .getContent(), "UTF-8");
+		   System.out.println(responseString); 
+		   
+		   if(responseString.contains("Extension is already reserved.")){
+			   System.out.println("get new extension");
+			   extension++;
+
+		   }else if(responseString.contains("success")){
+			   flag=true;
+	arrPassAndExt.add(password);
+	arrPassAndExt.add(""+extension);
+	arrPassAndExt.add(name);
+	arrPassAndExt.add(emailid);
+	email(arrPassAndExt);
+	
+	checkDaoInterface.updateCustomerCheck(checkExt);
+		   }
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+}
+//	return null;
+return arrPassAndExt;
+
+	
+
+
+	
+	
+	
+}
+
+public static Boolean generateVerificationEmail(ArrayList<String> arrPassAndUsernme){
+	String subject = "UtalkWifi Application Credentials";
+     Map<String, String> rootMap = new HashMap<String, String>();
+     
+     rootMap.put("username",arrPassAndUsernme.get(1));
+     rootMap.put("password",arrPassAndUsernme.get(0));
+        rootMap.put("date", ""+new Date());        
+        try {
+        	email(arrPassAndUsernme.get(3), subject, rootMap,"email.ftl");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+}
+
+
+
+public static void email(String emailid,String subject, Map<String, String> rootMap,String temp) throws IOException, TemplateException{
+    
+    Properties props = new Properties();
+/*
+   props.put("mail.smtp.host", "localhost");
+props.put("mail.smtp.port", "25");
+
+*/
+
+
+//      * Testing---
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.host", "smtp.gmail.com");
+    props.put("mail.smtp.port", "587");
+
+    javax.mail.Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+           return new PasswordAuthentication("kirtimandwade@gmail.com", "kirtim123");
+        }
+     });
+
+try {
+       Message message = new MimeMessage(session);
+
+       message.setFrom(new InternetAddress("kirtimandwade@gmail.com"));
+       message.setRecipients(Message.RecipientType.TO,
+               InternetAddress.parse(emailid));
+    
+       message.setSubject(subject);
+
+       
+       BodyPart bodypart = new MimeBodyPart();
+       
+       Configuration configuration = new Configuration();
+       configuration.setTemplateLoader(new ClassTemplateLoader(NexmoServices.class, "/"));
+
+       Template template = configuration.getTemplate(temp);
+
+
+       Writer out = new StringWriter();
+       template.process(rootMap, out);
+
+       bodypart.setContent(out.toString(), "text/html");
+
+       Multipart multipart = new MimeMultipart();
+       multipart.addBodyPart(bodypart);
+       message.setContent(multipart, "text/html");
+
+       Transport.send(message);
+
+
+
+   } catch (MessagingException e) {
+   throw new RuntimeException(e);
+}
+}
 
 	
 /*public static NumberResponse test() {

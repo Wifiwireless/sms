@@ -27,7 +27,7 @@ public class Schedulars {
 		trigger.setName("trigger");
 		trigger.setStartTime(new Date(System.currentTimeMillis() + 1000));
 		trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
-		trigger.setRepeatInterval(Long.parseLong());
+		trigger.setRepeatInterval(Long.parseLong(WifiWirlessConstants.SchedularInterval));
 		
 		
 	

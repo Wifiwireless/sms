@@ -59,7 +59,7 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 	
 	public CustomerCheck getextension() {
 		em = getEm();
-		CustomerCheck che=new CustomerCheck();
+		CustomerCheck che=null;
 		//System.out.println("Username"+username+"   Password"+Passkey);
 		try {
 
@@ -78,8 +78,7 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 					   // che.setExtension(extension);
 */				}
 					else{
-						che.setId(ch.getId());
-						che.setExtension(ch.getExtension());
+					return ch;
 					}}
 				
 				System.out.println("check ");

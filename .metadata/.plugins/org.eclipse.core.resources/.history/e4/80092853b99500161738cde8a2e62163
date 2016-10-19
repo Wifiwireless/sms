@@ -1,0 +1,73 @@
+package com.wireless.utility;
+
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+public class EmailTest {
+
+	
+	
+	public static void main(String[] args) {
+		try {/*
+		 Properties props = new Properties();
+		 props.put("mail.smtp.auth", "false");
+	     //Put below to false, if no https is needed
+	    props.put("mail.smtp.starttls.enable", "true");
+	    props.put("mail.smtp.host", "smtp.gmail.com");
+	    props.put("mail.smtp.port", "587");
+		    Session   session = Session.getInstance(props);
+
+		    session.setDebug(true);
+
+		    MimeMessage message = new MimeMessage(session);
+
+		    message.setFrom(new InternetAddress("kirti.mandwade@gmail.com"));
+		    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("kirti2091@gmail.com"));
+		    message.setSubject("hello test");
+		    message.setContent("test 123", "text/html; charset=utf-8");
+		    
+				message.setText("hello test");
+			    Transport.send(message);
+
+			*/
+			
+		       // SSL // I USED THIS METHOD            
+	        Properties propsSSL = new Properties();
+
+	        // EVEN IF YOU SKIP THESE TWO PROP IT WOULD WORK
+	        propsSSL.put("mail.transport.protocol", "smtps");
+	        propsSSL.put("mail.smtps.host", "smtp.gmail.com");
+
+	        // THIS IS THE MOST IMPORTANT PROP --> "mail.smtps.auth"
+	        propsSSL.put("mail.smtps.auth", "true");
+
+	        Session sessionSSL = Session.getInstance(propsSSL);
+	        sessionSSL.setDebug(true);
+
+	        Message messageSSL = new MimeMessage(sessionSSL);
+	        messageSSL.setFrom(new InternetAddress("yourgmail@gmail.com", "Mlungisi Sincuba"));
+	        messageSSL.setRecipients(Message.RecipientType.TO, InternetAddress.parse("yourgmail@gmail.com")); // real recipient
+	        messageSSL.setSubject("Test mail using SSL");
+	        messageSSL.setText("This is test email sent to Your account using SSL.");
+
+	        Transport transportSSL = sessionSSL.getTransport();
+	        // EVEN IF YOU SKIP PORT NUMBER , IT WOULD WORK
+	        transportSSL.connect("smtp.gmail.com", 465, "yourgmail@gmail.com", "yourpassword"); // account used
+	        transportSSL.sendMessage(messageSSL, messageSSL.getAllRecipients());
+	        transportSSL.close();
+
+	        System.out.println("SSL done.");
+		} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+}
