@@ -32,8 +32,58 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 			ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>) query.getResultList();
 			if(check.size()>0)
 			{
+				for(CustomerCheck ch:check){
+					if(ch.getDatemodified()!=null)
+						che.setDatemodified(ch.getDatemodified());
+					    che.setLength(ch.getLength());
+					    che.setId(ch.getId());
+					   // che.setExtension(extension);
+				}
 				System.out.println("check ");
-			che=check.get(0);
+		
+			}
+			
+			// if(query.getResultList()!=null && query.getResultList().size()>0)
+			}
+			
+		 catch (Exception exception) {
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return che;
+
+	}
+	
+	public CustomerCheck getextension() {
+		em = getEm();
+		CustomerCheck che=new CustomerCheck();
+		//System.out.println("Username"+username+"   Password"+Passkey);
+		try {
+
+			String qlString = "FROM CustomerCheck";
+			TypedQuery<CustomerCheck> query = em.createQuery(qlString,
+					CustomerCheck.class);
+
+			ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>) query.getResultList();
+			if(check.size()>0)
+			{
+				for(CustomerCheck ch:check){
+					if(ch.getDatemodified()!=null){
+						/*che.setDatemodified(ch.getDatemodified());
+					    che.setLength(ch.getLength());
+					    che.setId(ch.getId());
+					   // che.setExtension(extension);
+*/				}
+					else{
+						che.setId(ch.getId());
+						che.setExtension(ch.getExtension());
+					}}
+				
+				System.out.println("check ");
+		
 			}
 			
 			// if(query.getResultList()!=null && query.getResultList().size()>0)

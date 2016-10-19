@@ -10,4 +10,5 @@ public interface CustomerCheckDaoInterface {
 	public void addCustomerCheck(CustomerCheck check);
 	public void updateCustomerCheck(CustomerCheck check);
 	public CustomerCheck getData();
+	public CustomerCheck getextension();
 }
