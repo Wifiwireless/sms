@@ -11,4 +11,5 @@ public interface NumberDetailsInterface {
 	public void mergeNumber(NumberDetails number);
 	public Boolean checkandUpdate(String msisdn,String username,String password);
 	public String checkNumber(String username,String password);
+	public NumberDetails getNumberDetails(String username,String Passkey);
 }
