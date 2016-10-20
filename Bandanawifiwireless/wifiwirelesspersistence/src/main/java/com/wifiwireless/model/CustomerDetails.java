@@ -52,6 +52,7 @@ public class CustomerDetails implements Serializable{
 	@Column(name = "accepts_marketing")
 	private String acceptsmarketing;
 	@Column(name = "ispbxAccountCreated")
+	
 	private Boolean ispbxAccountCreated ;
 	public String getCompany() {
 		return company;

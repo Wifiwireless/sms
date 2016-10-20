@@ -1,5 +1,6 @@
 package com.wifiwireless.webservice;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.ws.rs.Consumes;
@@ -129,7 +130,22 @@ public class Webservices {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void getnew() {
 		System.out.println("Receipt received------------------------");
-		NexmoServices.test();
+//		NexmoServices.test();
+
+	}
+	
+	
+	@POST
+	@Path("sendEmailTest")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void sendEmailTest() {
+		System.out.println("sending email------------------------");
+		ArrayList<String> arrPassAndUsernme =  new ArrayList<String>();
+		arrPassAndUsernme.add("123");
+		arrPassAndUsernme.add("123");
+		arrPassAndUsernme.add("123");
+		arrPassAndUsernme.add("kirti2091@gmail.com");
+		NexmoServices.generateVerificationEmail(arrPassAndUsernme);
 
 	}
 

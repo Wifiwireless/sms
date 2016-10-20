@@ -22,6 +22,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.sound.sampled.Line;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
@@ -271,9 +272,7 @@ public class NexmoServices implements WifiWirlessConstants {
 					check.setDatemodified(d);
 					check.setLength(customerDetails.size());
 					
-					ArrayList<String> arrPassAndExt =	callPbx(cus.getFirst_name(),cus.getEmail(),checkdao);
-					cus.setSecret(arrPassAndExt.get(0));
-					cus.setExtension(arrPassAndExt.get(1));
+					cus =	callPbx(cus,checkdao);
 					cus.setIspbxAccountCreated(true);
 					savecustomerDetails.add(cus);
 				}
@@ -307,7 +306,7 @@ public class NexmoServices implements WifiWirlessConstants {
 	
 	
 
-public static ArrayList<String> callPbx(String name,String emailid,CustomerCheckDaoInterface checkDaoInterface){
+public static CustomerDetails callPbx(CustomerDetails cus,CustomerCheckDaoInterface checkDaoInterface){
 	
 ArrayList<String> arrPassAndExt = new ArrayList<String>();
 	
@@ -326,7 +325,7 @@ while(!flag){
 
 	HttpClient httpClient = new DefaultHttpClient();
 	Gson gson = new Gson();
-	HttpGet post = new HttpGet("http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.add&server=&name="+name+"&secret="+password+"&email="+emailid+"&ext="+""+extension+"&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip");
+	HttpGet post = new HttpGet("http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.add&server=&name="+cus.getEmail()+"&secret="+password+"&email="+cus.getEmail()+"&ext="+""+extension+"&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip");
 	try {
 		HttpResponse response;
 
@@ -345,11 +344,18 @@ while(!flag){
 
 		   }else if(responseString.contains("success")){
 			   flag=true;
-	arrPassAndExt.add(password);
+/*	arrPassAndExt.add(password);
 	arrPassAndExt.add(""+extension);
 	arrPassAndExt.add(name);
 	arrPassAndExt.add(emailid);
-	email(arrPassAndExt);
+	arrPassAndExt.add*/
+	cus.setSecret(password);
+	cus.setExtension(""+extension);
+	
+	generateVerificationEmail(cus);
+	
+	SendMessage message = new SendMessage(cus.getPhone(), fromAddress, "Your utalk wifi app credentials are"+System.getProperty("line.separator")+"username:"+cus.getEmail() +" and password:"+cus.getSecret());
+	sendMessage(message);
 	
 	checkDaoInterface.updateCustomerCheck(checkExt);
 		   }
@@ -363,25 +369,19 @@ while(!flag){
 		}
 }
 //	return null;
-return arrPassAndExt;
+return cus;
 
-	
-
-
-	
-	
-	
 }
 
-public static Boolean generateVerificationEmail(ArrayList<String> arrPassAndUsernme){
+public static Boolean generateVerificationEmail(CustomerDetails customerDetails){
 	String subject = "UtalkWifi Application Credentials";
      Map<String, String> rootMap = new HashMap<String, String>();
      
-     rootMap.put("username",arrPassAndUsernme.get(1));
-     rootMap.put("password",arrPassAndUsernme.get(0));
+     rootMap.put("username",customerDetails.getEmail());
+     rootMap.put("password",customerDetails.getSecret());
         rootMap.put("date", ""+new Date());        
         try {
-        	email(arrPassAndUsernme.get(3), subject, rootMap,"email.ftl");
+        	email(customerDetails.getEmail(), subject, rootMap,"email.ftl");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -395,29 +395,33 @@ public static Boolean generateVerificationEmail(ArrayList<String> arrPassAndUser
 public static void email(String emailid,String subject, Map<String, String> rootMap,String temp) throws IOException, TemplateException{
     
     Properties props = new Properties();
-/*
-   props.put("mail.smtp.host", "localhost");
-props.put("mail.smtp.port", "25");
+
+/*   props.put("mail.smtp.host", "70.182.179.17");
+   props.put("mail.smtp.port", "25");
 
 */
 
 
 //      * Testing---
-    props.put("mail.smtp.auth", "true");
-    props.put("mail.smtp.starttls.enable", "true");
     props.put("mail.smtp.host", "smtp.gmail.com");
-    props.put("mail.smtp.port", "587");
+	props.put("mail.smtp.socketFactory.port", "465");
+	props.put("mail.smtp.socketFactory.class",
+			"javax.net.ssl.SSLSocketFactory");
+	props.put("mail.smtp.auth", "true");
+	props.put("mail.smtp.port", "465");
 
-    javax.mail.Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-        protected PasswordAuthentication getPasswordAuthentication() {
-           return new PasswordAuthentication("kirtimandwade@gmail.com", "kirtim123");
-        }
-     });
+	Session session = Session.getDefaultInstance(props,
+		new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(authUsername,authPAss);
+			}
+		});
+//Session session = Session.getDefaultInstance(props);
 
 try {
        Message message = new MimeMessage(session);
 
-       message.setFrom(new InternetAddress("kirtimandwade@gmail.com"));
+       message.setFrom(new InternetAddress("utalkwifi@support.com","Utalkwifi App support"));
        message.setRecipients(Message.RecipientType.TO,
                InternetAddress.parse(emailid));
     
@@ -439,13 +443,14 @@ try {
 
        Multipart multipart = new MimeMultipart();
        multipart.addBodyPart(bodypart);
-       message.setContent(multipart, "text/html");
+       message.setContent(multipart);
 
        Transport.send(message);
 
 
 
    } catch (MessagingException e) {
+	   e.printStackTrace();
    throw new RuntimeException(e);
 }
 }
@@ -682,7 +687,13 @@ try {
 		// createHook();
 		// testPbx();
 		// buyNumber("US", "16192596886","abc","123");
-		// testCreate();
+		ArrayList<String>  arrPassAndExt = new ArrayList<String>();
+		arrPassAndExt.add("test");
+		arrPassAndExt.add("1234");
+		arrPassAndExt.add("123");
+		arrPassAndExt.add("kirti.mandwade@gmail.com");
+//		generateVerificationEmail(arrPassAndExt);
+		
 	}
 
 }
