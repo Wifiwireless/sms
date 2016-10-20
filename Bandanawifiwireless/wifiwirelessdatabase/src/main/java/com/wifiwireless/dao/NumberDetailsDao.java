@@ -57,18 +57,18 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 		}
 
 	}
-	public String checkNumber(String username,String Passkey) {
+	public String checkNumber(String email,String Passkey) {
 		em = getEm();
-		System.out.println("Username"+username+"   Password"+Passkey);
+		System.out.println("email"+email+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
-					+ "WHERE  number.username=:username and number.password=:password";
+					+ "WHERE  number.email=:email and number.password=:password";
 
 			TypedQuery<NumberDetails> query = em.createQuery(qlString,
 					NumberDetails.class);
 
-			query.setParameter("username", username);
+			query.setParameter("email", email);
 			query.setParameter("password", Passkey);
 			if (query.getResultList().size() > 0){
 				
@@ -100,19 +100,19 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 	}
 	
 	
-	public NumberDetails getNumberDetails(String username,String Passkey) {
+	public NumberDetails getNumberDetails(String email,String Passkey) {
 		em = getEm();
 		NumberDetails numbers=new NumberDetails();
-		System.out.println("Username"+username+"   Password"+Passkey);
+		System.out.println("email"+email+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
-					+ "WHERE  number.username=:username and number.password=:password";
+					+ "WHERE  number.email=:email and number.password=:password";
 
 			TypedQuery<NumberDetails> query = em.createQuery(qlString,
 					NumberDetails.class);
 
-			query.setParameter("username", username);
+			query.setParameter("email", email);
 			query.setParameter("password", Passkey);
 			if (query.getResultList().size() > 0){
 				
@@ -133,19 +133,19 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 		return numbers;
 
 	}
-	public Boolean checkandUpdate(String msisdn,String username,String password) {
+	public Boolean checkandUpdate(String msisdn,String email,String password) {
 		em = getEm();
 		
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
-					+ "WHERE  number.msisdn=:msisdn and number.username=:username and number.password=:password";
+					+ "WHERE  number.msisdn=:msisdn and number.email=:email and number.password=:password";
 
 			TypedQuery<NumberDetails> query = em.createQuery(qlString,
 					NumberDetails.class);
 //			query.setParameter("sysadminId", sysadminId);
 			query.setParameter("msisdn", msisdn);
-			query.setParameter("username", username);
+			query.setParameter("email", email);
 			query.setParameter("password", password);
 			if (query.getResultList().size() > 0){
 				

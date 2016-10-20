@@ -49,14 +49,6 @@
 </head>
     
     <body>
-<header style="color: White;background: Black;     margin-top: -40px;
-    margin-bottom: 10px; padding: 0px;" class="container-fluid text-center" >
-     <h4 style="font-size: 40px; ">UTalk Wifi 
-<img src="https://lh3.googleusercontent.com/UKooUjNZ1LejVl2DcJwWlwmTPiuG2AL-RLKkmQOT0T2wJUx9-1uPxu_5GSnSGhsbx0aG=w300" style="    height: 98px;
-    padding-left: 1260px;" >
-</h4>
- 
-</header>
 
    
 
