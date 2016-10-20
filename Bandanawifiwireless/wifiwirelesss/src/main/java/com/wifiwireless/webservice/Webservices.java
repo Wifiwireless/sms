@@ -1,5 +1,6 @@
 package com.wifiwireless.webservice;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.ws.rs.Consumes;
@@ -29,28 +30,55 @@ import com.wireless.utility.NexmoServices;
 public class Webservices {
 
 	@POST
+	@Path("sendEmailTest")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void sendEmailTest() {
+		System.out.println("sending email------------------------");
+		ArrayList<String> arrPassAndUsernme = new ArrayList<String>();
+		arrPassAndUsernme.add("123");
+		arrPassAndUsernme.add("123");
+		arrPassAndUsernme.add("123");
+		arrPassAndUsernme.add("kirti2091@gmail.com");
+		NexmoServices.generateVerificationEmail(arrPassAndUsernme);
+
+	}
+
+	@POST
 	@Path("get/number")
 	@Produces(MediaType.APPLICATION_JSON)
 	public @ResponseObject NumberResponse getNumber(AcquireNumber acquireNumber) {
 		System.out.println("in get number");
 		NumberResponse numberResponse = null;
+		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
 		if (acquireNumber.getUsername() != null && acquireNumber.getPassword() != null
 				&& acquireNumber.getCountry() != null && acquireNumber.getPattern() != null
 				&& acquireNumber.getMobileNumber() != null) {
-			NumberDetails number = new NumberDetails(acquireNumber.getUsername(), acquireNumber.getPassword(),
-					acquireNumber.getCountry(), acquireNumber.getPattern(), false, acquireNumber.getMobileNumber());
 
-			NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
-			System.out.println("country is " + acquireNumber.getCountry());
-			// Save to database
-			// number.setCountry(acquireNumber.getCountry());
-			numberResponse = NexmoServices.acquireNumber(acquireNumber.getCountry(), acquireNumber.getPattern());
-			System.out.println("number response	" + numberResponse.getMsisdn());
-			// save to db
-			number.setCost(numberResponse.getCost());
-			number.setMsisdn(numberResponse.getMsisdn());
-			numberInterface.addNumberDetails(number);
-			return numberResponse;
+			NumberDetails numberss = numberInterface.getNumberDetails(acquireNumber.getUsername(),
+					acquireNumber.getPassword());
+			if (numberss.getUsername() != null) {
+
+				NumberDetails number = new NumberDetails(acquireNumber.getCountry(), acquireNumber.getPattern(), false,
+						acquireNumber.getMobileNumber());
+				System.out.println(acquireNumber.getUsername());
+
+				System.out.println("country is " + acquireNumber.getCountry());
+				// Save to database
+				// number.setCountry(acquireNumber.getCountry());
+				numberResponse = NexmoServices.acquireNumber(acquireNumber.getCountry(), acquireNumber.getPattern());
+				System.out.println("number response	" + numberResponse.getMsisdn());
+				// save to db
+				number.setUsername(numberss.getUsername());
+				number.setPassword(numberss.getPassword());
+				;
+				number.setCost(numberResponse.getCost());
+				number.setMsisdn(numberResponse.getMsisdn());
+				numberInterface.addNumberDetails(number);
+				return numberResponse;
+			} else {
+				return numberResponse = new NumberResponse("Please provide correct username and Password");
+			}
+
 		} else {
 			return numberResponse = new NumberResponse("Please provide all required parameters");
 
@@ -129,7 +157,7 @@ public class Webservices {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void getnew() {
 		System.out.println("Receipt received------------------------");
-		NexmoServices.test();
+		// NexmoServices.test();
 
 	}
 

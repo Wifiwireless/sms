@@ -8,11 +8,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "NumberDetails")
 public class NumberDetails  extends WifiBase implements Serializable{
-	public NumberDetails(String username, String password, String country, String pattern, Boolean paidflag,
+	public NumberDetails( String country, String pattern, Boolean paidflag,
 			String phnno) {
 		super();
-		this.username = username;
-		this.password = password;
+		
 		this.country = country;
 		this.pattern = pattern;
 		this.paidflag = paidflag;

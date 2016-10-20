@@ -1,7 +1,6 @@
 package com.wifiwireless.dao;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -100,6 +99,40 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 
 	}
 	
+	
+	public NumberDetails getNumberDetails(String username,String Passkey) {
+		em = getEm();
+		NumberDetails numbers=new NumberDetails();
+		System.out.println("Username"+username+"   Password"+Passkey);
+		try {
+
+			String qlString = "SELECT number FROM NumberDetails number  "
+					+ "WHERE  number.username=:username and number.password=:password";
+
+			TypedQuery<NumberDetails> query = em.createQuery(qlString,
+					NumberDetails.class);
+
+			query.setParameter("username", username);
+			query.setParameter("password", Passkey);
+			if (query.getResultList().size() > 0){
+				
+				numbers=query.getSingleResult();
+				System.out.println(numbers.getPaidflag());
+				
+			// if(query.getResultList()!=null && query.getResultList().size()>0)
+			}
+			
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return numbers;
+
+	}
 	public Boolean checkandUpdate(String msisdn,String username,String password) {
 		em = getEm();
 		

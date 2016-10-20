@@ -16,6 +16,8 @@ import com.wifiwireless.interfaces.CustomerCheckDaoInterface;
 import com.wifiwireless.interfaces.CustomerDaoInterface;
 import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
+import com.wifiwireless.model.NumberDetails;
+
 import java.security.spec.KeySpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.SecretKey;
@@ -123,12 +125,13 @@ public class BrowserServlet extends HttpServlet {
 			response.sendRedirect("http://70.182.179.17:8080/Wifiwirelessweb-0.0.1-SNAPSHOT/main.html");
 
 		} else {
-			String number=numberDetailsInterface.checkNumber(username, password);
-			if(number.equals(check) )
+			NumberDetails numbers=numberDetailsInterface.getNumberDetails(username, password);
+			//String number=numberDetailsInterface.checkNumber(username, password);
+			if(numbers.getPaidflag())
+				response.sendRedirect("http://www.google.com");
 				
-				response.sendRedirect("http://70.182.179.17:8080/Wifiwirelessweb-0.0.1-SNAPSHOT/index.html");
 			else
-			response.sendRedirect("http://www.google.com");
+				response.sendRedirect("http://70.182.179.17:8080/Wifiwirelessweb-0.0.1-SNAPSHOT/index.html");
 		}
 		System.out.println(request.getParameter("password"));
 		// response.getWriter().append("Served at:
