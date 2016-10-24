@@ -476,47 +476,51 @@ public class NexmoServices implements WifiWirlessConstants {
 		}
 	}
 
-	/*
-	 * public static NumberResponse test() { CustomerCheck check=new
-	 * CustomerCheck(); CustomerCheckDaoInterface
-	 * checkdao=JndiLookup.getCustomerCheckdao(); CustomerDaoInterface
-	 * customerdao=JndiLookup.getCustomerDetails(); HttpClient httpClient = new
-	 * DefaultHttpClient(); Gson gson = new Gson(); HttpGet post = new
-	 * HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers");
-	 * try { HttpResponse response; post.addHeader("Accept",
-	 * "application/json"); post.addHeader("Content-type", "application/json");
-	 * post.addHeader("Authorization", "Basic " + new
-	 * String(Base64.encodeBase64(
-	 * "kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
-	 * post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
-	 * post.addHeader("X-Auth-Token",
-	 * "cd10af7566dc4882999d1452b361d1f827629df8"); response =
-	 * httpClient.execute(post); System.out.println(response.toString()); String
-	 * responseString = IOUtils.toString(response.getEntity().getContent(),
-	 * "UTF-8"); ArrayList<CustomerDetails> customerDetails =
-	 * gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>() {
-	 * }.getType()); System.out.println(customerDetails.size());
-	 * ArrayList<CustomerDetails> savecustomerDetails=new
-	 * ArrayList<CustomerDetails>(); ArrayList<CustomerDetails>
-	 * updatecustomer=new ArrayList<CustomerDetails>(); for (CustomerDetails cus
-	 * : customerDetails) { Date d=new Date(cus.getDate_created());
-	 * savecustomerDetails.add(cus); check.setDatemodified(d);
-	 * check.setLength(customerDetails.size());
-	 * 
-	 * //savecustomerDetails.add(cus); }
-	 * customerdao.addCustomer(savecustomerDetails);
-	 * checkdao.addCustomerCheck(check);
-	 * 
-	 * System.out.println(customerDetails.get(0).getFirst_name());
-	 * 
-	 * } catch (IllegalStateException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
-	 * catch block
-	 * 
-	 * e.printStackTrace(); } return null;
-	 * 
-	 * }
-	 */
+	
+	public static NumberResponse test() { 
+		CustomerCheck check=new
+	  CustomerCheck(); CustomerCheckDaoInterface
+	  checkdao=JndiLookup.getCustomerCheckdao(); CustomerDaoInterface
+	  customerdao=JndiLookup.getCustomerDetails(); HttpClient httpClient = new
+	  DefaultHttpClient(); Gson gson = new Gson(); HttpGet post = new
+	  HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers?min_id=11");
+	  try { HttpResponse response; post.addHeader("Accept",
+	  "application/json"); post.addHeader("Content-type", "application/json");
+	  post.addHeader("Authorization", "Basic " + new
+	  String(Base64.encodeBase64(
+	  "kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+	  post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
+	  post.addHeader("X-Auth-Token",
+	  "cd10af7566dc4882999d1452b361d1f827629df8"); response =
+	  httpClient.execute(post); System.out.println(response.toString()); String
+	  responseString = IOUtils.toString(response.getEntity().getContent(),
+	  "UTF-8"); 
+	  System.out.println(responseString);
+	  ArrayList<CustomerDetails> customerDetails =
+	  gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>() {
+	  }.getType()); System.out.println(customerDetails.size());
+	 /* ArrayList<CustomerDetails> savecustomerDetails=new
+	  ArrayList<CustomerDetails>(); ArrayList<CustomerDetails>
+	  updatecustomer=new ArrayList<CustomerDetails>(); for (CustomerDetails cus
+	  : customerDetails) { Date d=new Date(cus.getDate_created());
+	  savecustomerDetails.add(cus); check.setDatemodified(d);
+	  check.setLength(customerDetails.size());
+	  
+	  //savecustomerDetails.add(cus); }
+	  customerdao.addCustomer(savecustomerDetails);
+	  checkdao.addCustomerCheck(check);
+	  
+	  System.out.println(customerDetails.get(0).getFirst_name());
+	  
+	  } */}catch (IllegalStateException e) {
+		  // TODO Auto-generated catch block
+	  } catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	  return null;
+	  
+	  }
 
 	public static NumberResponse testCreate() {
 
@@ -586,6 +590,79 @@ public class NexmoServices implements WifiWirlessConstants {
 			e.printStackTrace();
 		}
 		return null;
+
+	}
+
+	
+
+	public static NumberResponse testDid() {
+
+		HttpClient httpClient = new DefaultHttpClient();
+		Gson gson = new Gson();
+		HttpGet post = new HttpGet(
+				"http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.did.add&server=&trunk=78&did=16575640771&dest_type=0&destination=10000138&disabled=0");
+		try {
+			HttpResponse response;
+			/*
+			 * post.addHeader("Accept", "application/json");
+			 * post.addHeader("Content-type", "application/json");
+			 * post.addHeader("Authorization", "Basic "+new
+			 * String(Base64.encodeBase64(
+			 * "kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())))
+			 * ; post.addHeader("X-Auth-Client","EF6GI26V2A1KEO5283A1ZC37HB");
+			 * post.addHeader("X-Auth-Token",
+			 * "cd10af7566dc4882999d1452b361d1f827629df8");
+			 */
+			response = httpClient.execute(post);
+
+			System.out.println(response.toString());
+			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+			System.out.println(responseString);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+	
+
+	public static void testDidList() {
+
+		HttpClient httpClient = new DefaultHttpClient();
+		Gson gson = new Gson();
+		HttpGet post = new HttpGet(
+				"http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.did.list&server=&ext=10000000");
+		try {
+			HttpResponse response;
+			/*
+			 * post.addHeader("Accept", "application/json");
+			 * post.addHeader("Content-type", "application/json");
+			 * post.addHeader("Authorization", "Basic "+new
+			 * String(Base64.encodeBase64(
+			 * "kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())))
+			 * ; post.addHeader("X-Auth-Client","EF6GI26V2A1KEO5283A1ZC37HB");
+			 * post.addHeader("X-Auth-Token",
+			 * "cd10af7566dc4882999d1452b361d1f827629df8");
+			 */
+			response = httpClient.execute(post);
+
+			System.out.println(response.toString());
+			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+			System.out.println(responseString);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		return;
 
 	}
 
@@ -689,17 +766,17 @@ public class NexmoServices implements WifiWirlessConstants {
 	}
 
 	public static void main(String[] args) {
-		// test();
-		// oAuth();
+		testDid();		// oAuth();
 		// oAuth();
 		// createHook();
 		// testPbx();
 		// buyNumber("US", "16192596886","abc","123");
-		ArrayList<String> arrPassAndExt = new ArrayList<String>();
-		arrPassAndExt.add("test");
-		arrPassAndExt.add("1234");
-		arrPassAndExt.add("123");
-		arrPassAndExt.add("kirti.mandwade@gmail.com");
+//		ArrayList<String> arrPassAndExt = new ArrayList<String>();
+		/*
+		 * arrPassAndExt.add("test"); arrPassAndExt.add("1234");
+		 * arrPassAndExt.add("123");
+		 * arrPassAndExt.add("kirti.mandwade@gmail.com");
+		 */
 		// generateVerificationEmail(arrPassAndExt);
 
 	}
