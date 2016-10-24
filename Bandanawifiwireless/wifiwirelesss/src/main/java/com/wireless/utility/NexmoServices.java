@@ -340,7 +340,7 @@ public class NexmoServices implements WifiWirlessConstants {
 					"http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.add&server=&name="
 							+ cus.getEmail() + "&secret=" + password + "&email=" + cus.getEmail() + "&ext=" + ""
 							+ extension
-							+ "&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip");
+							+ "&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip&setcallerid=1");
 			try {
 				HttpResponse response;
 
