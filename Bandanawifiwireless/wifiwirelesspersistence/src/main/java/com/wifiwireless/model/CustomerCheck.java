@@ -13,9 +13,18 @@ public class CustomerCheck  extends WifiBase implements Serializable{
 	private Date datemodified;
 	@Column(name="length")
 	private int length;
+	
 	@Column(name="extension")
 	private String extension;
+	@Column(name="did")
+	private String did;
 	
+	public String getDid() {
+		return did;
+	}
+	public void setDid(String did) {
+		this.did = did;
+	}
 	public String getExtension() {
 		return extension;
 	}

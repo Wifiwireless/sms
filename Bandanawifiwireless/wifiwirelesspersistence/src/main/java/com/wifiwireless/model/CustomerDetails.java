@@ -51,12 +51,26 @@ public class CustomerDetails implements Serializable{
 	private String extension;
 	@Column(name = "accepts_marketing")
 	private String acceptsmarketing;
+	@Column(name = "did")
+	private String did;
+	
 	@Column(name = "ispbxAccountCreated")
 	private Boolean ispbxAccountCreated ;
 	public String getCompany() {
 		return company;
 	}
 	
+	
+	public String getDid() {
+		return did;
+	}
+
+
+	public void setDid(String did) {
+		this.did = did;
+	}
+
+
 	public String getSecret() {
 		return secret;
 	}
