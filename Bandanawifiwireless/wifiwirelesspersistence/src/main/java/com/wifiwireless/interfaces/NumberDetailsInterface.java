@@ -12,4 +12,5 @@ public interface NumberDetailsInterface {
 	public Boolean checkandUpdate(String msisdn,String username,String password);
 	public String checkNumber(String username,String password);
 	public NumberDetails getNumberDetails(String username,String Passkey);
+	public NumberDetails getNumberDetailsByMsisdn(String msisdn);
 }

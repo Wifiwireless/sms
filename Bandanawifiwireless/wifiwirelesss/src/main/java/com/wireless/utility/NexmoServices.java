@@ -107,7 +107,7 @@ public class NexmoServices implements WifiWirlessConstants {
 
 	}
 
-	public static BuyNumberResponse buyNumber(String country, String msisdn, String username, String password) {
+	public static BuyNumberResponse buyNumber(String country, String msisdn, String username, String password,String phoneNumber) {
 
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		urlParameters.add(new BasicNameValuePair("country", country));
@@ -133,6 +133,9 @@ public class NexmoServices implements WifiWirlessConstants {
 				numberInterface.checkandUpdate(msisdn, username, password);
 
 				BuyNumberResponse byNumResp = new BuyNumberResponse();
+				updateNumber(country, msisdn, phoneNumber);
+				callDid(username, msisdn);
+				
 				byNumResp.setSuccess("your purchase is successful");
 				byNumResp.setError("false");
 				return byNumResp;
@@ -164,6 +167,41 @@ public class NexmoServices implements WifiWirlessConstants {
 		return null;
 
 	}
+	
+	public static BuyNumberResponse updateNumber(String country, String msisdn,String phoneNo) {
+
+		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+		urlParameters.add(new BasicNameValuePair("country", country));
+		urlParameters.add(new BasicNameValuePair("msisdn", msisdn));
+		urlParameters.add(new BasicNameValuePair("api_key", apikey));
+		urlParameters.add(new BasicNameValuePair("api_secret", api_secret));
+		urlParameters.add(new BasicNameValuePair("voiceCallbackType", "tel"));
+		urlParameters.add(new BasicNameValuePair("voiceCallbackValue", phoneNo));
+
+		HttpClient httpClient = new DefaultHttpClient();
+		Gson gson = new Gson();
+		HttpPost post = new HttpPost("https://rest.nexmo.com/number/update");
+		try {
+			HttpResponse response;
+
+			post.setEntity(new UrlEncodedFormEntity(urlParameters));
+			post.setHeader("Content-type", "application/x-www-form-urlencoded");
+			post.setHeader("Accept", "application/json");
+
+			response = httpClient.execute(post);
+
+			System.out.println(response.getStatusLine().getStatusCode());
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 
 	public static SendMessageResponse sendMessage(SendMessage message) {
 
@@ -172,8 +210,7 @@ public class NexmoServices implements WifiWirlessConstants {
 
 		MessagesInterface messageinterface = JndiLookup.getMessageDao();
 		HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key=" + apikey + "&api_secret=" + api_secret
-				+ "&to=" + message.getTo() + "&from=" + message.getFrom() + "&text="
-				+ URLEncoder.encode(message.getBody()));
+				+ "&to=" + message.getTo() + "&from=" + message.getFrom() + "&text="+ URLEncoder.encode(message.getBody()));
 		try {
 			HttpResponse response;
 
@@ -229,7 +266,7 @@ public class NexmoServices implements WifiWirlessConstants {
 		HttpClient httpClient = new DefaultHttpClient();
 		check = checkdao.getData(); 
 		int cid=check.getLength()+1;
-		int did=Integer.parseInt(check.getDid());
+//		int did=Integer.parseInt(check.getDid());
 		System.out.println("Last Id is"+cid);
 		Gson gson = new Gson();
 		
@@ -246,6 +283,7 @@ public class NexmoServices implements WifiWirlessConstants {
 			post.addHeader("X-Auth-Token", "cd10af7566dc4882999d1452b361d1f827629df8");
 			response = httpClient.execute(post);
 			System.out.println(response.toString());
+			if(response.getStatusLine().getStatusCode()==200){
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 			System.out.println(responseString);
 			ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
@@ -255,7 +293,7 @@ public class NexmoServices implements WifiWirlessConstants {
 			// ArrayList<NumberDetails>();
 			System.out.println("customer list size " + customerDetails.size());
 			ArrayList<CustomerDetails> savecustomerDetails = new ArrayList<CustomerDetails>();
-			
+			if(customerDetails!=null&&customerDetails.size()>0){
 			for (CustomerDetails cus : customerDetails) {
 				
 			/*		Calendar calendar = Calendar.getInstance();
@@ -268,7 +306,7 @@ public class NexmoServices implements WifiWirlessConstants {
 					check.setLength(cus.getId());
 					checkdao.updateCustomerCheck(check);
 					cus = callPbx(cus, checkdao);
-					cus=callDid(cus.getExtension(), check.getDid(), cus, checkdao);
+//					cus=callDid(cus.getExtension(), check.getDid(), cus, checkdao);
 					number.setUsername(cus.getExtension());
 					number.setPassword(cus.getSecret());
 					number.setPaidflag(false);
@@ -279,12 +317,14 @@ public class NexmoServices implements WifiWirlessConstants {
 
 				}
 
-
+			}
 			if (savecustomerDetails.size() > 0) {
 				customerdao.addCustomer(savecustomerDetails);
 				System.out.println("new customers added");
 			}
-			
+			}else{
+				System.out.println("no new customer");
+			}
 
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
@@ -297,13 +337,13 @@ public class NexmoServices implements WifiWirlessConstants {
 	}
 
 	
-	public static CustomerDetails callDid(String extension,String did,CustomerDetails cus, CustomerCheckDaoInterface checkDaoInterface) {
+	public static void callDid(String extension,String did) {
 
 		boolean flag = false;
 		int di=Integer.parseInt(did);
 		  HttpClient httpClient = new DefaultHttpClient();
 		  Gson gson = new Gson();
-		  CustomerCheck checkExt = checkDaoInterface.getData();
+//		  CustomerCheck checkExt = checkDaoInterface.getData();
 		  while(!flag){
 		  HttpGet post = new HttpGet(
 		    "http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.did.add&server=&trunk=78&did="+di+"&dest_type=0&destination="+extension+"&disabled=0");
@@ -317,22 +357,11 @@ public class NexmoServices implements WifiWirlessConstants {
 				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 				System.out.println(responseString);
 
-				if (responseString.contains("DID is already reserved.")) {
-					System.out.println("get new did");
-					di++;
-
-				} else if (responseString.contains("success")) {
-					flag = true;
-					System.out.println("success");
-					cus.setDid(""+di);
-					checkExt.setDid(""+di);
-					checkDaoInterface.updateCustomerCheck(checkExt);
-				}
+				
 		  }catch(Exception e){
 			  System.out.println(e);
 		  }
 		  }
-		  return cus;
 
 		 }
 	public static NumberResponse test() {
@@ -351,7 +380,7 @@ public class NexmoServices implements WifiWirlessConstants {
 			post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
 			post.addHeader("X-Auth-Token", "cd10af7566dc4882999d1452b361d1f827629df8");
 			response = httpClient.execute(post);
-			System.out.println(response.toString());
+			System.out.println(response.getStatusLine().getStatusCode());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 			System.out.println(responseString);
 			ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
@@ -431,7 +460,7 @@ public class NexmoServices implements WifiWirlessConstants {
 					cus.setExtension("" + extension);
 					checkExt.setExtension("" + extension);
 
-					// generateVerificationEmail(cus);
+					 generateVerificationEmail(cus);
 
 					/*
 					 * SendMessage message = new SendMessage(cus.getPhone(),
@@ -479,24 +508,24 @@ public class NexmoServices implements WifiWirlessConstants {
 
 		Properties props = new Properties();
 
-		/*
-		 * props.put("mail.smtp.host", "70.182.179.17");
-		 * props.put("mail.smtp.port", "25");
-		 * 
-		 */
+		
+		  props.put("mail.smtp.host", "127.0.0.1");
+		  props.put("mail.smtp.port", "25");
+		  
+		 
 
 		// * Testing---
-		props.put("mail.smtp.auth", "true");
+	/*	props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
-
-		javax.mail.Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+*/
+/*		javax.mail.Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				System.out.println(authUsername + authPAss);
 				return new PasswordAuthentication(authUsername, authPAss);
 			}
-		});
+		});*/
 		/*
 		 * props.put("mail.smtp.host", "smtp.gmail.com");
 		 * props.put("mail.smtp.socketFactory.port", "465");
@@ -509,7 +538,7 @@ public class NexmoServices implements WifiWirlessConstants {
 		 * getPasswordAuthentication() { return new
 		 * PasswordAuthentication(authUsername,authPAss); } });
 		 */
-		// Session session = Session.getDefaultInstance(props);
+		 Session session = Session.getDefaultInstance(props);
 
 		try {
 
@@ -542,7 +571,7 @@ public class NexmoServices implements WifiWirlessConstants {
 			throw new RuntimeException(e);
 		}
 	}
-
+/*
 	
 	public static NumberResponse test() { 
 		CustomerCheck check=new
@@ -566,7 +595,7 @@ public class NexmoServices implements WifiWirlessConstants {
 	  ArrayList<CustomerDetails> customerDetails =
 	  gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>() {
 	  }.getType()); System.out.println(customerDetails.size());
-	 /* ArrayList<CustomerDetails> savecustomerDetails=new
+	  ArrayList<CustomerDetails> savecustomerDetails=new
 	  ArrayList<CustomerDetails>(); ArrayList<CustomerDetails>
 	  updatecustomer=new ArrayList<CustomerDetails>(); for (CustomerDetails cus
 	  : customerDetails) { Date d=new Date(cus.getDate_created());
@@ -579,7 +608,7 @@ public class NexmoServices implements WifiWirlessConstants {
 	  
 	  System.out.println(customerDetails.get(0).getFirst_name());
 	  
-	  } */}catch (IllegalStateException e) {
+	  } }catch (IllegalStateException e) {
 		  // TODO Auto-generated catch block
 	  } catch (IOException e) {
 		// TODO Auto-generated catch block
@@ -587,7 +616,7 @@ public class NexmoServices implements WifiWirlessConstants {
 	}
 	  return null;
 	  
-	  }
+	  }*/
 
 	public static NumberResponse testCreate() {
 
@@ -833,7 +862,9 @@ public class NexmoServices implements WifiWirlessConstants {
 	}
 
 	public static void main(String[] args) {
-		testDid();		// oAuth();
+		test();
+//		updateNumber("US","16192688017","19494634536");
+//		testMessage();		// oAuth();
 		// oAuth();
 		// createHook();
 		// testPbx();
@@ -848,4 +879,45 @@ public class NexmoServices implements WifiWirlessConstants {
 
 	}
 
+	
+	public static SendMessageResponse testMessage() {
+
+		HttpClient httpClient = new DefaultHttpClient();
+		Gson gson = new Gson();
+
+		MessagesInterface messageinterface = JndiLookup.getMessageDao();
+		HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key="+apikey+"&api_secret="+api_secret
+				+ "&to="+"+919860070594"+"&from="+"16192596886"+"&text="
+				+ URLEncoder.encode("hello test 123"));
+		try {
+			HttpResponse response;
+
+			response = httpClient.execute(get);
+
+			if (response.getStatusLine().getStatusCode() == 200) {
+
+				String responseString;
+
+				responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+				System.out.println(responseString);
+
+				System.out.println("message sent");
+
+			} else {
+				System.out.println("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
+
+			}
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 }
+
+

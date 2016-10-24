@@ -134,6 +134,39 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 		return numbers;
 
 	}
+	
+	
+	public NumberDetails getNumberDetailsByMsisdn(String msisdn) {
+		em = getEm();
+		NumberDetails numbers=new NumberDetails();
+		try {
+
+			String qlString = "SELECT number FROM NumberDetails number  "
+					+ "WHERE  number.msisdn=:msisdn";
+
+			TypedQuery<NumberDetails> query = em.createQuery(qlString,
+					NumberDetails.class);
+
+			query.setParameter("msisdn", msisdn);
+			if (query.getResultList().size() > 0){
+				
+				numbers=query.getSingleResult();
+				System.out.println(numbers.getUsername());
+				
+			// if(query.getResultList()!=null && query.getResultList().size()>0)
+			}
+			
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return numbers;
+
+	}
 	public Boolean checkandUpdate(String msisdn,String username,String password) {
 		em = getEm();
 		

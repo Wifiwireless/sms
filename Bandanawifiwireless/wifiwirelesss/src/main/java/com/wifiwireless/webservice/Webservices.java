@@ -10,6 +10,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.jboss.resteasy.annotations.ResponseObject;
 
@@ -73,7 +75,7 @@ public class Webservices {
 				number.setId(numberss.getId());
 				number.setCost(numberResponse.getCost());
 				number.setMsisdn(numberResponse.getMsisdn());
-				number.setPaidflag(true);
+				number.setPaidflag(false);
 				numberInterface.mergeNumber(number);
 				numberResponse.setError("false");
 				return numberResponse;
@@ -94,9 +96,14 @@ public class Webservices {
 	public @ResponseObject BuyNumberResponse buyNumber(BuyNumber buyNumber) {
 
 		System.out.println("country is " + buyNumber.getCountry());
+		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
 
-		return NexmoServices.buyNumber(buyNumber.getCountry(), buyNumber.getMsisdn(), buyNumber.getUsername(),
+		NumberDetails numberss = numberInterface.getNumberDetails(buyNumber.getUsername(),
 				buyNumber.getPassword());
+		
+		return NexmoServices.buyNumber(buyNumber.getCountry(), buyNumber.getMsisdn(), buyNumber.getUsername(),
+				buyNumber.getPassword(),numberss.getPhnno());
+		
 
 	}
 
@@ -164,6 +171,31 @@ public class Webservices {
 
 	}
 	
+	
+//	msisdn=441632960960&to=441632960961&messageId=000000FFFB0356D1&text=This+is+an+inbound+message&type=text&message-timestamp=2012-08-19+20%3A38%3A23
+	@GET
+	@Path("getReply")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response getnew(@QueryParam("msisdn") String msisdn, @QueryParam("to") String to, @QueryParam("messageId") String messageId, @QueryParam("text") String text, @QueryParam("type") String type, @QueryParam("timestamp") String timestamp) {
+		System.out.println("Reply received------------------------" + text);
+		
+		
+		
+		NumberDetailsInterface detailsInterface = JndiLookup.getNumberDetailsDao();
+		NumberDetails numberDetails=detailsInterface.getNumberDetailsByMsisdn(to);
+		if(numberDetails.getPhnno()!=null){
+		System.out.println("Reply Sending to------------------------"+numberDetails.getPhnno());
+		SendMessage message = new SendMessage();
+		message.setFrom(msisdn);
+		message.setTo(numberDetails.getPhnno());
+		message.setBody(text);
+		System.out.println(message.toString());
+		NexmoServices.sendMessage(message);
+		}
+	    return Response.status(200).build();		
+//		NexmoServices.test();
+
+	}
 	
 	/*@POST
 	@Path("sendEmailTest")
