@@ -57,18 +57,19 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 		}
 
 	}
-	public String checkNumber(String email,String Passkey) {
+	public String checkNumber(String username,String Passkey) {
 		em = getEm();
-		System.out.println("email"+email+"   Password"+Passkey);
+		System.out.println("email"+username+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
-					+ "WHERE  number.email=:email and number.password=:password";
+					+ "WHERE  number.username=:username and number.password=:password";
 
+			System.out.println("------------------------------------------------");
 			TypedQuery<NumberDetails> query = em.createQuery(qlString,
 					NumberDetails.class);
 
-			query.setParameter("email", email);
+			query.setParameter("username", username);
 			query.setParameter("password", Passkey);
 			if (query.getResultList().size() > 0){
 				
@@ -76,7 +77,7 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 				System.out.println(numbers.getPaidflag());
 				if(numbers.getPaidflag())	
 				{
-					System.out.println("in true");
+					System.out.println("in true got number  ");
 					return numbers.getMsisdn();
 					
 				}
@@ -100,19 +101,19 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 	}
 	
 	
-	public NumberDetails getNumberDetails(String email,String Passkey) {
+	public NumberDetails getNumberDetails(String username,String Passkey) {
 		em = getEm();
 		NumberDetails numbers=new NumberDetails();
-		System.out.println("email"+email+"   Password"+Passkey);
+		System.out.println("email"+username+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
-					+ "WHERE  number.email=:email and number.password=:password";
+					+ "WHERE  number.username=:username and number.password=:password";
 
 			TypedQuery<NumberDetails> query = em.createQuery(qlString,
 					NumberDetails.class);
 
-			query.setParameter("email", email);
+			query.setParameter("username", username);
 			query.setParameter("password", Passkey);
 			if (query.getResultList().size() > 0){
 				
@@ -133,19 +134,19 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 		return numbers;
 
 	}
-	public Boolean checkandUpdate(String msisdn,String email,String password) {
+	public Boolean checkandUpdate(String msisdn,String username,String password) {
 		em = getEm();
 		
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
-					+ "WHERE  number.msisdn=:msisdn and number.email=:email and number.password=:password";
+					+ "WHERE  number.msisdn=:msisdn and number.username=:username and number.password=:password";
 
 			TypedQuery<NumberDetails> query = em.createQuery(qlString,
 					NumberDetails.class);
 //			query.setParameter("sysadminId", sysadminId);
 			query.setParameter("msisdn", msisdn);
-			query.setParameter("email", email);
+			query.setParameter("username", username);
 			query.setParameter("password", password);
 			if (query.getResultList().size() > 0){
 				

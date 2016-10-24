@@ -70,10 +70,12 @@ public class Webservices {
 				// save to db
 				number.setUsername(numberss.getUsername());
 				number.setPassword(numberss.getPassword());
-				;
+				number.setId(numberss.getId());
 				number.setCost(numberResponse.getCost());
 				number.setMsisdn(numberResponse.getMsisdn());
-				numberInterface.addNumberDetails(number);
+				number.setPaidflag(true);
+				numberInterface.mergeNumber(number);
+				numberResponse.setError("false");
 				return numberResponse;
 			} else {
 				return numberResponse = new NumberResponse("Please provide correct username and Password");
@@ -103,12 +105,13 @@ public class Webservices {
 	@Produces(MediaType.APPLICATION_JSON)
 	public SendMessageResponse sendMessage(SendMessage sendMessage) {
 
+		System.out.println("Sending Message");
 		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
 		String msidn = numberInterface.checkNumber(sendMessage.getFrom(), sendMessage.getPassword());
 
 		if (sendMessage.getFrom() != null && sendMessage.getPassword() != null && sendMessage.getTo() != null
 				&& sendMessage.getBody() != null) {
-			// System.out.println("country is " + buyNumber.getCountry());
+			 System.out.println("country is " );
 			if (msidn != "") {
 				sendMessage.setFrom(msidn);
 				return NexmoServices.sendMessage(sendMessage);

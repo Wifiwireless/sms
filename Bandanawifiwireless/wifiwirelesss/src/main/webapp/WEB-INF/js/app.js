@@ -1000,13 +1000,9 @@ app
 								$scope.span4 = '';
 								$scope.span5 = '';
 
-								if (!$scope.isformvalid) {
-									$scope.span8 = 'Please provide valid details';
-									return;
-								}
 								
 
-								if ($scope.formData.Username == '') {
+								if ($scope.formData.username == '') {
 
 									$scope.span1 = 'Please enter Username';
 									$location.hash('default-step-0');
@@ -1057,23 +1053,22 @@ app
 
 							
 
-								var response = $http.post('70.182.179.17:8080/wifiwireless/get/number',
-										$scope.formData);
+								var response = $http.post('http://70.182.179.17:8080/wifiwireless/get/number',
+										$scope.formData, {'Content-Type': 'application/json'} );
 								response.success(function(data, status,
 										headers, config) {
-									if (data == 'true') {
-
+									
 										$('#form').hide();
 										$scope.smscArr=data;
-										$('#successpanel').show();
-
-										window.location = "viewClient"
-									} else {
-										$('#form').hide();
-
-										$('#failpanel').show();
-
-									}
+										
+											if($scope.smscArr.error='false'){$('#successpanel').show();
+											
+										}
+											else
+												{$('#FailPanel').show();
+										$('#successpanel').hide();
+												}
+								
 								});
 								response.error(function(data, status, headers,
 										config) {
@@ -1086,40 +1081,41 @@ app
 							};
 							$scope.buyNumber = function() {
 								debugger;
-								$scope.buynumber.username=$scope.formData.Username;
-								$scope.buynumber.password= $scope.formData.password;
-								$scope.buynumber.country=$scope.response.country;
-									$scope.buynumber.msisdn=$scope.response.msisdn;
-							
+					        $scope.buynumber.username=$scope.formData.Username;
+					        $scope.buynumber.password= $scope.formData.password;
+					        $scope.buynumber.country=$scope.smscArr.country;
+					         $scope.buynumber.msisdn=$scope.smscArr.msisdn;
+					       
 
-								var response = $http.post('70.182.179.17:8080/wifiwireless/buy/number',
-										$scope.buynumber);
-								response.success(function(data, status,
-										headers, config) {
-									if (data == 'true') {
+					        var response = $http.post('http://70.182.179.17:8080/wifiwireless/buy/number',
+					          $scope.buynumber);
+					        response.success(function(data, status,
+					          headers, config) {
+					        	
 
-										$('#form').hide();
-										$scope.buynumberResponse=data;
-										if($scope.buynumberResponse.success=true)
-										$('#successResponsepanel').show();
-										else
-											$('#FailPanel').show();
 
-										
-									} else {
-										$('#form').hide();
-
-										$('#failpanel').show();
-
-									}
-								});
-								response.error(function(data, status, headers,
-										config) {
 									$('#form').hide();
+									$scope.buynumberResponse=data;
+									if($scope.buynumberResponse.error=='false')
+										{
+										$('#successpanel').hide();
+									$('#successResponsepanel').show();
+										}
+									else
+										{
+										$('#FailPanel').show();
+										$('#successpanel').hide();
+										$('#successResponsepanel').hide();
+										}
+									
+								
+					        });
+					        response.error(function(data, status, headers,
+					          config) {
+					         $('#form').hide();
 
-									$('#failpanel').show();
-								});
-								//Your action will goes here
-
-							};
+					         $('#failpanel').show();
+					        });
+					        //Your action will goes here
+					        };
 						} ])

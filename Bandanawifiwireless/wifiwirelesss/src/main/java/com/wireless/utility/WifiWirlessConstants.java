@@ -6,8 +6,8 @@ public interface WifiWirlessConstants {
 	public static String ext="10000000";
 	public static String SchedularInterval="30000";
 	public static String fromAddress="16192596886";
-	public static String authUsername="wfwlapp@gmail.com";
-	public static String authPAss="SchedularInterval";
+	public static String authUsername="utalkwifiwireless@gmail.com";
+	public static String authPAss="wifiwireless1234";
 
 
 }

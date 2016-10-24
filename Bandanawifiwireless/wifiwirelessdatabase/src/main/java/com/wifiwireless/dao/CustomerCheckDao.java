@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import com.wifiwireless.interfaces.CustomerCheckDaoInterface;
 import com.wifiwireless.model.CustomerCheck;
@@ -29,20 +30,11 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 			TypedQuery<CustomerCheck> query = em.createQuery(qlString,
 					CustomerCheck.class);
 
-			ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>) query.getResultList();
-			if(check.size()>0)
-			{
-				for(CustomerCheck ch:check){
-					if(ch.getDatemodified()!=null)
-						che.setDatemodified(ch.getDatemodified());
-					    che.setLength(ch.getLength());
-					    che.setId(ch.getId());
-					   // che.setExtension(extension);
-				}
-				System.out.println("check ");
+			//ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>) query.getResultList();
+		che=query.getResultList().get(0);
 		
-			}
-			
+		
+		System.out.println(che.getDatemodified());
 			// if(query.getResultList()!=null && query.getResultList().size()>0)
 			}
 			
@@ -68,22 +60,11 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 					CustomerCheck.class);
 
 			ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>) query.getResultList();
-			if(check.size()>0)
-			{
-				for(CustomerCheck ch:check){
-					if(ch.getDatemodified()!=null){
-						/*che.setDatemodified(ch.getDatemodified());
-					    che.setLength(ch.getLength());
-					    che.setId(ch.getId());
-					   // che.setExtension(extension);
-*/				}
-					else{
-					return ch;
-					}}
+			che=query.getResultList().get(0);
 				
 				System.out.println("check ");
 		
-			}
+			
 			
 			// if(query.getResultList()!=null && query.getResultList().size()>0)
 			}
@@ -100,7 +81,7 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 	}
 	public void addCustomerCheck(CustomerCheck check) {
 		em = getEm();
-
+System.out.println("in add check");
 		try {
 			em.getTransaction().begin();
 			
@@ -120,7 +101,7 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 	}
 	public void updateCustomerCheck(CustomerCheck check) {
 		em = getEm();
-
+		System.out.println("in update check");
 		try {
 			
 			em.getTransaction().begin();

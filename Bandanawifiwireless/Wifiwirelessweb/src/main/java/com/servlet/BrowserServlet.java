@@ -35,13 +35,7 @@ import javax.crypto.spec.IvParameterSpec;
 @WebServlet("/browser")
 public class BrowserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Cipher dcipher;
-	int iterationCount = 1024;
-    int keyStrength = 256;
-    SecretKey key;
-    byte[] iv;
-    byte[] salt = new String("12345678").getBytes();
-
+	
 	/**
 	 * Default constructor.
 	 */
@@ -96,22 +90,15 @@ public class BrowserServlet extends HttpServlet {
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+			throws ServletException, IOException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
+	{
 		String location = "main.html";
 		String check = "";
 		System.out.println("in Servlet");
 		String username = request.getParameter("username");
 		String password = request.getParameter("Passkey");
 		System.out.println(password);
-		/*SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        KeySpec spec = new PBEKeySpec(passPhrase.toCharArray(), salt, iterationCount, keyStrength);
-        SecretKey tmp = factory.generateSecret(spec);
-        key = new SecretKeySpec(tmp.getEncoded(), "AES");
-        dcipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-	        dcipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
-	        byte[] decryptedData = new sun.misc.BASE64Decoder().decodeBuffer(password);
-	        byte[] utf8 = dcipher.doFinal(decryptedData);
-	       String newpassword=new String(utf8, "UTF8");*/
+		
 	    
 		System.out.println("Username:" + username +"Password:");
 		CustomerDaoInterface customerdao = JndiLookup.getCustomerDetails();

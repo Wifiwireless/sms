@@ -4,12 +4,17 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.TimeZone;
 
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -120,32 +125,37 @@ public class NexmoServices implements WifiWirlessConstants {
 			post.setHeader("Content-type", "application/x-www-form-urlencoded");
 			post.setHeader("Accept", "application/json");
 
-			response = httpClient.execute(post);
+			 response = httpClient.execute(post);
 
-			if (response.getStatusLine().getStatusCode() == 200) {
+			
+			  if (response.getStatusLine().getStatusCode() == 200) {
+			  
+			  NumberDetailsInterface numberInterface =
+			  JndiLookup.getNumberDetailsDao();
+			  numberInterface.checkandUpdate(msisdn, username, password);
+			  
+			  BuyNumberResponse byNumResp = new BuyNumberResponse();
+			  byNumResp.setSuccess("your purchase is successful");
+			  byNumResp.setError("false"); return byNumResp;
+			  
+			  // update db
+			  
+			  } else if (response.getStatusLine().getStatusCode() == 401) {
+			  
+			  BuyNumberResponse byNumResp = new BuyNumberResponse();
+			  byNumResp.setError(
+			  "you supplied incorrect security and authentication information"
+			  );
+			  
+			  return byNumResp; } else {
+			 
+			BuyNumberResponse byNumResp = new BuyNumberResponse();
+			byNumResp.setError("you supplied incorrect parameters");
+		
+			  
+			return byNumResp;
 
-				NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
-				numberInterface.checkandUpdate(msisdn, username, password);
-
-				BuyNumberResponse byNumResp = new BuyNumberResponse();
-				byNumResp.setSuccess("your purchase is successful");
-
-				return byNumResp;
-
-				// update db
-
-			} else if (response.getStatusLine().getStatusCode() == 401) {
-
-				BuyNumberResponse byNumResp = new BuyNumberResponse();
-				byNumResp.setError("you supplied incorrect security and authentication information");
-
-				return byNumResp;
-			} else {
-				BuyNumberResponse byNumResp = new BuyNumberResponse();
-				byNumResp.setError("you supplied incorrect parameters");
-				return byNumResp;
-
-			}
+			 }
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -189,12 +199,12 @@ public class NexmoServices implements WifiWirlessConstants {
 					messagesdatabase.setUsername(message.getFrom());
 					messagesdatabase.setPassword(message.getPassword());
 					messagesdatabase.setSource(message.getFrom());
-					messagesdatabase.setDestination(message.getTo());
+					messagesdatabase.setDestination(message.getTo().trim());
 					messagesdatabase.setText(message.getBody());
 					messagesdatabase.setMessagetime(new Date());
 					messageinterface.addMesages(messagesdatabase);
 				}
-
+				System.out.println("message sent");
 				return msgResponse;
 
 			} else {
@@ -213,7 +223,7 @@ public class NexmoServices implements WifiWirlessConstants {
 
 	}
 
-	public static void customerSaveOrUpdate() {
+	public static void customerSaveOrUpdate() throws ParseException {
 
 		CustomerCheck check = new CustomerCheck();
 		CustomerCheckDaoInterface checkdao = JndiLookup.getCustomerCheckdao();
@@ -237,60 +247,67 @@ public class NexmoServices implements WifiWirlessConstants {
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 			// System.out.println(responseString);
 			check = checkdao.getData();
-			if (check != null) {
+			if (check.getDatemodified() != null) {
 				System.out.println("not null" + check.getDatemodified());
 			} else {
 				System.out.println("in null");
 				return;
 			}
 			Date today = check.getDatemodified();
-			// Date date2=new Date();
-			// String date = today.toString();
-			// System.out.println(date);
-			// String day = "" + today.getDate();
+			System.out.println(today);
 
 			ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
 					new TypeToken<List<CustomerDetails>>() {
 					}.getType());
-			ArrayList<NumberDetails> arryNumber = new ArrayList<NumberDetails>();
-			System.out.println(customerDetails.size());
+			// ArrayList<NumberDetails> arryNumber = new
+			// ArrayList<NumberDetails>();
+			System.out.println("customer list size " + customerDetails.size());
 			ArrayList<CustomerDetails> savecustomerDetails = new ArrayList<CustomerDetails>();
 			ArrayList<CustomerDetails> updatecustomer = new ArrayList<CustomerDetails>();
 			for (CustomerDetails cus : customerDetails) {
+				System.out.println(today + "   " + cus.getDate_created());
+				SimpleDateFormat dateFormatGmt = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss");
 
-				Date d = new Date(cus.getDate_created());
-				if (today.after(d)) {
+				Date d = dateFormatGmt.parse(cus.getDate_created());
+
+				if (today.equals(d) || today.after(d)) {
 					System.out.println("old dataa");
-					updatecustomer.add(cus);
+					// updatecustomer.add(cus);
 
 				} else {
-					NumberDetails number = new NumberDetails();
-					System.out.println("new dataa");
-					check.setDatemodified(d);
-					check.setLength(customerDetails.size());
-					
-					cus =	callPbx(cus,checkdao);
+					 Calendar calendar = Calendar.getInstance();
+			         calendar.setTime(d);
+			         calendar.add(Calendar.SECOND, 2);
+			         d = calendar.getTime();
+						NumberDetails number = new NumberDetails();
+						System.out.println("new dataa");
+						check.setDatemodified(d);
+						check.setLength(customerDetails.size());
+						checkdao.updateCustomerCheck(check);
+						cus = callPbx(cus, checkdao);
+						number.setUsername(cus.getExtension());
+						number.setPassword(cus.getSecret());
+						number.setPaidflag(false);
+						cus.setIspbxAccountCreated(true);
+						System.out.println(cus);
+						numberDetailsInterface.addNumberDetails(number);
+						savecustomerDetails.add(cus);
 
-					cus.setIspbxAccountCreated(true);
-					numberDetailsInterface.addNumberDetails(number);
-					savecustomerDetails.add(cus);
+					
 				}
+				
+
 				// savecustomerDetails.add(cus);
 			}
-			if (check.getDatemodified() != null)
-				checkdao.updateCustomerCheck(check);
-			else {
-				System.out.println("static modify date is null");
-			}
+			
+			/// checkdao.updateCustomerCheck(check);
+
 			if (savecustomerDetails.size() > 0) {
 				customerdao.addCustomer(savecustomerDetails);
-
+				System.out.println("new customers added");
 			}
 			if (updatecustomer.size() > 0)
 				customerdao.updateCustomer(updatecustomer);
-			System.out.println(customerDetails.size());
-
-			System.out.println(customerDetails.get(0).getFirst_name());
 
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
@@ -300,87 +317,87 @@ public class NexmoServices implements WifiWirlessConstants {
 
 			e.printStackTrace();
 		}
-
 	}
 
+	public static CustomerDetails callPbx(CustomerDetails cus, CustomerCheckDaoInterface checkDaoInterface) {
+		ArrayList<String> arrPassAndExt = new ArrayList<String>();
 
-public static CustomerDetails callPbx(CustomerDetails cus,CustomerCheckDaoInterface checkDaoInterface){
-	
-ArrayList<String> arrPassAndExt = new ArrayList<String>();
-	
-	boolean flag=false;
-	int extension=10000033;
-	String password=RandomStringUtils.randomAlphanumeric(8).toUpperCase();
-	CustomerCheck checkExt = checkDaoInterface.getextension();
-	if(checkExt!=null){
- extension= Integer.parseInt(checkExt.getExtension());	
-	}else
-	{
-		System.out.println("predefined extension is null");
-		return null;
-	}
-while(!flag){
+		boolean flag = false;
+		int extension = 10000533;
+		String password = RandomStringUtils.randomAlphanumeric(8).toUpperCase();
+		CustomerCheck checkExt = checkDaoInterface.getextension();
+		if (checkExt != null) {
+			extension = Integer.parseInt(checkExt.getExtension());
+		} else {
+			System.out.println("predefined extension is null");
+			return null;
+		}
+		while (!flag) {
 
-	HttpClient httpClient = new DefaultHttpClient();
-	Gson gson = new Gson();
-	HttpGet post = new HttpGet("http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.add&server=&name="+cus.getEmail()+"&secret="+password+"&email="+cus.getEmail()+"&ext="+""+extension+"&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip");
-	try {
-		HttpResponse response;
+			HttpClient httpClient = new DefaultHttpClient();
+			Gson gson = new Gson();
+			HttpGet post = new HttpGet(
+					"http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.add&server=&name="
+							+ cus.getEmail() + "&secret=" + password + "&email=" + cus.getEmail() + "&ext=" + ""
+							+ extension
+							+ "&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip");
+			try {
+				HttpResponse response;
 
-
-	
 				response = httpClient.execute(post);
 
-	
-	System.out.println(response.toString());
-	String responseString = IOUtils.toString(response.getEntity()
-		     .getContent(), "UTF-8");
-		   System.out.println(responseString); 
-		   
-		   if(responseString.contains("Extension is already reserved.")){
-			   System.out.println("get new extension");
-			   extension++;
+				System.out.println(response.toString());
+				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+				System.out.println(responseString);
 
-		   }else if(responseString.contains("success")){
-			   flag=true;
-/*	arrPassAndExt.add(password);
-	arrPassAndExt.add(""+extension);
-	arrPassAndExt.add(name);
-	arrPassAndExt.add(emailid);
-	arrPassAndExt.add*/
-	cus.setSecret(password);
-	cus.setExtension(""+extension);
-	
-	generateVerificationEmail(cus);
-	
-	SendMessage message = new SendMessage(cus.getPhone(), fromAddress, "Your utalk wifi app credentials are"+System.getProperty("line.separator")+"username:"+cus.getEmail() +" and password:"+cus.getSecret());
-	sendMessage(message);
-	
-	checkDaoInterface.updateCustomerCheck(checkExt);
-		   }
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			
-			e.printStackTrace();
+				if (responseString.contains("Extension is already reserved.")) {
+					System.out.println("get new extension");
+					extension++;
+
+				} else if (responseString.contains("success")) {
+					flag = true;
+					System.out.println("success");
+					/*
+					 * arrPassAndExt.add(password);
+					 * arrPassAndExt.add(""+extension); arrPassAndExt.add(name);
+					 * arrPassAndExt.add(emailid); arrPassAndExt.add
+					 */
+					cus.setSecret(password);
+					cus.setExtension("" + extension);
+					checkExt.setExtension("" + extension);
+					
+					  //generateVerificationEmail(cus);
+					  
+					 /* SendMessage message = new SendMessage(cus.getPhone(),
+					  fromAddress, "Your utalk wifi app credentials are" +
+					  System.getProperty("line.separator") + "username:" +
+					  cus.getEmail() + " and password:" + cus.getSecret());
+					  sendMessage(message);*/
+					 
+					checkDaoInterface.updateCustomerCheck(checkExt);
+				}
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+
+				e.printStackTrace();
+			}
 		}
-}
-//	return null;
-return cus;
+		// return null;
+		return cus;
+	}
 
-}
+	public static Boolean generateVerificationEmail(CustomerDetails customerDetails) {
+		String subject = "UtalkWifi Application Credentials";
+		Map<String, String> rootMap = new HashMap<String, String>();
 
-public static Boolean generateVerificationEmail(CustomerDetails customerDetails){
-	String subject = "UtalkWifi Application Credentials";
-     Map<String, String> rootMap = new HashMap<String, String>();
-     
-     rootMap.put("username",customerDetails.getEmail());
-     rootMap.put("password",customerDetails.getSecret());
-        rootMap.put("date", ""+new Date());        
-        try {
-        	email(customerDetails.getEmail(), subject, rootMap,"email.ftl");
+		rootMap.put("username", customerDetails.getExtension());
+		rootMap.put("password", customerDetails.getSecret());
+		rootMap.put("date", "" + new Date());
+		try {
+			email(customerDetails.getEmail(), subject, rootMap, "email.ftl");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -388,55 +405,59 @@ public static Boolean generateVerificationEmail(CustomerDetails customerDetails)
 			return false;
 		}
 		return true;
-}
+	}
 
+	public static void email(String emailid, String subject, Map<String, String> rootMap, String temp)
+			throws IOException, TemplateException {
 
+		Properties props = new Properties();
 
-public static void email(String emailid,String subject, Map<String, String> rootMap,String temp) throws IOException, TemplateException{
-    
-    Properties props = new Properties();
+		/*
+		 * props.put("mail.smtp.host", "70.182.179.17");
+		 * props.put("mail.smtp.port", "25");
+		 * 
+		 */
 
-/*   props.put("mail.smtp.host", "70.182.179.17");
-   props.put("mail.smtp.port", "25");
+		// * Testing---
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
 
-*/
-
-
-//      * Testing---
-    props.put("mail.smtp.host", "smtp.gmail.com");
-	props.put("mail.smtp.socketFactory.port", "465");
-	props.put("mail.smtp.socketFactory.class",
-			"javax.net.ssl.SSLSocketFactory");
-	props.put("mail.smtp.auth", "true");
-	props.put("mail.smtp.port", "465");
-
-	Session session = Session.getDefaultInstance(props,
-		new javax.mail.Authenticator() {
+		javax.mail.Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(authUsername,authPAss);
+				System.out.println(authUsername + authPAss);
+				return new PasswordAuthentication(authUsername, authPAss);
 			}
 		});
-//Session session = Session.getDefaultInstance(props);
+		/*
+		 * props.put("mail.smtp.host", "smtp.gmail.com");
+		 * props.put("mail.smtp.socketFactory.port", "465");
+		 * props.put("mail.smtp.socketFactory.class",
+		 * "javax.net.ssl.SSLSocketFactory"); props.put("mail.smtp.auth",
+		 * "true"); props.put("mail.smtp.port", "465");
+		 * 
+		 * Session session = Session.getDefaultInstance(props, new
+		 * javax.mail.Authenticator() { protected PasswordAuthentication
+		 * getPasswordAuthentication() { return new
+		 * PasswordAuthentication(authUsername,authPAss); } });
+		 */
+		// Session session = Session.getDefaultInstance(props);
 
-	try {
+		try {
 
-	
-	Message message = new MimeMessage(session);
+			Message message = new MimeMessage(session);
 
-       message.setFrom(new InternetAddress("utalkwifi@support.com","Utalkwifi App support"));
-       message.setRecipients(Message.RecipientType.TO,
-               InternetAddress.parse(emailid));
-    
-       message.setSubject(subject);
+			message.setFrom(new InternetAddress("utalkwifi@support.com", "Utalkwifi App support"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailid));
 
-	
-
+			message.setSubject(subject);
 
 			BodyPart bodypart = new MimeBodyPart();
 
-       Multipart multipart = new MimeMultipart();
-       multipart.addBodyPart(bodypart);
-       message.setContent(multipart);
+			Multipart multipart = new MimeMultipart();
+			multipart.addBodyPart(bodypart);
+			message.setContent(multipart);
 			Configuration configuration = new Configuration();
 			configuration.setTemplateLoader(new ClassTemplateLoader(NexmoServices.class, "/"));
 
@@ -447,50 +468,49 @@ public static void email(String emailid,String subject, Map<String, String> root
 
 			bodypart.setContent(out.toString(), "text/html");
 
-   
 			Transport.send(message);
+			System.out.println("email sent to " + emailid);
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	
-/*	 public static NumberResponse test() {
-	CustomerCheck check=new CustomerCheck(); CustomerCheckDaoInterface
-	  checkdao=JndiLookup.getCustomerCheckdao(); CustomerDaoInterface
-	  customerdao=JndiLookup.getCustomerDetails(); HttpClient httpClient = new
-	  DefaultHttpClient(); Gson gson = new Gson(); HttpGet post = new
-	  HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers");
-	 try { HttpResponse response; post.addHeader("Accept",
-	  "application/json"); post.addHeader("Content-type", "application/json");
-	 post.addHeader("Authorization", "Basic " + new
-	  String(Base64.encodeBase64(
-	  "kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
-	 post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
-	 post.addHeader("X-Auth-Token",
-	 "cd10af7566dc4882999d1452b361d1f827629df8");
-	  response = httpClient.execute(post);
-	  System.out.println(response.toString()); String responseString =
-	  IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-	 ArrayList<CustomerDetails> customerDetails =
-	  gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>() {
-	 }.getType()); System.out.println(customerDetails.size());
-	 ArrayList<CustomerDetails> savecustomerDetails=new
-	 ArrayList<CustomerDetails>(); ArrayList<CustomerDetails>
-	 updatecustomer=new ArrayList<CustomerDetails>(); for (CustomerDetails cus
-	 : customerDetails) { Date d=new Date(cus.getDate_created());
-	 savecustomerDetails.add(cus); check.setDatemodified(d);
-	 check.setLength(customerDetails.size());
-	 
-	//savecustomerDetails.add(cus); }
-	  customerdao.addCustomer(savecustomerDetails);
-	  checkdao.addCustomerCheck(check);
-	  
-	  System.out.println(customerDetails.get(0).getFirst_name());
-	 
-	  } catch (IllegalStateException e) { // TODO Auto-generated catch block
-	  e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
+	/*
+	 * public static NumberResponse test() { CustomerCheck check=new
+	 * CustomerCheck(); CustomerCheckDaoInterface
+	 * checkdao=JndiLookup.getCustomerCheckdao(); CustomerDaoInterface
+	 * customerdao=JndiLookup.getCustomerDetails(); HttpClient httpClient = new
+	 * DefaultHttpClient(); Gson gson = new Gson(); HttpGet post = new
+	 * HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers");
+	 * try { HttpResponse response; post.addHeader("Accept",
+	 * "application/json"); post.addHeader("Content-type", "application/json");
+	 * post.addHeader("Authorization", "Basic " + new
+	 * String(Base64.encodeBase64(
+	 * "kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+	 * post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
+	 * post.addHeader("X-Auth-Token",
+	 * "cd10af7566dc4882999d1452b361d1f827629df8"); response =
+	 * httpClient.execute(post); System.out.println(response.toString()); String
+	 * responseString = IOUtils.toString(response.getEntity().getContent(),
+	 * "UTF-8"); ArrayList<CustomerDetails> customerDetails =
+	 * gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>() {
+	 * }.getType()); System.out.println(customerDetails.size());
+	 * ArrayList<CustomerDetails> savecustomerDetails=new
+	 * ArrayList<CustomerDetails>(); ArrayList<CustomerDetails>
+	 * updatecustomer=new ArrayList<CustomerDetails>(); for (CustomerDetails cus
+	 * : customerDetails) { Date d=new Date(cus.getDate_created());
+	 * savecustomerDetails.add(cus); check.setDatemodified(d);
+	 * check.setLength(customerDetails.size());
+	 * 
+	 * //savecustomerDetails.add(cus); }
+	 * customerdao.addCustomer(savecustomerDetails);
+	 * checkdao.addCustomerCheck(check);
+	 * 
+	 * System.out.println(customerDetails.get(0).getFirst_name());
+	 * 
+	 * } catch (IllegalStateException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
 	 * catch block
 	 * 
 	 * e.printStackTrace(); } return null;
@@ -675,13 +695,13 @@ public static void email(String emailid,String subject, Map<String, String> root
 		// createHook();
 		// testPbx();
 		// buyNumber("US", "16192596886","abc","123");
-		ArrayList<String>  arrPassAndExt = new ArrayList<String>();
+		ArrayList<String> arrPassAndExt = new ArrayList<String>();
 		arrPassAndExt.add("test");
 		arrPassAndExt.add("1234");
 		arrPassAndExt.add("123");
 		arrPassAndExt.add("kirti.mandwade@gmail.com");
-//		generateVerificationEmail(arrPassAndExt);
-		
+		// generateVerificationEmail(arrPassAndExt);
+
 	}
 
 }
