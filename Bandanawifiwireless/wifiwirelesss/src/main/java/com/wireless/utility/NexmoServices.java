@@ -5,30 +5,22 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URLEncoder;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.TimeZone;
-
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import javax.sound.sampled.Line;
-
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -207,6 +199,13 @@ public class NexmoServices implements WifiWirlessConstants {
 
 		HttpClient httpClient = new DefaultHttpClient();
 		Gson gson = new Gson();
+		
+		System.out.println("sending message to "+message.getTo());
+		if(!message.getTo().startsWith("1")){
+			message.setTo("+1"+message.getTo());
+		}
+		System.out.println("sending message to "+message.getTo());
+		System.out.println("sending message from "+message.getFrom());
 
 		MessagesInterface messageinterface = JndiLookup.getMessageDao();
 		HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key=" + apikey + "&api_secret=" + api_secret
@@ -548,6 +547,7 @@ public class NexmoServices implements WifiWirlessConstants {
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailid));
 
 			message.setSubject(subject);
+			
 
 			BodyPart bodypart = new MimeBodyPart();
 

@@ -12,7 +12,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
-
 import org.jboss.resteasy.annotations.ResponseObject;
 
 import com.wifiwireless.constant.JndiLookup;
@@ -27,6 +26,7 @@ import com.wireless.bean.NumberResponse;
 import com.wireless.bean.SendMessage;
 import com.wireless.bean.SendMessageResponse;
 import com.wireless.utility.NexmoServices;
+import com.wireless.utility.WifiWirlessConstants;
 
 @Path("/")
 public class Webservices {
@@ -179,14 +179,17 @@ public class Webservices {
 	public Response getnew(@QueryParam("msisdn") String msisdn, @QueryParam("to") String to, @QueryParam("messageId") String messageId, @QueryParam("text") String text, @QueryParam("type") String type, @QueryParam("timestamp") String timestamp) {
 		System.out.println("Reply received------------------------" + text);
 		
-		
+		System.out.println("Reply came from------------------------" +msisdn);
+	
+
 		
 		NumberDetailsInterface detailsInterface = JndiLookup.getNumberDetailsDao();
 		NumberDetails numberDetails=detailsInterface.getNumberDetailsByMsisdn(to);
+		text = "You have received a reply from "+msisdn +"\n "+text;
 		if(numberDetails.getPhnno()!=null){
 		System.out.println("Reply Sending to------------------------"+numberDetails.getPhnno());
 		SendMessage message = new SendMessage();
-		message.setFrom(msisdn);
+		message.setFrom(WifiWirlessConstants.fromAddress);
 		message.setTo(numberDetails.getPhnno());
 		message.setBody(text);
 		System.out.println(message.toString());
