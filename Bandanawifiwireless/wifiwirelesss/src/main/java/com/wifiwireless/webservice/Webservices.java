@@ -38,6 +38,7 @@ import com.wireless.bean.SendMessageResponse;
 import com.wireless.bean.UnreadMessage;
 import com.wireless.bean.UnreadSms;
 import com.wireless.utility.NexmoServices;
+import com.wireless.utility.PushNotificationService;
 import com.wireless.utility.WifiWirlessConstants;
 
 @Path("/")
@@ -204,6 +205,7 @@ public class Webservices {
 		messages.setPassword(numberDetails.getPassword());
 		JndiLookup.getMessageDao().addMesages(messages);
 		
+		PushNotificationService.pushNotification(numberDetails.getUsername());
 		
 		/*
 		 * NumberDetailsInterface detailsInterface =
@@ -251,11 +253,16 @@ public class Webservices {
 		NumberDetails details = JndiLookup.getNumberDetailsDao().getNumberDetails(fetchMessage.getFrom(),
 				fetchMessage.getPassword());
 		ArrayList<Messages> arrayReply = JndiLookup.getMessageDao().getMessageByMsisdn(details.getMsisdn());
+		
+		
 		System.out.println("---------------fetching sms-------------");
 		System.out.println("---------------fetching sms-------------");
 
 		System.out.println("---------------fetching sms-------------");
 
+		
+		
+		
 		if (arrayReply.size() > 0) {
 			for (Messages reply : arrayReply) {
 				UnreadMessage message = new UnreadMessage();
