@@ -1,6 +1,7 @@
 package com.wifiwireless.dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -56,6 +57,37 @@ public class MessagesDao extends WifiDao implements MessagesInterface,Serializab
 
 			em.close();
 		}
+
+	}
+	public ArrayList<Messages> getMessageByMsisdn(String destination) {
+		em = getEm();
+		ArrayList<Messages> replies=new ArrayList<Messages>();
+		try {
+
+			String qlString = "SELECT reply FROM Messages reply  "
+					+ "WHERE  reply.destination=:destination";
+
+			TypedQuery<Messages> query = em.createQuery(qlString,
+					Messages.class);
+
+			query.setParameter("destination", destination);
+			if (query.getResultList().size() > 0){
+				
+				replies=(ArrayList<Messages>)query.getResultList();
+				System.out.println("replies found "+replies.size());
+				
+			// if(query.getResultList()!=null && query.getResultList().size()>0)
+			}
+			
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return replies;
 
 	}
 	

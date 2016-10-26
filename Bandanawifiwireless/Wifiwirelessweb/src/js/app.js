@@ -1089,7 +1089,7 @@ app
 
 							};
 							$scope.buyNumber = function() {debugger;
-					        $scope.buynumber.username=$scope.formData.Username;
+					        $scope.buynumber.username=$scope.formData.username;
 					        $scope.buynumber.password= $scope.formData.password;
 					        $scope.buynumber.country=$scope.response.country;
 					         $scope.buynumber.msisdn=$scope.response.msisdn;

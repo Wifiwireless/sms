@@ -64,7 +64,7 @@ public class NexmoServices implements WifiWirlessConstants {
 		HttpClient httpClient = new DefaultHttpClient();
 		Gson gson = new Gson();
 		HttpGet get = new HttpGet("https://rest.nexmo.com/number/search?api_key=" + apikey + "&api_secret=" + api_secret
-				+ "&country=" + country + "&pattern=" + pattern + "&search_pattern=0&features=sms,voice&size=1");
+				+ "&country=" + country + "&pattern=" + pattern + "&search_pattern=0&features=sms,voice&size=3");
 		try {
 			HttpResponse response;
 
@@ -79,9 +79,14 @@ public class NexmoServices implements WifiWirlessConstants {
 
 				AcquireResponse numberResponse = gson.fromJson(responseString, AcquireResponse.class);
 				if (numberResponse.getNumbers() != null && numberResponse.getNumbers().size() > 0) {
+if(numberResponse.getNumbers().size() > 1){
+	return numberResponse.getNumbers().get(1);
 
+}else{
 					return numberResponse.getNumbers().get(0);
-				}
+		
+}
+}
 
 			} else {
 				System.out.println("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
@@ -118,6 +123,9 @@ public class NexmoServices implements WifiWirlessConstants {
 			post.setHeader("Accept", "application/json");
 
 			response = httpClient.execute(post);
+System.out.println("response  code"+response.getStatusLine().getStatusCode());
+String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+System.out.println(responseString);
 
 			if (response.getStatusLine().getStatusCode() == 200) {
 
@@ -143,7 +151,7 @@ public class NexmoServices implements WifiWirlessConstants {
 			} else {
 
 				BuyNumberResponse byNumResp = new BuyNumberResponse();
-				byNumResp.setError("you supplied incorrect parameters");
+				byNumResp.setError("Something went wrong.. Cant order the number Please try again later.");
 
 				return byNumResp;
 
@@ -339,7 +347,8 @@ public class NexmoServices implements WifiWirlessConstants {
 	public static void callDid(String extension,String did) {
 
 		boolean flag = false;
-		int di=Integer.parseInt(did);
+		
+		Long di=Long.parseLong(did);
 		  HttpClient httpClient = new DefaultHttpClient();
 		  Gson gson = new Gson();
 //		  CustomerCheck checkExt = checkDaoInterface.getData();
@@ -862,13 +871,14 @@ public class NexmoServices implements WifiWirlessConstants {
 	}
 
 	public static void main(String[] args) {
-		test();
+//		test();
 //		updateNumber("US","16192688017","19494634536");
 //		testMessage();		// oAuth();
 		// oAuth();
 		// createHook();
 		// testPbx();
-		// buyNumber("US", "16192596886","abc","123");
+//System.out.println(acquireNumber("US", "1619").getMsisdn());
+		 buyNumber("US", "16192688026","10000193","F4YDTT4Z","3425452345");
 //		ArrayList<String> arrPassAndExt = new ArrayList<String>();
 		/*
 		 * arrPassAndExt.add("test"); arrPassAndExt.add("1234");
