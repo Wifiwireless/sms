@@ -31,14 +31,28 @@ public class PushNotificationService {
 		CustomerDaoInterface customerDao = JndiLookup.getCustomerDetails();
 		CustomerDetails customerDetails = customerDao.getCustomerDetailsByUsername(username);
 		
-	//	if(customerDetails !=null){
+		if(customerDetails !=null){
 			List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-			urlParameters.add(new BasicNameValuePair("AppId", customerDetails.getAppid()));
-			urlParameters.add(new BasicNameValuePair("DeviceToken",customerDetails.getToken()));
-			urlParameters.add(new BasicNameValuePair("Selector", customerDetails.getSelector()));
-			urlParameters.add(new BasicNameValuePair("verb", "NotifyTextMessage"));
-			urlParameters.add(new BasicNameValuePair("username", customerDetails.getExtension()));
-			urlParameters.add(new BasicNameValuePair("password", customerDetails.getSecret()));
+			
+			if("utalkwifi.poweredbywfwl.android".equalsIgnoreCase(customerDetails.getAppid())){
+				//Android
+				urlParameters.add(new BasicNameValuePair("AppId", customerDetails.getAppid()));
+				urlParameters.add(new BasicNameValuePair("DeviceToken",customerDetails.getToken()));
+				urlParameters.add(new BasicNameValuePair("Selector", customerDetails.getSelector()));
+				urlParameters.add(new BasicNameValuePair("verb", "NotifyTextMessage"));
+				urlParameters.add(new BasicNameValuePair("username", customerDetails.getExtension()));
+				urlParameters.add(new BasicNameValuePair("password", customerDetails.getSecret()));
+				
+			}else if("utalkwifi.poweredbywfwl.ios.pushkit".equalsIgnoreCase(customerDetails.getAppid())){
+				//Iphone
+				urlParameters.add(new BasicNameValuePair("AppId", customerDetails.getAppid()));
+				urlParameters.add(new BasicNameValuePair("DeviceToken",customerDetails.getToken()));
+				urlParameters.add(new BasicNameValuePair("Selector", customerDetails.getSelector()));
+				urlParameters.add(new BasicNameValuePair("verb", "NotifyTextMessage"));
+				urlParameters.add(new BasicNameValuePair("Badge", "0"));
+			}
+			
+			
 	
 
 			HttpClient httpClient = new DefaultHttpClient();
@@ -60,9 +74,9 @@ public class PushNotificationService {
 				e.printStackTrace();
 			}
 
-		/*}else{
+		}else{
 			
-		}*/
+		}
 		
 	}
 
