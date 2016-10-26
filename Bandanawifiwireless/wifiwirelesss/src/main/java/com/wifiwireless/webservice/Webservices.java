@@ -1,5 +1,6 @@
 package com.wifiwireless.webservice;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -145,7 +146,6 @@ public class Webservices {
 			SendMessageResponse messageResponse = new SendMessageResponse("Please provide all required parameters");
 			return messageResponse;
 		}
-
 	}
 
 	@GET
@@ -203,6 +203,7 @@ public class Webservices {
 
 		messages.setUsername(numberDetails.getUsername());
 		messages.setPassword(numberDetails.getPassword());
+		messages.setReadOut(false);
 		JndiLookup.getMessageDao().addMesages(messages);
 		
 		PushNotificationService.pushNotification(numberDetails.getUsername());
@@ -267,16 +268,19 @@ public class Webservices {
 			for (Messages reply : arrayReply) {
 				UnreadMessage message = new UnreadMessage();
 				message.setSender(reply.getSource());
-				message.setSending_date("" + reply.getMessagetime());
+				message.setSending_date("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
+				        .format(reply.getMessagetime()));
 				message.setSms_id(reply.getMessage_id());
 				message.setSms_text(reply.getText());
 				arrayList.add(message);
-
+				reply.setReadOut(true);
+				JndiLookup.getMessageDao().updateMesages(reply); 
 			}
 		}
 
 		sms.setItem(arrayList);
-		fetchMessageResponse.setDate("" + new Date());
+		fetchMessageResponse.setDate("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
+		        .format(new Date()));
 		fetchMessageResponse.setUnread_smss(sms);
 
 		return fetchMessageResponse;

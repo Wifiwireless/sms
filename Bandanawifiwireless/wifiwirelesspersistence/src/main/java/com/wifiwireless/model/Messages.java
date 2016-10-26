@@ -52,6 +52,8 @@ public class Messages extends WifiBase implements Serializable{
 	private String password;
 	@Column(name = "messagetime")
 	private Date messagetime;
+	@Column(name="readOut")
+	private boolean readOut;
 	
 	public Date getMessagetime() {
 		return messagetime;
@@ -119,6 +121,12 @@ public class Messages extends WifiBase implements Serializable{
 	}
 	public void setNetwork(String network) {
 		this.network = network;
+	}
+	public boolean isReadOut() {
+		return readOut;
+	}
+	public void setReadOut(boolean readOut) {
+		this.readOut = readOut;
 	}
 	
 	

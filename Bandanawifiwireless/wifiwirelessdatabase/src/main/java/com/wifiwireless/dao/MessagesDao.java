@@ -65,12 +65,14 @@ public class MessagesDao extends WifiDao implements MessagesInterface,Serializab
 		try {
 
 			String qlString = "SELECT reply FROM Messages reply  "
-					+ "WHERE  reply.destination=:destination";
+					+ "WHERE  reply.destination=:destination AND reply.readOut =:readOut";
 
 			TypedQuery<Messages> query = em.createQuery(qlString,
 					Messages.class);
 
 			query.setParameter("destination", destination);
+			query.setParameter("readOut", false);
+			
 			if (query.getResultList().size() > 0){
 				
 				replies=(ArrayList<Messages>)query.getResultList();
@@ -88,6 +90,27 @@ public class MessagesDao extends WifiDao implements MessagesInterface,Serializab
 			em.close();
 		}
 		return replies;
+
+	}
+	public void updateMesages(Messages messages) {
+		// TODO Auto-generated method stub
+		em = getEm();
+
+		try {
+			
+			em.getTransaction().begin();
+			em.merge(messages);
+			em.getTransaction().commit();
+		
+		} catch (Exception exception) {
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+			//LOG.error(exception.getMessage());
+
+		} finally {
+
+			em.close();
+		}
 
 	}
 	
