@@ -203,6 +203,8 @@ public class Webservices {
 		messages.setUsername(numberDetails.getUsername());
 		messages.setPassword(numberDetails.getPassword());
 		JndiLookup.getMessageDao().addMesages(messages);
+		
+		
 		/*
 		 * NumberDetailsInterface detailsInterface =
 		 * JndiLookup.getNumberDetailsDao(); NumberDetails
