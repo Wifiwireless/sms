@@ -1,4 +1,4 @@
-package com.wireless.utility;
+package com.wireless.job;
 
 import java.text.ParseException;
 
@@ -6,7 +6,9 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-public class CustomerUpdate implements Job{
+import com.wireless.utility.NexmoServices;
+
+public class CustomerUpdateJob implements Job{
 
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 	

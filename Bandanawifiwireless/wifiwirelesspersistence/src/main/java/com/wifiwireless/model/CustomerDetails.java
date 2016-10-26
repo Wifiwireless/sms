@@ -54,6 +54,15 @@ public class CustomerDetails implements Serializable{
 	@Column(name = "did")
 	private String did;
 	
+	@Column(columnDefinition = "TEXT")
+	private String token;
+	
+	@Column(columnDefinition = "TEXT")
+	private String appid;
+	
+	@Column(columnDefinition = "TEXT")
+	private String selector;
+	
 	@Column(name = "ispbxAccountCreated")
 	private Boolean ispbxAccountCreated ;
 	public String getCompany() {
@@ -189,6 +198,36 @@ public class CustomerDetails implements Serializable{
 	}
 	public void setAcceptsmarketing(String acceptsmarketing) {
 		this.acceptsmarketing = acceptsmarketing;
+	}
+
+
+	public String getToken() {
+		return token;
+	}
+
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+
+	public String getAppid() {
+		return appid;
+	}
+
+
+	public void setAppid(String appid) {
+		this.appid = appid;
+	}
+
+
+	public String getSelector() {
+		return selector;
+	}
+
+
+	public void setSelector(String selector) {
+		this.selector = selector;
 	}
 	
 	

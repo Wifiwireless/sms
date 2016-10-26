@@ -12,11 +12,17 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.jboss.resteasy.annotations.ResponseObject;
 
+import com.sun.mail.imap.protocol.Status;
 import com.wifiwireless.constant.JndiLookup;
+import com.wifiwireless.interfaces.CustomerDaoInterface;
 import com.wifiwireless.interfaces.MessageRecieptsInterface;
 import com.wifiwireless.interfaces.NumberDetailsInterface;
+import com.wifiwireless.model.CustomerDetails;
 import com.wifiwireless.model.MessageReciepts;
 import com.wifiwireless.model.Messages;
 import com.wifiwireless.model.NumberDetails;
@@ -26,6 +32,7 @@ import com.wireless.bean.BuyNumberResponse;
 import com.wireless.bean.FetchMessage;
 import com.wireless.bean.FetchMessageResponse;
 import com.wireless.bean.NumberResponse;
+import com.wireless.bean.PushToken;
 import com.wireless.bean.SendMessage;
 import com.wireless.bean.SendMessageResponse;
 import com.wireless.bean.UnreadMessage;
@@ -187,8 +194,7 @@ public class Webservices {
 
 		System.out.println("Reply came from------------------------" + msisdn);
 
-		NumberDetailsInterface detailsInterface =
-				  JndiLookup.getNumberDetailsDao();
+		NumberDetailsInterface detailsInterface = JndiLookup.getNumberDetailsDao();
 		NumberDetails numberDetails = detailsInterface.getNumberDetailsByMsisdn(to);
 		Messages messages = new Messages(msisdn, to, text);
 		messages.setMessagetime(new Date());
@@ -202,8 +208,8 @@ public class Webservices {
 		 * JndiLookup.getNumberDetailsDao(); NumberDetails
 		 * numberDetails=detailsInterface.getNumberDetailsByMsisdn(to); text =
 		 * "You have received a reply from "+msisdn +"\n "+text;
-		 * if(numberDetails.getPhnno()!=null){
-		 * System.out.println("Reply Sending to------------------------"
+		 * if(numberDetails.getPhnno()!=null){ System.out.println(
+		 * "Reply Sending to------------------------"
 		 * +numberDetails.getPhnno()); SendMessage message = new SendMessage();
 		 * message.setFrom(WifiWirlessConstants.fromAddress);
 		 * message.setTo(numberDetails.getPhnno()); message.setBody(text);
@@ -240,32 +246,56 @@ public class Webservices {
 		ArrayList<UnreadMessage> arrayList = new ArrayList<UnreadMessage>();
 		UnreadSms sms = new UnreadSms();
 
-		
-		NumberDetails details = JndiLookup.getNumberDetailsDao().getNumberDetails(fetchMessage.getFrom(), fetchMessage.getPassword());
+		NumberDetails details = JndiLookup.getNumberDetailsDao().getNumberDetails(fetchMessage.getFrom(),
+				fetchMessage.getPassword());
 		ArrayList<Messages> arrayReply = JndiLookup.getMessageDao().getMessageByMsisdn(details.getMsisdn());
 		System.out.println("---------------fetching sms-------------");
 		System.out.println("---------------fetching sms-------------");
 
 		System.out.println("---------------fetching sms-------------");
 
-if(arrayReply.size()>0){
-for(Messages reply:arrayReply){
-		UnreadMessage message = new UnreadMessage();
-		message.setSender(reply.getSource());
-		message.setSending_date(""+reply.getMessagetime());
-		message.setSms_id(reply.getMessage_id());
-		message.setSms_text(reply.getText());
-		arrayList.add(message);
-	
-}
-}
+		if (arrayReply.size() > 0) {
+			for (Messages reply : arrayReply) {
+				UnreadMessage message = new UnreadMessage();
+				message.setSender(reply.getSource());
+				message.setSending_date("" + reply.getMessagetime());
+				message.setSms_id(reply.getMessage_id());
+				message.setSms_text(reply.getText());
+				arrayList.add(message);
 
-sms.setItem(arrayList);
-fetchMessageResponse.setDate("" + new Date());
-fetchMessageResponse.setUnread_smss(sms);
+			}
+		}
+
+		sms.setItem(arrayList);
+		fetchMessageResponse.setDate("" + new Date());
+		fetchMessageResponse.setUnread_smss(sms);
 
 		return fetchMessageResponse;
 
+	}
+
+	@POST
+	@Path("push_token")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response pushTokenReorter(PushToken pushtoken) {
+
+		System.out.println("Push Token :" + pushtoken.getUsername());
+
+		CustomerDaoInterface customerDao = JndiLookup.getCustomerDetails();
+		CustomerDetails customerDetails = customerDao.getCustomerDetailsByUsername(pushtoken.getUsername());
+
+		if (customerDetails != null) {
+			customerDetails.setAppid(pushtoken.getAppid());
+			customerDetails.setToken(pushtoken.getToken());
+			customerDetails.setSelector(pushtoken.getSelector());
+
+			customerDao.updateCustomer(customerDetails);
+		} else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+
+		return Response.status(Response.Status.OK).build();
 	}
 
 }
