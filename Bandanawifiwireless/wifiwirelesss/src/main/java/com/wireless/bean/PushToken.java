@@ -4,7 +4,7 @@ public class PushToken {
 
 	private String username;
 	private String token;
-	private String appid;
+	private String appId;
 	private String selector;
 	
 	
@@ -20,17 +20,18 @@ public class PushToken {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public String getAppid() {
-		return appid;
-	}
-	public void setAppid(String appid) {
-		this.appid = appid;
-	}
+
 	public String getSelector() {
 		return selector;
 	}
 	public void setSelector(String selector) {
 		this.selector = selector;
+	}
+	public String getAppId() {
+		return appId;
+	}
+	public void setAppId(String appId) {
+		this.appId = appId;
 	}
 	
 	

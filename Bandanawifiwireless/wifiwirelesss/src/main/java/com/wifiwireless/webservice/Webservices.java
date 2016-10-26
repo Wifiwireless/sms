@@ -283,12 +283,13 @@ public class Webservices {
 	public Response pushTokenReorter(PushToken pushtoken) {
 
 		System.out.println("Push Token :" + pushtoken.getUsername());
+		System.out.println("Push Token :" + pushtoken.getAppId() );
 
 		CustomerDaoInterface customerDao = JndiLookup.getCustomerDetails();
 		CustomerDetails customerDetails = customerDao.getCustomerDetailsByUsername(pushtoken.getUsername());
 
 		if (customerDetails != null) {
-			customerDetails.setAppid(pushtoken.getAppid());
+			customerDetails.setAppid(pushtoken.getAppId());
 			customerDetails.setToken(pushtoken.getToken());
 			customerDetails.setSelector(pushtoken.getSelector());
 
