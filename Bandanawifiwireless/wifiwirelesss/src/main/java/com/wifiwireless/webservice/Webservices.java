@@ -268,8 +268,12 @@ public class Webservices {
 			for (Messages reply : arrayReply) {
 				UnreadMessage message = new UnreadMessage();
 				message.setSender(reply.getSource());
-				message.setSending_date("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
-				        .format(reply.getMessagetime()));
+				
+				if(reply.getMessagetime() != null){
+					message.setSending_date("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
+					        .format(reply.getMessagetime()));
+				}
+				
 				message.setSms_id(reply.getMessage_id());
 				message.setSms_text(reply.getText());
 				arrayList.add(message);
