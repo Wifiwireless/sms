@@ -283,7 +283,7 @@ public class Webservices {
 		}
 
 		sms.setItem(arrayList);
-		fetchMessageResponse.setDate("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
+		fetchMessageResponse.setDate("" +new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
 		        .format(new Date()));
 		fetchMessageResponse.setUnread_smss(sms);
 
