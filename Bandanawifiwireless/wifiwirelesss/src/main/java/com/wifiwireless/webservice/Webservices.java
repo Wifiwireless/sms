@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.Consumes;
@@ -243,22 +244,32 @@ public class Webservices {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void sendEmailTest() {
 		System.out.println("sending email------------------------");
-		ArrayList<String> arrPassAndUsernme = new ArrayList<String>();
-		Map<String, String> rootMap = new HashMap<String, String>();
+	
+		CustomerDaoInterface customerDao = JndiLookup.getCustomerDetails();
+		List<CustomerDetails> customerDetails = customerDao.getAllCustomers();
+		String subject = "UtalkWifi Application Credentials";
+		if(customerDetails != null){
+			for (CustomerDetails customerDetail : customerDetails) {
+				Map<String, String> rootMap = new HashMap<String, String>();
 
-		rootMap.put("username", "test");
-		rootMap.put("password", "1234");
-		rootMap.put("date", "" + new Date());
-
-		try {
-			Mail.email("kirti.mandwade@gmail.com", "subject123", rootMap, "email.ftl");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				rootMap.put("username", customerDetail.getExtension());
+				rootMap.put("password", customerDetail.getSecret());
+				rootMap.put("date", "" + new Date());
+				try {
+					Mail.email(customerDetail.getEmail(), subject, rootMap, "email.ftl");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (TemplateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
+		
+		
+
+		
 	}
 
 	@POST
