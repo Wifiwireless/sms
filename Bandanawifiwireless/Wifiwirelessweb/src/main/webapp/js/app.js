@@ -1061,7 +1061,8 @@ app
 										$('#form').hide();
 										$scope.smscArr=data;
 										
-											if($scope.smscArr.error='false'){$('#successpanel').show();
+											if($scope.smscArr.error==''){
+												$('#successpanel').show();
 											
 										}
 											else

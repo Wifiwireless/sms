@@ -14,6 +14,11 @@ public class UnreadSms implements Serializable  {
 	public void setItem(ArrayList<UnreadMessage> item) {
 		this.item = item;
 	}
+
+	@Override
+	public String toString() {
+		return "UnreadSms [item=" + item + "]";
+	}
 	
 	
 }

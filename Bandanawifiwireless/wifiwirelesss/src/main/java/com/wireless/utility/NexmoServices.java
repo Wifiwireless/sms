@@ -86,6 +86,13 @@ if(numberResponse.getNumbers().size() > 1){
 					return numberResponse.getNumbers().get(0);
 		
 }
+}else {
+	NumberResponse response2 =  new NumberResponse();
+	
+	response2.setError("Invalid pattern. Nexmo does not allow that pattern for selected country");
+	
+
+	return response2;
 }
 
 			} else {
@@ -123,9 +130,9 @@ if(numberResponse.getNumbers().size() > 1){
 			post.setHeader("Accept", "application/json");
 
 			response = httpClient.execute(post);
-System.out.println("response  code"+response.getStatusLine().getStatusCode());
-String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-System.out.println(responseString);
+			System.out.println("response  code" + response.getStatusLine().getStatusCode());
+			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+			System.out.println(responseString);
 
 			if (response.getStatusLine().getStatusCode() == 200) {
 
@@ -135,7 +142,7 @@ System.out.println(responseString);
 				BuyNumberResponse byNumResp = new BuyNumberResponse();
 				updateNumber(country, msisdn, phoneNumber);
 				callDid(username, msisdn);
-				
+
 				byNumResp.setSuccess("your purchase is successful");
 				byNumResp.setError("false");
 				return byNumResp;
@@ -209,9 +216,12 @@ System.out.println(responseString);
 		Gson gson = new Gson();
 		
 		System.out.println("sending message to "+message.getTo());
-		if(!message.getTo().startsWith("1")){
+	/*	if(!message.getTo().startsWith("1")){
 			message.setTo("+1"+message.getTo());
-		}
+		}*/
+		
+		message.setTo(CommonUtility.checkMsisdn(message.getTo().trim()));
+		
 		System.out.println("sending message to "+message.getTo());
 		System.out.println("sending message from "+message.getFrom());
 
@@ -233,10 +243,10 @@ System.out.println(responseString);
 				SendMessageResponse msgResponse = gson.fromJson(responseString, SendMessageResponse.class);
 				if (msgResponse.getMessages().size() > 0 && msgResponse.getMessages() != null) {
 					Messages messagesdatabase = new Messages(msgResponse.getMessages().get(0).getStatus(),
-							msgResponse.getMessages().get(0).getMessageId(),
-							msgResponse.getMessages().get(0).getRemainingBalance(),
-							msgResponse.getMessages().get(0).getMessagePrice(),
-							msgResponse.getMessages().get(0).getNetwork());
+					msgResponse.getMessages().get(0).getMessageId(),
+					msgResponse.getMessages().get(0).getRemainingBalance(),
+					msgResponse.getMessages().get(0).getMessagePrice(),
+					msgResponse.getMessages().get(0).getNetwork());
 					messagesdatabase.setUsername(message.getFrom());
 					messagesdatabase.setPassword(message.getPassword());
 					messagesdatabase.setSource(message.getFrom());
@@ -352,7 +362,7 @@ System.out.println(responseString);
 		  HttpClient httpClient = new DefaultHttpClient();
 		  Gson gson = new Gson();
 //		  CustomerCheck checkExt = checkDaoInterface.getData();
-		  while(!flag){
+
 		  HttpGet post = new HttpGet(
 		    "http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.did.add&server=&trunk=78&did="+di+"&dest_type=0&destination="+extension+"&disabled=0");
 		  
@@ -364,12 +374,11 @@ System.out.println(responseString);
 				System.out.println(response.toString());
 				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 				System.out.println(responseString);
-
 				
 		  }catch(Exception e){
 			  System.out.println(e);
 		  }
-		  }
+		  
 
 		 }
 	public static NumberResponse test() {
@@ -552,7 +561,7 @@ System.out.println(responseString);
 
 			Message message = new MimeMessage(session);
 
-			message.setFrom(new InternetAddress("utalkwifi@support.com", "Utalkwifi App support"));
+			message.setFrom(new InternetAddress("info@utalkwifi.com", "Utalkwifi App support"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailid));
 
 			message.setSubject(subject);

@@ -9,8 +9,6 @@ public class FetchMessage implements Serializable{
 // https://rest.nexmo.com/sms/json?api_key=abcdefg&api_secret=12345678&to=14153193699&from=16192596844&text=hello+from+Nexmo
 
   String from;
-
-  
   String password;
   String last_id;
   String last_ts;

@@ -64,6 +64,7 @@
             Your credentials
             </b></br>Username:${username}</br>
             Password: ${password}</b></li>
+            You can order virtual number from the browser tab.
         </ul>
       
         </p>

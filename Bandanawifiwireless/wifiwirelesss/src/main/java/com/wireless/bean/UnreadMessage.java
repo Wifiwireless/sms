@@ -32,5 +32,10 @@ public class UnreadMessage implements Serializable {
 	public void setSms_text(String sms_text) {
 		this.sms_text = sms_text;
 	}
+	@Override
+	public String toString() {
+		return "UnreadMessage [sms_id=" + sms_id + ", sending_date=" + sending_date + ", sender=" + sender
+				+ ", sms_text=" + sms_text + "]";
+	}
 	
 }

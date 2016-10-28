@@ -1,8 +1,11 @@
 package com.wifiwireless.webservice;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -41,6 +44,8 @@ import com.wireless.bean.UnreadSms;
 import com.wireless.utility.NexmoServices;
 import com.wireless.utility.PushNotificationService;
 import com.wireless.utility.WifiWirlessConstants;
+
+import freemarker.template.TemplateException;
 
 @Path("/")
 public class Webservices {
@@ -84,8 +89,9 @@ public class Webservices {
 				// Save to database
 				// number.setCountry(acquireNumber.getCountry());
 				numberResponse = NexmoServices.acquireNumber(acquireNumber.getCountry(), acquireNumber.getPattern());
+				
 				System.out.println("number response	" + numberResponse.getMsisdn());
-				// save to db
+				if(numberResponse.getMsisdn()!=null){// save to db
 				number.setUsername(numberss.getUsername());
 				number.setPassword(numberss.getPassword());
 				number.setId(numberss.getId());
@@ -95,6 +101,9 @@ public class Webservices {
 				numberInterface.mergeNumber(number);
 				numberResponse.setError("false");
 				return numberResponse;
+				}else{
+					return numberResponse = new NumberResponse("Invalid pattern. That pattern does not exist for selected country. Please try other pattern");
+				}
 			} else {
 				return numberResponse = new NumberResponse("Please provide correct username and Password");
 			}
@@ -226,66 +235,80 @@ public class Webservices {
 
 	}
 
-	/*
-	 * @POST
-	 * 
-	 * @Path("sendEmailTest")
-	 * 
-	 * @Consumes(MediaType.APPLICATION_JSON) public void sendEmailTest() {
-	 * System.out.println("sending email------------------------");
-	 * ArrayList<String> arrPassAndUsernme = new ArrayList<String>();
-	 * arrPassAndUsernme.add("123"); arrPassAndUsernme.add("123");
-	 * arrPassAndUsernme.add("123");
-	 * arrPassAndUsernme.add("kirti2091@gmail.com");
-	 * NexmoServices.generateVerificationEmail(arrPassAndUsernme);
-	 * 
-	 * }
-	 */
+	
+	  @POST
+	   @Path("sendEmailTest")
+	    @Consumes(MediaType.APPLICATION_JSON) public void sendEmailTest() {
+	  System.out.println("sending email------------------------");
+	  ArrayList<String> arrPassAndUsernme = new ArrayList<String>();
+		Map<String, String> rootMap = new HashMap<String, String>();
+
+		rootMap.put("username", "test");
+		rootMap.put("password","1234");
+		rootMap.put("date", "" + new Date());
+		
+
+	  try {
+		NexmoServices.email("kirti.mandwade@gmail.com", "subject123", rootMap, "email.ftl");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (TemplateException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	  }
+	 
 
 	@POST
-	@Path("fetch_message")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public FetchMessageResponse fetchmessage(FetchMessage fetchMessage) {
-		FetchMessageResponse fetchMessageResponse = new FetchMessageResponse();
-		ArrayList<UnreadMessage> arrayList = new ArrayList<UnreadMessage>();
-		UnreadSms sms = new UnreadSms();
+	 @Path("fetch_message")
+	 @Consumes(MediaType.APPLICATION_JSON)
+	 @Produces(MediaType.APPLICATION_JSON)
+	 public FetchMessageResponse fetchmessage(FetchMessage fetchMessage) {
+	  FetchMessageResponse fetchMessageResponse = new FetchMessageResponse();
+	  ArrayList<UnreadMessage> arrayList = new ArrayList<UnreadMessage>();
+	  UnreadSms sms = new UnreadSms();
 
-		NumberDetails details = JndiLookup.getNumberDetailsDao().getNumberDetails(fetchMessage.getFrom(),
-				fetchMessage.getPassword());
-		ArrayList<Messages> arrayReply = JndiLookup.getMessageDao().getMessageByMsisdn(details.getMsisdn());
-		
-		
-		System.out.println("---------------fetching sms-------------");
-		System.out.println("---------------fetching sms-------------");
+	  NumberDetails details = JndiLookup.getNumberDetailsDao().getNumberDetails(fetchMessage.getFrom(),
+	    fetchMessage.getPassword());
+	  ArrayList<Messages> arrayReply = JndiLookup.getMessageDao().getMessageByMsisdn(details.getMsisdn());
+	  
+	  
+	  System.out.println("---------------fetching sms-------------");
+	  System.out.println("---------------fetching sms-------------");
 
-		System.out.println("---------------fetching sms-------------");
+	  System.out.println("---------------fetching sms-------------");
 
-		
-		
-		
-		if (arrayReply.size() > 0) {
-			for (Messages reply : arrayReply) {
-				UnreadMessage message = new UnreadMessage();
-				message.setSender(reply.getSource());
-				message.setSending_date("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
-				        .format(reply.getMessagetime()));
-				message.setSms_id(reply.getMessage_id());
-				message.setSms_text(reply.getText());
-				arrayList.add(message);
-				reply.setReadOut(true);
-				JndiLookup.getMessageDao().updateMesages(reply); 
-			}
-		}
+	  
+	  
+	  
+	  if (arrayReply.size() > 0) {
+	   for (Messages reply : arrayReply) {
+	    UnreadMessage message = new UnreadMessage();
+	    message.setSender(reply.getSource());
+	    System.out.println("checking reply time" );
+	    System.out.println("checking reply time" +reply.getMessagetime());
+	    
+	    if(reply.getMessagetime() != null){
+	     message.setSending_date("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
+	             .format(reply.getMessagetime()));
+	    }
+	    
+	    message.setSms_id(reply.getMessage_id());
+	    message.setSms_text(reply.getText());
+	    arrayList.add(message);
+	    reply.setReadOut(true);
+	    JndiLookup.getMessageDao().updateMesages(reply); 
+	   }
+	  }
 
-		sms.setItem(arrayList);
-		fetchMessageResponse.setDate("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
-		        .format(new Date()));
-		fetchMessageResponse.setUnread_smss(sms);
+	  sms.setItem(arrayList);
+	  fetchMessageResponse.setDate(""+new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(new Date()));
+	  fetchMessageResponse.setUnread_smss(sms);
+System.out.println(fetchMessageResponse.toString());
+	  return fetchMessageResponse;
 
-		return fetchMessageResponse;
-
-	}
+	 }
 
 	@POST
 	@Path("push_token")
