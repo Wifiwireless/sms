@@ -102,7 +102,7 @@ public class Webservices {
 					number.setMsisdn(numberResponse.getMsisdn());
 					number.setPaidflag(false);
 					numberInterface.mergeNumber(number);
-					numberResponse.setError("false");
+					numberResponse.setError("");
 					return numberResponse;
 				} else {
 					return numberResponse = new NumberResponse(

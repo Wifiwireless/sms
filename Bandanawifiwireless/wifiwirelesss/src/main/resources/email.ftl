@@ -62,8 +62,8 @@
            
             Your Account Is Activated Now Please Login with the following Credentials In Utalk Mobile App
             Your credentials are:</br>
-          <li> <b>  </br>Username:${username}</br></li>
-            <li>Password: ${password}</b></li></br>
+          <li> <b>  </br>Username:${username}</br></b></li>
+            <li><b>Password: ${password}</b></li></br>
             You can order virtual number from the browser tab in mobile application by selecting MSISDN pattern and country after that you can start 
 			texting and calling.
         </ul>
