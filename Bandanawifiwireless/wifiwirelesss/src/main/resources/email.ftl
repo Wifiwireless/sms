@@ -61,9 +61,9 @@
         <ul >
             <li ><b>
             Your Account Is Activated Now Please Login with the following Credentials In Utalk Mobile App
-            Your credentials
-            </b></br>Username:${username}</br>
-            Password: ${password}</b></li>
+            Your credentials are :</b></br>
+            </br>Username:${username}</br>
+            Password: ${password}</b></li></br>
             You can order virtual number from the browser tab.
         </ul>
       

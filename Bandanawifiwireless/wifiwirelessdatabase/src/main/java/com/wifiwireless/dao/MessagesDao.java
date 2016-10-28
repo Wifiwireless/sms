@@ -73,12 +73,15 @@ public class MessagesDao extends WifiDao implements MessagesInterface,Serializab
 			query.setParameter("destination", destination);
 			query.setParameter("readOut", false);
 			
+			
 			if (query.getResultList().size() > 0){
 				
 				replies=(ArrayList<Messages>)query.getResultList();
 				System.out.println("replies found "+replies.size());
 				
 			// if(query.getResultList()!=null && query.getResultList().size()>0)
+			}else{
+				System.out.println("replies found "+replies.size());
 			}
 			
 		} catch (Exception exception) {
