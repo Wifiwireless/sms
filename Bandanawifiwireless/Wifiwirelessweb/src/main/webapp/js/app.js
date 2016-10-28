@@ -18,6 +18,7 @@ app
 							$scope.buynumberResponse={};
 							$scope.formData.username='';
 						      $scope.formData.password='';
+						      $scope.formData.mobileNumber='';
 						     
 						      $scope.formData.pattern='';
 						      $scope.formData.country='';
@@ -1037,8 +1038,44 @@ app
 									$('#default-step-2').hide();
 									$('#default-step-0').hide();
 									return;
+								}else{
+									var pattern = /^\d*$/;
+									var value = $scope.formData.pattern;
+								    var result = pattern.test(value);
+								  
+								    if(result){
+								    	
+								    }else{
+								    	$scope.span2 = 'Please enter the digit.';
+								    	return;
+								    }
 								}
-
+								
+								if ($scope.formData.mobileNumber == '') {
+                 
+									$scope.span4 = 'Please enter Mobile Number';
+									$location.hash('default-step-1');
+									
+									//$anchorScroll();
+									
+									$('#default-step-1').show();
+									$('#default-step-2').hide();
+									$('#default-step-0').hide();
+									return;
+								}else{
+									var pattern = /^\d{10}$/;
+									var value = $scope.formData.mobileNumber;
+								    var result = pattern.test(value);
+								  
+								    if(result){
+								    	
+								    }else{
+								    	$scope.span4 = 'Please enter the valid mobile number.';
+								    	return;
+								    }
+								}
+                               
+								
 								if ($scope.formData.country == '') {
 
 									$scope.span3 = 'Please enter country';

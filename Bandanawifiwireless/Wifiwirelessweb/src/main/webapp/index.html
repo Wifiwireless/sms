@@ -38,23 +38,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="login-form">
 					<form action="#" method="post" >
 						<!-- <input type="text" name="name" placeholder="Realname" required=""> -->
-						<input type="text" ng-model="formData.username" placeholder="Username" required="">
-						<span1 ng-bind="span1" style="color:red;"></span1>
-						<input type="password" ng-model="formData.password" placeholder="Password"
-							required=""> 
-							<span1 ng-bind="span5" style="color:red;"></span1>
-							 <input
-							type="text" ng-model="formData.pattern" placeholder="Number Pattern"
-							required="">
-							<input
-							type="text" ng-model="formData.mobileNumber" placeholder="Mobile Number"
-							required="">
-							<span1 ng-bind="span2" style="color:red;"></span1> 
-							<select ng-model="formData.country" class="select">
+						<input type="text" ng-model="formData.username" placeholder="Username" required>
+						<span ng-bind="span1" style="color:red;"></span>
+						
+						<input type="password" ng-model="formData.password" placeholder="Password" required> 
+						<span ng-bind="span5" style="color:red;"></span>
+						
+					    <input type="text" ng-model="formData.pattern" placeholder="Number Pattern" required>
+					    <span ng-bind="span2" style="color:red;"></span>
+					    
+						<input type="text" ng-model="formData.mobileNumber" placeholder="Mobile Number" required>
+						<span ng-bind="span4" style="color:red;"></span>
+						
+						<select ng-model="formData.country" class="select" style="width: 414px; !important">
 							<option value="">-- Select a Country --</option>
 							<option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
 						</select> 
-						<span1 ng-bind="span3" style="color:red;"></span1>
+						<span ng-bind="span3" style="color:red;"></span>
 						<button type="button" class="btn-primary"
 												ng-click="processForm()" data-dismiss="modal">Acquire Number</button>
 
@@ -67,8 +67,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						style="display:none;background-color: white; ">
 						<div class="panel-heading">
 							<header class="panel-title" >
-								<h5><b>This is The available Number: {{smscArr.msisdn}}</h5>
-								</br> Click To confirm</b>
+								<h5><b>This is The available Number: {{smscArr.msisdn}}</b></h5>
+								</br><b>Click To confirm</b>
 							</header></br>
 							<button type="button" class="btn-primary"
 												ng-click="buyNumber()" data-dismiss="modal">Confirm Number</button>
