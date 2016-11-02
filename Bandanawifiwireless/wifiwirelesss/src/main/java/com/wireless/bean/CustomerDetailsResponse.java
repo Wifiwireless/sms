@@ -42,7 +42,7 @@ public class CustomerDetailsResponse implements Serializable {
 
 	private Boolean ispbxAccountCreated;
 
-	private Boolean ordered;
+	private String status;
 
 	public String getCompany() {
 		return company;
@@ -228,12 +228,14 @@ public class CustomerDetailsResponse implements Serializable {
 		this.selector = selector;
 	}
 
-	public Boolean getOrdered() {
-		return ordered;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setOrdered(Boolean ordered) {
-		this.ordered = ordered;
+	public void setStatus(String status) {
+		this.status = status;
 	}
+
+
 
 }

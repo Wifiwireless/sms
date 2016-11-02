@@ -177,8 +177,8 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 
 			TypedQuery<CustomerDetails> query = em.createQuery(qlString,
 					CustomerDetails.class);
-
 			query.setParameter("ordered", false);
+			
 			if(query.getResultList().size()>0)
 			customerDetails = query.getResultList();
 		

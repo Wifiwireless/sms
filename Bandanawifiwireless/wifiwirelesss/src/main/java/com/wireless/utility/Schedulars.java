@@ -33,8 +33,23 @@ public class Schedulars {
 			trigger.setRepeatInterval(Long.parseLong(WifiWirlessConstants.SchedularInterval));
 			scheduler = new StdSchedulerFactory().getScheduler();
 			scheduler.start();
-			System.out.println("Schedular started");
+			System.out.println("Update customer Schedular started");
+			
+			JobDetail orderjob = new JobDetail();
+			orderjob.setName("orderjob");
+			orderjob.setJobClass(CheckOrderJob.class);
+
+			SimpleTrigger ordertrigger = new SimpleTrigger();
+			ordertrigger.setName("ordertrigger");
+			ordertrigger.setStartTime(new Date(System.currentTimeMillis() + 1000));
+			ordertrigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
+			ordertrigger.setRepeatInterval(Long.parseLong(WifiWirlessConstants.SchedularInterval));
+			scheduler = new StdSchedulerFactory().getScheduler();
+			
 			scheduler.scheduleJob(job, trigger);
+			scheduler.scheduleJob(orderjob, ordertrigger);
+			System.out.println("Update order schedular started");
+
 
 		} catch (SchedulerException e) {
 			e.printStackTrace();
@@ -73,31 +88,7 @@ public class Schedulars {
     	
     }
     
-    public static void checkOrderSchedular() {
-
-		try {
-			
-			JobDetail job = new JobDetail();
-			job.setName("schedular");
-			job.setJobClass(CheckOrderJob.class);
-
-			SimpleTrigger trigger = new SimpleTrigger();
-			trigger.setName("trigger");
-			trigger.setStartTime(new Date(System.currentTimeMillis() + 1000));
-			trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
-			trigger.setRepeatInterval(Long.parseLong(WifiWirlessConstants.SchedularInterval));
-			scheduler = new StdSchedulerFactory().getScheduler();
-			scheduler.start();
-			System.out.println("checkOrderSchedular Schedular started");
-			scheduler.scheduleJob(job, trigger);
-
-		} catch (SchedulerException e) {
-			e.printStackTrace();
-			// LOG.error(e);
-
-		} finally {
-		}
-	}  
+	 
     
 	public static Scheduler getCheckBillScheduler() {
 		return checkBillScheduler;

@@ -42,7 +42,7 @@ public class CheckOrderJob implements Job{
 		NumberDetailsInterface numberDetailsDao = JndiLookup.getNumberDetailsDao();
 		HttpClient httpClient = new DefaultHttpClient();
 		List<CustomerDetails> unPaidcustomerDetailsList = customerdao.getCustomersDetailsNotPaid();
-
+if(unPaidcustomerDetailsList!=null){
 		for (CustomerDetails unPaidcustomerDetails : unPaidcustomerDetailsList) {
 			Gson gson = new Gson();
 			HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/orders?customer_id="
@@ -66,21 +66,21 @@ public class CheckOrderJob implements Job{
 
 				// If customers paid for the service then will sent the credential
 				
-				if(customerDetailsResponse.size() > 0){
-					
-						
-						customerdao.updateCustomer(unPaidcustomerDetails);
-						
-						NumberDetails NumberDetails = numberDetailsDao.getNumberDetails(unPaidcustomerDetails.getExtension(), unPaidcustomerDetails.getSecret());
-						if(NumberDetails!= null){
-							//generateVerificationEmail(unPaidcustomerDetails,NumberDetails.getMsisdn());
-							System.out.println("Email sent to :"+unPaidcustomerDetails.getEmail());
-						}else{
-							System.out.println("Numbet details not present for this customer :");
-						}
-					
+				if (customerDetailsResponse.size() > 0
+						&& customerDetailsResponse.get(0).getStatus().equalsIgnoreCase("Completed")) {
+					unPaidcustomerDetails.setOrdered(true);
+					customerdao.updateCustomer(unPaidcustomerDetails);
+
+					NumberDetails NumberDetails = numberDetailsDao
+							.getNumberDetails(unPaidcustomerDetails.getExtension(), unPaidcustomerDetails.getSecret());
+					if (NumberDetails != null) {
+						 generateVerificationEmail(unPaidcustomerDetails,NumberDetails.getMsisdn());
+						System.out.println("Email sent to :" + unPaidcustomerDetails.getEmail());
+					} else {
+						System.out.println("Numbet details not present for this customer :");
+					}
+
 				}
-				
 
 				// ArrayList<NumberDetails> arryNumber = new
 				// ArrayList<NumberDetails>();
@@ -93,6 +93,7 @@ public class CheckOrderJob implements Job{
 				e.printStackTrace();
 			}
 		}
+}
 	
 	}
 
