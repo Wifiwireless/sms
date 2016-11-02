@@ -44,7 +44,10 @@ import com.wifiwireless.model.CustomerCheck;
 import com.wifiwireless.model.CustomerDetails;
 import com.wifiwireless.model.Messages;
 import com.wifiwireless.model.NumberDetails;
+import com.wifiwireless.webservice.Webservices;
+import com.wireless.bean.AcquireNumber;
 import com.wireless.bean.AcquireResponse;
+import com.wireless.bean.BuyNumber;
 import com.wireless.bean.BuyNumberResponse;
 import com.wireless.bean.NumberResponse;
 import com.wireless.bean.SendMessage;
@@ -80,21 +83,20 @@ public class NexmoServices implements WifiWirlessConstants {
 
 				AcquireResponse numberResponse = gson.fromJson(responseString, AcquireResponse.class);
 				if (numberResponse.getNumbers() != null && numberResponse.getNumbers().size() > 0) {
-if(numberResponse.getNumbers().size() > 1){
-	return numberResponse.getNumbers().get(1);
+					if (numberResponse.getNumbers().size() > 1) {
+						return numberResponse.getNumbers().get(1);
 
-}else{
-					return numberResponse.getNumbers().get(0);
-		
-}
-}else {
-	NumberResponse response2 =  new NumberResponse();
-	
-	response2.setError("Invalid pattern. Nexmo does not allow that pattern for selected country");
-	
+					} else {
+						return numberResponse.getNumbers().get(0);
 
-	return response2;
-}
+					}
+				} else {
+					NumberResponse response2 = new NumberResponse();
+
+					response2.setError("Invalid pattern. Nexmo does not allow that pattern for selected country");
+
+					return response2;
+				}
 
 			} else {
 				System.out.println("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
@@ -112,7 +114,8 @@ if(numberResponse.getNumbers().size() > 1){
 
 	}
 
-	public static BuyNumberResponse buyNumber(String country, String msisdn, String username, String password,String phoneNumber) {
+	public static BuyNumberResponse buyNumber(String country, String msisdn, String username, String password,
+			String phoneNumber) {
 
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		urlParameters.add(new BasicNameValuePair("country", country));
@@ -144,7 +147,7 @@ if(numberResponse.getNumbers().size() > 1){
 				updateNumber(country, msisdn, phoneNumber);
 				callDid(username, msisdn);
 
-				byNumResp.setSuccess("your purchase is successful");
+				byNumResp.setSuccess("success");
 				byNumResp.setError("false");
 				return byNumResp;
 
@@ -175,8 +178,8 @@ if(numberResponse.getNumbers().size() > 1){
 		return null;
 
 	}
-	
-	public static BuyNumberResponse updateNumber(String country, String msisdn,String phoneNo) {
+
+	public static BuyNumberResponse updateNumber(String country, String msisdn, String phoneNo) {
 
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		urlParameters.add(new BasicNameValuePair("country", country));
@@ -215,20 +218,22 @@ if(numberResponse.getNumbers().size() > 1){
 
 		HttpClient httpClient = new DefaultHttpClient();
 		Gson gson = new Gson();
-		
-		System.out.println("sending message to "+message.getTo());
-	/*	if(!message.getTo().startsWith("1")){
-			message.setTo("+1"+message.getTo());
-		}*/
-		
+
+		System.out.println("sending message to " + message.getTo());
+		/*
+		 * if(!message.getTo().startsWith("1")){
+		 * message.setTo("+1"+message.getTo()); }
+		 */
+
 		message.setTo(CommonUtility.checkMsisdn(message.getTo().trim()));
-		
-		System.out.println("sending message to "+message.getTo());
-		System.out.println("sending message from "+message.getFrom());
+
+		System.out.println("sending message to " + message.getTo());
+		System.out.println("sending message from " + message.getFrom());
 
 		MessagesInterface messageinterface = JndiLookup.getMessageDao();
 		HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key=" + apikey + "&api_secret=" + api_secret
-				+ "&to=" + message.getTo() + "&from=" + message.getFrom() + "&text="+ URLEncoder.encode(message.getBody()));
+				+ "&to=" + message.getTo() + "&from=" + message.getFrom() + "&text="
+				+ URLEncoder.encode(message.getBody()));
 		try {
 			HttpResponse response;
 
@@ -244,10 +249,10 @@ if(numberResponse.getNumbers().size() > 1){
 				SendMessageResponse msgResponse = gson.fromJson(responseString, SendMessageResponse.class);
 				if (msgResponse.getMessages().size() > 0 && msgResponse.getMessages() != null) {
 					Messages messagesdatabase = new Messages(msgResponse.getMessages().get(0).getStatus(),
-					msgResponse.getMessages().get(0).getMessageId(),
-					msgResponse.getMessages().get(0).getRemainingBalance(),
-					msgResponse.getMessages().get(0).getMessagePrice(),
-					msgResponse.getMessages().get(0).getNetwork());
+							msgResponse.getMessages().get(0).getMessageId(),
+							msgResponse.getMessages().get(0).getRemainingBalance(),
+							msgResponse.getMessages().get(0).getMessagePrice(),
+							msgResponse.getMessages().get(0).getNetwork());
 					messagesdatabase.setUsername(message.getFrom());
 					messagesdatabase.setPassword(message.getPassword());
 					messagesdatabase.setSource(message.getFrom());
@@ -282,15 +287,13 @@ if(numberResponse.getNumbers().size() > 1){
 		CustomerDaoInterface customerdao = JndiLookup.getCustomerDetails();
 		NumberDetailsInterface numberDetailsInterface = JndiLookup.getNumberDetailsDao();
 		HttpClient httpClient = new DefaultHttpClient();
-		check = checkdao.getData(); 
-		int cid=check.getLength()+1;
-//		int did=Integer.parseInt(check.getDid());
-		System.out.println("Last Id is"+cid);
+		check = checkdao.getData();
+		int cid = check.getLength() + 1;
+		// int did=Integer.parseInt(check.getDid());
+		System.out.println("Last Id is" + cid);
 		Gson gson = new Gson();
-		
-		
 
-		HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers?min_id="+cid);
+		HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers?min_id=" + cid);
 		try {
 			HttpResponse response;
 			post.addHeader("Accept", "application/json");
@@ -301,46 +304,79 @@ if(numberResponse.getNumbers().size() > 1){
 			post.addHeader("X-Auth-Token", "cd10af7566dc4882999d1452b361d1f827629df8");
 			response = httpClient.execute(post);
 			System.out.println(response.toString());
-			if(response.getStatusLine().getStatusCode()==200){
-			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
-			ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
-					new TypeToken<List<CustomerDetails>>() {
-					}.getType());
-			// ArrayList<NumberDetails> arryNumber = new
-			// ArrayList<NumberDetails>();
-			System.out.println("customer list size " + customerDetails.size());
-			ArrayList<CustomerDetails> savecustomerDetails = new ArrayList<CustomerDetails>();
-			if(customerDetails!=null&&customerDetails.size()>0){
-			for (CustomerDetails cus : customerDetails) {
-				
-			/*		Calendar calendar = Calendar.getInstance();
-					calendar.setTime(d);
-					calendar.add(Calendar.SECOND, 2);
-					d = calendar.getTime();*/
-					NumberDetails number = new NumberDetails();
-					System.out.println("new dataa");
+			if (response.getStatusLine().getStatusCode() == 200) {
+				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+				System.out.println(responseString);
+				ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
+						new TypeToken<List<CustomerDetails>>() {
+						}.getType());
+				// ArrayList<NumberDetails> arryNumber = new
+				// ArrayList<NumberDetails>();
+				System.out.println("customer list size " + customerDetails.size());
+				ArrayList<CustomerDetails> savecustomerDetails = new ArrayList<CustomerDetails>();
+				if (customerDetails != null && customerDetails.size() > 0) {
+					for (CustomerDetails cus : customerDetails) {
 
-					check.setLength(cus.getId());
-					checkdao.updateCustomerCheck(check);
-					cus = callPbx(cus, checkdao);
-//					cus=callDid(cus.getExtension(), check.getDid(), cus, checkdao);
-					number.setUsername(cus.getExtension());
-					number.setPassword(cus.getSecret());
-					number.setPaidflag(false);
-					cus.setIspbxAccountCreated(true);
-					System.out.println(cus);
-					numberDetailsInterface.addNumberDetails(number);
-					savecustomerDetails.add(cus);
+						/*
+						 * Calendar calendar = Calendar.getInstance();
+						 * calendar.setTime(d); calendar.add(Calendar.SECOND,
+						 * 2); d = calendar.getTime();
+						 */
+						NumberDetails number = new NumberDetails();
+						System.out.println("new dataa");
+
+						check.setLength(cus.getId());
+						checkdao.updateCustomerCheck(check);
+						cus = callPbx(cus, checkdao);
+
+						// get Number
+						AcquireNumber acquireNumber = new AcquireNumber();
+						acquireNumber.setUsername(cus.getExtension());
+						acquireNumber.setPassword(cus.getSecret());
+						acquireNumber.setPattern("1619");
+						acquireNumber.setCountry("US");
+						acquireNumber.setMobileNumber(cus.getPhone());
+
+						NumberResponse numberResponse = Webservices.getNumber(acquireNumber);
+
+						// buy Number
+
+						if (numberResponse != null) {
+
+							BuyNumber buyNumber = new BuyNumber();
+
+							buyNumber.setCountry(numberResponse.getCountry());
+							buyNumber.setMsisdn(numberResponse.getMsisdn());
+							buyNumber.setUsername(cus.getExtension());
+							buyNumber.setPassword(cus.getSecret());
+
+							BuyNumberResponse buyNumberResponse = Webservices.buyNumber(buyNumber);
+
+							if (buyNumberResponse != null && "success".equals(buyNumberResponse.getSuccess())) {
+								number.setPaidflag(true);
+							} else {
+								number.setPaidflag(false);
+							}
+
+						}
+						number.setUsername(cus.getExtension());
+						number.setPassword(cus.getSecret());
+						cus.setIspbxAccountCreated(true);
+						System.out.println(cus);
+						numberDetailsInterface.addNumberDetails(number);
+						savecustomerDetails.add(cus);
+						// cus=callDid(cus.getExtension(), check.getDid(), cus,
+						// checkdao);
+
+						generateVerificationEmail(cus, numberResponse.getMsisdn());
+					}
 
 				}
-
-			}
-			if (savecustomerDetails.size() > 0) {
-				customerdao.addCustomer(savecustomerDetails);
-				System.out.println("new customers added");
-			}
-			}else{
+				if (savecustomerDetails.size() > 0) {
+					customerdao.addCustomer(savecustomerDetails);
+					System.out.println("new customers added");
+				}
+			} else {
 				System.out.println("no new customer");
 			}
 
@@ -354,34 +390,34 @@ if(numberResponse.getNumbers().size() > 1){
 		}
 	}
 
-	
-	public static void callDid(String extension,String did) {
+	public static void callDid(String extension, String did) {
 
 		boolean flag = false;
-		
-		Long di=Long.parseLong(did);
-		  HttpClient httpClient = new DefaultHttpClient();
-		  Gson gson = new Gson();
-//		  CustomerCheck checkExt = checkDaoInterface.getData();
 
-		  HttpGet post = new HttpGet(
-		    "http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.did.add&server=&trunk=78&did="+di+"&dest_type=0&destination="+extension+"&disabled=0");
-		  
-		  try {
-				HttpResponse response;
+		Long di = Long.parseLong(did);
+		HttpClient httpClient = new DefaultHttpClient();
+		Gson gson = new Gson();
+		// CustomerCheck checkExt = checkDaoInterface.getData();
 
-				response = httpClient.execute(post);
+		HttpGet post = new HttpGet(
+				"http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.did.add&server=&trunk=78&did="
+						+ di + "&dest_type=0&destination=" + extension + "&disabled=0");
 
-				System.out.println(response.toString());
-				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-				System.out.println(responseString);
-				
-		  }catch(Exception e){
-			  System.out.println(e);
-		  }
-		  
+		try {
+			HttpResponse response;
 
-		 }
+			response = httpClient.execute(post);
+
+			System.out.println(response.toString());
+			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+			System.out.println(responseString);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
 	public static NumberResponse test() {
 		CustomerCheck check = new CustomerCheck();
 		CustomerCheckDaoInterface checkdao = JndiLookup.getCustomerCheckdao();
@@ -436,7 +472,7 @@ if(numberResponse.getNumbers().size() > 1){
 
 		boolean flag = false;
 		int extension = 10000533;
-		String password = RandomStringUtils.randomAlphanumeric(8).toUpperCase();
+		String password = RandomStringUtils.randomAlphanumeric(8);
 		CustomerCheck checkExt = checkDaoInterface.getextension();
 		if (checkExt != null) {
 			extension = Integer.parseInt(checkExt.getExtension());
@@ -478,8 +514,6 @@ if(numberResponse.getNumbers().size() > 1){
 					cus.setExtension("" + extension);
 					checkExt.setExtension("" + extension);
 
-					 generateVerificationEmail(cus);
-
 					/*
 					 * SendMessage message = new SendMessage(cus.getPhone(),
 					 * fromAddress, "Your utalk wifi app credentials are" +
@@ -503,12 +537,13 @@ if(numberResponse.getNumbers().size() > 1){
 		return cus;
 	}
 
-	public static Boolean generateVerificationEmail(CustomerDetails customerDetails) {
+	public static Boolean generateVerificationEmail(CustomerDetails customerDetails, String msisdn) {
 		String subject = "UtalkWifi Application Credentials";
 		Map<String, String> rootMap = new HashMap<String, String>();
 
 		rootMap.put("username", customerDetails.getExtension());
 		rootMap.put("password", customerDetails.getSecret());
+		rootMap.put("number", msisdn);
 		rootMap.put("date", "" + new Date());
 		try {
 			Mail.email(customerDetails.getEmail(), subject, rootMap, "email.ftl");
@@ -521,53 +556,46 @@ if(numberResponse.getNumbers().size() > 1){
 		return true;
 	}
 
-
-/*
-	
-	public static NumberResponse test() { 
-		CustomerCheck check=new
-	  CustomerCheck(); CustomerCheckDaoInterface
-	  checkdao=JndiLookup.getCustomerCheckdao(); CustomerDaoInterface
-	  customerdao=JndiLookup.getCustomerDetails(); HttpClient httpClient = new
-	  DefaultHttpClient(); Gson gson = new Gson(); HttpGet post = new
-	  HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers?min_id=11");
-	  try { HttpResponse response; post.addHeader("Accept",
-	  "application/json"); post.addHeader("Content-type", "application/json");
-	  post.addHeader("Authorization", "Basic " + new
-	  String(Base64.encodeBase64(
-	  "kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
-	  post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
-	  post.addHeader("X-Auth-Token",
-	  "cd10af7566dc4882999d1452b361d1f827629df8"); response =
-	  httpClient.execute(post); System.out.println(response.toString()); String
-	  responseString = IOUtils.toString(response.getEntity().getContent(),
-	  "UTF-8"); 
-	  System.out.println(responseString);
-	  ArrayList<CustomerDetails> customerDetails =
-	  gson.fromJson(responseString, new TypeToken<List<CustomerDetails>>() {
-	  }.getType()); System.out.println(customerDetails.size());
-	  ArrayList<CustomerDetails> savecustomerDetails=new
-	  ArrayList<CustomerDetails>(); ArrayList<CustomerDetails>
-	  updatecustomer=new ArrayList<CustomerDetails>(); for (CustomerDetails cus
-	  : customerDetails) { Date d=new Date(cus.getDate_created());
-	  savecustomerDetails.add(cus); check.setDatemodified(d);
-	  check.setLength(customerDetails.size());
-	  
-	  //savecustomerDetails.add(cus); }
-	  customerdao.addCustomer(savecustomerDetails);
-	  checkdao.addCustomerCheck(check);
-	  
-	  System.out.println(customerDetails.get(0).getFirst_name());
-	  
-	  } }catch (IllegalStateException e) {
-		  // TODO Auto-generated catch block
-	  } catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	  return null;
-	  
-	  }*/
+	/*
+	 * 
+	 * public static NumberResponse test() { CustomerCheck check=new
+	 * CustomerCheck(); CustomerCheckDaoInterface
+	 * checkdao=JndiLookup.getCustomerCheckdao(); CustomerDaoInterface
+	 * customerdao=JndiLookup.getCustomerDetails(); HttpClient httpClient = new
+	 * DefaultHttpClient(); Gson gson = new Gson(); HttpGet post = new HttpGet(
+	 * "https://store-wiusit9d78.mybigcommerce.com/api/v2/customers?min_id=11");
+	 * try { HttpResponse response; post.addHeader("Accept",
+	 * "application/json"); post.addHeader("Content-type", "application/json");
+	 * post.addHeader("Authorization", "Basic " + new
+	 * String(Base64.encodeBase64(
+	 * "kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+	 * post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
+	 * post.addHeader("X-Auth-Token",
+	 * "cd10af7566dc4882999d1452b361d1f827629df8"); response =
+	 * httpClient.execute(post); System.out.println(response.toString()); String
+	 * responseString = IOUtils.toString(response.getEntity().getContent(),
+	 * "UTF-8"); System.out.println(responseString); ArrayList<CustomerDetails>
+	 * customerDetails = gson.fromJson(responseString, new
+	 * TypeToken<List<CustomerDetails>>() { }.getType());
+	 * System.out.println(customerDetails.size()); ArrayList<CustomerDetails>
+	 * savecustomerDetails=new ArrayList<CustomerDetails>();
+	 * ArrayList<CustomerDetails> updatecustomer=new
+	 * ArrayList<CustomerDetails>(); for (CustomerDetails cus : customerDetails)
+	 * { Date d=new Date(cus.getDate_created()); savecustomerDetails.add(cus);
+	 * check.setDatemodified(d); check.setLength(customerDetails.size());
+	 * 
+	 * //savecustomerDetails.add(cus); }
+	 * customerdao.addCustomer(savecustomerDetails);
+	 * checkdao.addCustomerCheck(check);
+	 * 
+	 * System.out.println(customerDetails.get(0).getFirst_name());
+	 * 
+	 * } }catch (IllegalStateException e) { // TODO Auto-generated catch block }
+	 * catch (IOException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } return null;
+	 * 
+	 * }
+	 */
 
 	public static NumberResponse testCreate() {
 
@@ -640,8 +668,6 @@ if(numberResponse.getNumbers().size() > 1){
 
 	}
 
-	
-
 	public static NumberResponse testDid() {
 
 		HttpClient httpClient = new DefaultHttpClient();
@@ -676,7 +702,6 @@ if(numberResponse.getNumbers().size() > 1){
 		return null;
 
 	}
-	
 
 	public static void testDidList() {
 
@@ -813,15 +838,15 @@ if(numberResponse.getNumbers().size() > 1){
 	}
 
 	public static void main(String[] args) {
-//		test();
-//		updateNumber("US","16192688017","19494634536");
-//		testMessage();		// oAuth();
+		// test();
+		// updateNumber("US","16192688017","19494634536");
+		// testMessage(); // oAuth();
 		// oAuth();
 		// createHook();
 		// testPbx();
-//System.out.println(acquireNumber("US", "1619").getMsisdn());
-		 buyNumber("US", "16192688026","10000193","F4YDTT4Z","3425452345");
-//		ArrayList<String> arrPassAndExt = new ArrayList<String>();
+		// System.out.println(acquireNumber("US", "1619").getMsisdn());
+		buyNumber("US", "16192688026", "10000193", "F4YDTT4Z", "3425452345");
+		// ArrayList<String> arrPassAndExt = new ArrayList<String>();
 		/*
 		 * arrPassAndExt.add("test"); arrPassAndExt.add("1234");
 		 * arrPassAndExt.add("123");
@@ -831,16 +856,14 @@ if(numberResponse.getNumbers().size() > 1){
 
 	}
 
-	
 	public static SendMessageResponse testMessage() {
 
 		HttpClient httpClient = new DefaultHttpClient();
 		Gson gson = new Gson();
 
 		MessagesInterface messageinterface = JndiLookup.getMessageDao();
-		HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key="+apikey+"&api_secret="+api_secret
-				+ "&to="+"+919860070594"+"&from="+"16192596886"+"&text="
-				+ URLEncoder.encode("hello test 123"));
+		HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key=" + apikey + "&api_secret=" + api_secret
+				+ "&to=" + "+919860070594" + "&from=" + "16192596886" + "&text=" + URLEncoder.encode("hello test 123"));
 		try {
 			HttpResponse response;
 
@@ -871,5 +894,3 @@ if(numberResponse.getNumbers().size() > 1){
 
 	}
 }
-
-

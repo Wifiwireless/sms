@@ -69,10 +69,8 @@ public class Webservices {
 	 * }
 	 */
 
-	@POST
-	@Path("get/number")
-	@Produces(MediaType.APPLICATION_JSON)
-	public @ResponseObject NumberResponse getNumber(AcquireNumber acquireNumber) {
+
+	public static NumberResponse getNumber(AcquireNumber acquireNumber) {
 		System.out.println("in get number");
 		NumberResponse numberResponse = null;
 		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
@@ -119,10 +117,8 @@ public class Webservices {
 
 	}
 
-	@POST
-	@Path("buy/number")
-	@Produces(MediaType.APPLICATION_JSON)
-	public @ResponseObject BuyNumberResponse buyNumber(BuyNumber buyNumber) {
+
+	public static BuyNumberResponse buyNumber(BuyNumber buyNumber) {
 
 		System.out.println("country is " + buyNumber.getCountry());
 		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();

