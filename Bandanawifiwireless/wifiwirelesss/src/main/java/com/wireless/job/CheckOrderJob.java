@@ -26,6 +26,7 @@ import com.wifiwireless.interfaces.NumberDetailsInterface;
 import com.wifiwireless.model.CustomerCheck;
 import com.wifiwireless.model.CustomerDetails;
 import com.wifiwireless.model.NumberDetails;
+import com.wireless.bean.CustomerDetailsResponse;
 import com.wireless.email.Mail;
 
 import javassist.bytecode.stackmap.BasicBlock.Catch;
@@ -59,21 +60,21 @@ public class CheckOrderJob implements Job{
 				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 				System.out.println(responseString);
 
-				ArrayList<CustomerDetails> customerDetailsFromAPI = gson.fromJson(responseString,
-						new TypeToken<List<CustomerDetails>>() {
+				ArrayList<CustomerDetailsResponse> customerDetailsResponse = gson.fromJson(responseString,
+						new TypeToken<List<CustomerDetailsResponse>>() {
 						}.getType());
 
 				// If customers paid for the service then will sent the credential
 				
-				if(customerDetailsFromAPI.size() > 0){
+				if(customerDetailsResponse.size() > 0){
 					
-						unPaidcustomerDetails.setOrdered(true);
+						
 						customerdao.updateCustomer(unPaidcustomerDetails);
 						
 						NumberDetails NumberDetails = numberDetailsDao.getNumberDetails(unPaidcustomerDetails.getExtension(), unPaidcustomerDetails.getSecret());
 						if(NumberDetails!= null){
 							//generateVerificationEmail(unPaidcustomerDetails,NumberDetails.getMsisdn());
-							System.out.println("Email sent :");
+							System.out.println("Email sent to :"+unPaidcustomerDetails.getEmail());
 						}else{
 							System.out.println("Numbet details not present for this customer :");
 						}
@@ -83,7 +84,7 @@ public class CheckOrderJob implements Job{
 
 				// ArrayList<NumberDetails> arryNumber = new
 				// ArrayList<NumberDetails>();
-				System.out.println("customer list size " + customerDetailsFromAPI.size());
+				System.out.println("customer list size " + customerDetailsResponse.size());
 
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block

@@ -65,7 +65,7 @@ public class CustomerDetails implements Serializable {
 
 	@Column(name = "ispbxAccountCreated")
 	private Boolean ispbxAccountCreated;
-	
+
 	@Column(name = "ordered")
 	private Boolean ordered;
 
