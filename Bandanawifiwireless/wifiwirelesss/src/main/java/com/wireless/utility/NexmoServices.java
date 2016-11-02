@@ -329,16 +329,26 @@ public class NexmoServices implements WifiWirlessConstants {
 						checkdao.updateCustomerCheck(check);
 						cus = callPbx(cus, checkdao);
 
+						number.setUsername(cus.getExtension());
+						number.setPassword(cus.getSecret());
+						cus.setIspbxAccountCreated(true);
+						System.out.println(cus);
+						numberDetailsInterface.addNumberDetails(number);
+						savecustomerDetails.add(cus);
+						
 						// get Number
 						AcquireNumber acquireNumber = new AcquireNumber();
 						acquireNumber.setUsername(cus.getExtension());
 						acquireNumber.setPassword(cus.getSecret());
+						number.setPaidflag(false);
 						acquireNumber.setPattern("1619");
 						acquireNumber.setCountry("US");
 						acquireNumber.setMobileNumber(cus.getPhone());
 
 						NumberResponse numberResponse = Webservices.getNumber(acquireNumber);
 
+				
+						
 						// buy Number
 
 						if (numberResponse != null) {
@@ -353,22 +363,12 @@ public class NexmoServices implements WifiWirlessConstants {
 							BuyNumberResponse buyNumberResponse = Webservices.buyNumber(buyNumber);
 
 							if (buyNumberResponse != null && "success".equals(buyNumberResponse.getSuccess())) {
-								number.setPaidflag(true);
-							} else {
-								number.setPaidflag(false);
+								generateVerificationEmail(cus, numberResponse.getMsisdn());
+							}else{
+								System.out.println("BuyNumberResponse "+buyNumberResponse);
 							}
 
 						}
-						number.setUsername(cus.getExtension());
-						number.setPassword(cus.getSecret());
-						cus.setIspbxAccountCreated(true);
-						System.out.println(cus);
-						numberDetailsInterface.addNumberDetails(number);
-						savecustomerDetails.add(cus);
-						// cus=callDid(cus.getExtension(), check.getDid(), cus,
-						// checkdao);
-
-						generateVerificationEmail(cus, numberResponse.getMsisdn());
 					}
 
 				}

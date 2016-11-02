@@ -71,7 +71,8 @@ public class Webservices {
 
 
 	public static NumberResponse getNumber(AcquireNumber acquireNumber) {
-		System.out.println("in get number");
+		System.out.println("in get number"+acquireNumber);
+		System.out.println("Acquire Number"+acquireNumber);
 		NumberResponse numberResponse = null;
 		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
 		if (acquireNumber.getUsername() != null && acquireNumber.getPassword() != null
@@ -84,9 +85,10 @@ public class Webservices {
 
 				NumberDetails number = new NumberDetails(acquireNumber.getCountry(), acquireNumber.getPattern(), false,
 						acquireNumber.getMobileNumber());
-				System.out.println(acquireNumber.getUsername());
+				
+				System.out.println("Username :"+acquireNumber.getUsername());
 
-				System.out.println("country is " + acquireNumber.getCountry());
+				System.out.println("Hardcoded country is " + acquireNumber.getCountry());
 				// Save to database
 				// number.setCountry(acquireNumber.getCountry());
 				numberResponse = NexmoServices.acquireNumber(acquireNumber.getCountry(), acquireNumber.getPattern());

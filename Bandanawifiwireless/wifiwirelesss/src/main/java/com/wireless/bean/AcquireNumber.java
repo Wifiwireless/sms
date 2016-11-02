@@ -55,6 +55,11 @@ public class AcquireNumber implements Serializable{
 	public void setPattern(String pattern) {
 		this.pattern = pattern;
 	}
+	@Override
+	public String toString() {
+		return "AcquireNumber [username=" + username + ", password=" + password + ", mobileNumber=" + mobileNumber
+				+ ", country=" + country + ", pattern=" + pattern + "]";
+	}
 	
 	
 	
