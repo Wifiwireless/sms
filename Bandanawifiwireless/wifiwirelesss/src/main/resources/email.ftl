@@ -65,8 +65,7 @@
             <li><b>  </br>Username:${username}</br></b></li>
             <li><b>Password: ${password}</b></li></br>
             <li><b>Number: ${number}</b></li></br>
-            You can order virtual number from the browser tab in mobile application by selecting MSISDN pattern and country after that you can start 
-			texting and calling.
+        
         </ul>
       
         </p>

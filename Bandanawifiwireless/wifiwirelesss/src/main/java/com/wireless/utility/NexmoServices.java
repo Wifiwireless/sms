@@ -317,6 +317,8 @@ public class NexmoServices implements WifiWirlessConstants {
 				if (customerDetails != null && customerDetails.size() > 0) {
 					for (CustomerDetails cus : customerDetails) {
 
+						
+						
 						/*
 						 * Calendar calendar = Calendar.getInstance();
 						 * calendar.setTime(d); calendar.add(Calendar.SECOND,
@@ -335,7 +337,7 @@ public class NexmoServices implements WifiWirlessConstants {
 						System.out.println(cus);
 						numberDetailsInterface.addNumberDetails(number);
 						savecustomerDetails.add(cus);
-						
+
 						// get Number
 						AcquireNumber acquireNumber = new AcquireNumber();
 						acquireNumber.setUsername(cus.getExtension());
@@ -347,8 +349,6 @@ public class NexmoServices implements WifiWirlessConstants {
 
 						NumberResponse numberResponse = Webservices.getNumber(acquireNumber);
 
-				
-						
 						// buy Number
 
 						if (numberResponse != null) {
@@ -364,8 +364,8 @@ public class NexmoServices implements WifiWirlessConstants {
 
 							if (buyNumberResponse != null && "success".equals(buyNumberResponse.getSuccess())) {
 								generateVerificationEmail(cus, numberResponse.getMsisdn());
-							}else{
-								System.out.println("BuyNumberResponse "+buyNumberResponse);
+							} else {
+								System.out.println("BuyNumberResponse " + buyNumberResponse);
 							}
 
 						}
@@ -845,7 +845,7 @@ public class NexmoServices implements WifiWirlessConstants {
 		// createHook();
 		// testPbx();
 		// System.out.println(acquireNumber("US", "1619").getMsisdn());
-		buyNumber("US", "16192688026", "10000193", "F4YDTT4Z", "3425452345");
+//		buyNumber("US", "16192688026", "10000193", "F4YDTT4Z", "3425452345");
 		// ArrayList<String> arrPassAndExt = new ArrayList<String>();
 		/*
 		 * arrPassAndExt.add("test"); arrPassAndExt.add("1234");
@@ -853,6 +853,7 @@ public class NexmoServices implements WifiWirlessConstants {
 		 * arrPassAndExt.add("kirti.mandwade@gmail.com");
 		 */
 		// generateVerificationEmail(arrPassAndExt);
+		testOrder();
 
 	}
 
@@ -893,4 +894,52 @@ public class NexmoServices implements WifiWirlessConstants {
 		return null;
 
 	}
+
+
+	public static NumberResponse testOrder() {
+		CustomerCheck check = new CustomerCheck();
+		CustomerCheckDaoInterface checkdao = JndiLookup.getCustomerCheckdao();
+		CustomerDaoInterface customerdao = JndiLookup.getCustomerDetails();
+		HttpClient httpClient = new DefaultHttpClient();
+		Gson gson = new Gson();
+		HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/orders");
+		try {
+			HttpResponse response;
+			post.addHeader("Accept", "application/json");
+			post.addHeader("Content-type", "application/json");
+			post.addHeader("Authorization", "Basic "
+					+ new String(Base64.encodeBase64("kpmurals:cd10af7566dc4882999d1452b361d1f827629df8".getBytes())));
+			post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
+			post.addHeader("X-Auth-Token", "cd10af7566dc4882999d1452b361d1f827629df8");
+			response = httpClient.execute(post);
+			System.out.println(response.getStatusLine().getStatusCode());
+			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+			System.out.println(responseString);
+			
+			/*
+			 * ArrayList<CustomerDetails> savecustomerDetails=new
+			 * ArrayList<CustomerDetails>(); ArrayList<CustomerDetails>
+			 * updatecustomer=new ArrayList<CustomerDetails>(); for
+			 * (CustomerDetails cus : customerDetails) { Date d=new
+			 * Date(cus.getDate_created()); savecustomerDetails.add(cus);
+			 * check.setDatemodified(d);
+			 * check.setLength(customerDetails.size());
+			 * 
+			 * //savecustomerDetails.add(cus); }
+			 * customerdao.addCustomer(savecustomerDetails);
+			 * checkdao.addCustomerCheck(check);
+			 * 
+			 * System.out.println(customerDetails.get(0).getFirst_name());
+			 * 
+			 * }
+			 */} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+	
 }
