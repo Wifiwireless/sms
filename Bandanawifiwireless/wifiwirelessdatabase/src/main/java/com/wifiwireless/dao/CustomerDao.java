@@ -79,7 +79,7 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 		}
 
 	}
-	public void updateCustomer(ArrayList<CustomerDetails> customer) {
+	public void updateCustomer(List<CustomerDetails> customer) {
 		em = getEm();
 
 		try {
@@ -156,6 +156,31 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 			query.setParameter("extension", username);
 			if(query.getResultList().size()>0)
 			customerDetails = query.getResultList().get(0);
+		
+		}catch (Exception exception) {
+			 exception.printStackTrace();
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return customerDetails;
+	}
+	public List<CustomerDetails> getCustomersDetailsNotPaid() {
+		em = getEm();
+		List<CustomerDetails> customerDetails = null;
+		try {
+
+			String qlString = "SELECT number FROM CustomerDetails number  "
+					+ "WHERE  number.ordered=:ordered";
+
+			TypedQuery<CustomerDetails> query = em.createQuery(qlString,
+					CustomerDetails.class);
+
+			query.setParameter("ordered", false);
+			if(query.getResultList().size()>0)
+			customerDetails = query.getResultList();
 		
 		}catch (Exception exception) {
 			 exception.printStackTrace();

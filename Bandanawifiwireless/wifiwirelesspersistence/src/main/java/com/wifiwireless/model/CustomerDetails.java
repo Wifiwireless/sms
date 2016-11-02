@@ -11,11 +11,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CustomerDetails")
-public class CustomerDetails implements Serializable{
-	
-	 @Id 
-	    @Column(name="Id")
-	    private int id;
+public class CustomerDetails implements Serializable {
+
+	@Id
+	@Column(name = "Id")
+	private int id;
 
 	@Column(name = "company")
 	private String company;
@@ -24,7 +24,7 @@ public class CustomerDetails implements Serializable{
 	@Column(name = "last_name")
 	private String last_name;
 	@Column(name = "email")
-	private String email;	
+	private String email;
 	@Column(name = "phone")
 	private String phone;
 	@Column(name = "form_fields")
@@ -53,38 +53,37 @@ public class CustomerDetails implements Serializable{
 	private String acceptsmarketing;
 	@Column(name = "did")
 	private String did;
-	
+
 	@Column(columnDefinition = "TEXT")
 	private String token;
-	
+
 	@Column(columnDefinition = "TEXT")
 	private String appid;
-	
+
 	@Column(columnDefinition = "TEXT")
 	private String selector;
-	
+
 	@Column(name = "ispbxAccountCreated")
-	private Boolean ispbxAccountCreated ;
+	private Boolean ispbxAccountCreated;
+	
+	@Column(name = "ordered")
+	private Boolean ordered;
+
 	public String getCompany() {
 		return company;
 	}
-	
-	
+
 	public String getDid() {
 		return did;
 	}
-
 
 	public void setDid(String did) {
 		this.did = did;
 	}
 
-
 	public String getSecret() {
 		return secret;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -109,126 +108,157 @@ public class CustomerDetails implements Serializable{
 	public Boolean getIspbxAccountCreated() {
 		return ispbxAccountCreated;
 	}
+
 	public void setIspbxAccountCreated(Boolean ispbxAccountCreated) {
 		this.ispbxAccountCreated = ispbxAccountCreated;
 	}
+
 	public void setCompany(String company) {
 		this.company = company;
 	}
+
 	public String getFirst_name() {
 		return first_name;
 	}
+
 	public void setFirst_name(String first_name) {
 		this.first_name = first_name;
 	}
+
 	public String getLast_name() {
 		return last_name;
 	}
+
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	public String getFormfields() {
 		return formfields;
 	}
+
 	public void setFormfields(String formfields) {
 		this.formfields = formfields;
 	}
+
 	public String getDate_created() {
 		return date_created;
 	}
+
 	public void setDate_created(String date_created) {
 		this.date_created = date_created;
 	}
+
 	public String getDate_modified() {
 		return date_modified;
 	}
+
 	public void setDate_modified(String date_modified) {
 		this.date_modified = date_modified;
 	}
+
 	public String getStorecredit() {
 		return storecredit;
 	}
+
 	public void setStorecredit(String storecredit) {
 		this.storecredit = storecredit;
 	}
+
 	public String getRegistrationipaddress() {
 		return registrationipaddress;
 	}
+
 	public void setRegistrationipaddress(String registrationipaddress) {
 		this.registrationipaddress = registrationipaddress;
 	}
+
 	public String getCustomergroupid() {
 		return customergroupid;
 	}
+
 	public void setCustomergroupid(String customergroupid) {
 		this.customergroupid = customergroupid;
 	}
+
 	public String getNotes() {
 		return notes;
 	}
+
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+
 	public String getTaxexemptcategory() {
 		return taxexemptcategory;
 	}
+
 	public void setTaxexemptcategory(String taxexemptcategory) {
 		this.taxexemptcategory = taxexemptcategory;
 	}
+
 	public String getResetpassonlogin() {
 		return resetpassonlogin;
 	}
+
 	public void setResetpassonlogin(String resetpassonlogin) {
 		this.resetpassonlogin = resetpassonlogin;
 	}
+
 	public String getAcceptsmarketing() {
 		return acceptsmarketing;
 	}
+
 	public void setAcceptsmarketing(String acceptsmarketing) {
 		this.acceptsmarketing = acceptsmarketing;
 	}
-
 
 	public String getToken() {
 		return token;
 	}
 
-
 	public void setToken(String token) {
 		this.token = token;
 	}
-
 
 	public String getAppid() {
 		return appid;
 	}
 
-
 	public void setAppid(String appid) {
 		this.appid = appid;
 	}
-
 
 	public String getSelector() {
 		return selector;
 	}
 
-
 	public void setSelector(String selector) {
 		this.selector = selector;
 	}
-	
-	
+
+	public Boolean getOrdered() {
+		return ordered;
+	}
+
+	public void setOrdered(Boolean ordered) {
+		this.ordered = ordered;
+	}
+
 }

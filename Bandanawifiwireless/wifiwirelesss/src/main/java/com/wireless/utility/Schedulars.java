@@ -11,6 +11,7 @@ import org.quartz.SimpleTrigger;
 import org.quartz.impl.StdSchedulerFactory;
 
 import com.wireless.job.CheckBillJob;
+import com.wireless.job.CheckOrderJob;
 import com.wireless.job.CustomerUpdateJob;
 
 public class Schedulars {
@@ -72,7 +73,31 @@ public class Schedulars {
     	
     }
     
-    
+    public static void checkOrderSchedular() {
+
+		try {
+			
+			JobDetail job = new JobDetail();
+			job.setName("schedular");
+			job.setJobClass(CheckOrderJob.class);
+
+			SimpleTrigger trigger = new SimpleTrigger();
+			trigger.setName("trigger");
+			trigger.setStartTime(new Date(System.currentTimeMillis() + 1000));
+			trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
+			trigger.setRepeatInterval(Long.parseLong(WifiWirlessConstants.SchedularInterval));
+			scheduler = new StdSchedulerFactory().getScheduler();
+			scheduler.start();
+			System.out.println("checkOrderSchedular Schedular started");
+			scheduler.scheduleJob(job, trigger);
+
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+			// LOG.error(e);
+
+		} finally {
+		}
+	}  
     
 	public static Scheduler getCheckBillScheduler() {
 		return checkBillScheduler;

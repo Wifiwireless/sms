@@ -1,16 +1,9 @@
 package com.wireless.utility;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import org.quartz.SchedulerException;
-
-import freemarker.template.TemplateException;
 
 public class Initializer implements ServletContextListener{
 
@@ -23,12 +16,13 @@ public class Initializer implements ServletContextListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	public void contextInitialized(ServletContextEvent arg0) {
 		System.out.println("Context Initialized");
 		Schedulars.schedular();
+		Schedulars.checkOrderSchedular();
+		//Schedulars.checkBillScheduler();
 	/*	Map<String, String> rootMap = new HashMap<String, String>();
 
 		rootMap.put("username", "user");

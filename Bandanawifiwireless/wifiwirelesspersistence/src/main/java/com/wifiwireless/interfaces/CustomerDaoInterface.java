@@ -11,9 +11,10 @@ import com.wifiwireless.model.CustomerDetails;
 public interface CustomerDaoInterface {
 
 	public void addCustomer(ArrayList<CustomerDetails> customer);
-	public void updateCustomer(ArrayList<CustomerDetails> customer);
+	public void updateCustomer(List<CustomerDetails> customer);
 	public String checkNumber(String email,String secret);
 	public List<CustomerDetails> getAllCustomers();
 	public CustomerDetails getCustomerDetailsByUsername(String username);
 	public void updateCustomer(CustomerDetails customer);
+	public List<CustomerDetails> getCustomersDetailsNotPaid();
 }
