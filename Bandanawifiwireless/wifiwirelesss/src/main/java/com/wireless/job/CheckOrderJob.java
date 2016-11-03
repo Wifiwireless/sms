@@ -85,7 +85,7 @@ public class CheckOrderJob implements Job{
 						 System.out.println("Piad Flag :"+NumberDetails.getPaidflag());
 						 
 					}else{
-						 System.out.println("Numbet details not present for this customer :");
+						 System.out.println("Number details not present for this customer :");
 					}
 
 				}

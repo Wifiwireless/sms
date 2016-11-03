@@ -61,7 +61,7 @@ public class CheckPaidFlagJob implements WifiWirlessConstants , Job{
 					   CustomerDaoInterface customerdao = JndiLookup.getCustomerDetails();
 					   CustomerDetails customerDetails = customerdao.getCustomerDetailsByUsername(numberDetails.getUsername());
 					   
-					   if(customerDetails != null){
+					   if(customerDetails != null && customerDetails.getOrdered()){
 						    BuyNumber buyNumber = new BuyNumber();
 							buyNumber.setCountry("US");
 							buyNumber.setMsisdn(numberDetails.getMsisdn());
