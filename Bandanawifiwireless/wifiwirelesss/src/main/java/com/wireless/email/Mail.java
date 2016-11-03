@@ -3,6 +3,8 @@ package com.wireless.email;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -17,6 +19,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import com.wifiwireless.model.CustomerDetails;
 import com.wireless.utility.NexmoServices;
 
 import freemarker.cache.ClassTemplateLoader;
@@ -93,5 +96,31 @@ public class Mail {
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	
+	public static Boolean generateVerificationEmail(CustomerDetails customerDetails, String msisdn,boolean isNumberReady) {
+		String subject = "UtalkWifi Application Credentials";
+		Map<String, String> rootMap = new HashMap<String, String>();
+
+		rootMap.put("username", customerDetails.getExtension());
+		rootMap.put("password", customerDetails.getSecret());
+		
+		if(isNumberReady){
+			rootMap.put("number", msisdn);
+		}else{
+			rootMap.put("number", "Due to technical problem we will asign you number 1 hour later.");
+		}
+		
+		rootMap.put("date", "" + new Date());
+		try {
+			Mail.email(customerDetails.getEmail(), subject, rootMap, "email.ftl");
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }

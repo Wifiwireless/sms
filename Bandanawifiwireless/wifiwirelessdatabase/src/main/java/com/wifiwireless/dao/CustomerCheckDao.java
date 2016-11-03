@@ -13,7 +13,7 @@ import com.wifiwireless.model.CustomerCheck;
 import com.wifiwireless.model.CustomerDetails;
 
 @Stateless
-public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCheckDaoInterface {
+public class CustomerCheckDao extends WifiDao implements Serializable, CustomerCheckDaoInterface {
 
 	EntityManager em = null;
 
@@ -22,25 +22,24 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 	 */
 	public CustomerCheck getData() {
 		em = getEm();
-		CustomerCheck che=new CustomerCheck();
-		//System.out.println("Username"+username+"   Password"+Passkey);
+		CustomerCheck che = new CustomerCheck();
+		// System.out.println("Username"+username+" Password"+Passkey);
 		try {
 
 			String qlString = "FROM CustomerCheck";
-			TypedQuery<CustomerCheck> query = em.createQuery(qlString,
-					CustomerCheck.class);
+			TypedQuery<CustomerCheck> query = em.createQuery(qlString, CustomerCheck.class);
 
-			//ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>) query.getResultList();
-		che=query.getResultList().get(0);
-		
-		
-		System.out.println(che.getDatemodified());
+			// ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>)
+			// query.getResultList();
+			che = query.getResultList().get(0);
+
+			System.out.println(che.getDatemodified());
 			// if(query.getResultList()!=null && query.getResultList().size()>0)
-			}
-			
-		 catch (Exception exception) {
+		}
+
+		catch (Exception exception) {
 			System.out.println(exception);
-			//LOG.error(exception);
+			// LOG.error(exception);
 		} finally {
 
 			em.close();
@@ -48,30 +47,27 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 		return che;
 
 	}
-	
+
 	public CustomerCheck getextension() {
 		em = getEm();
-		CustomerCheck che=null;
-		//System.out.println("Username"+username+"   Password"+Passkey);
+		CustomerCheck che = null;
+		// System.out.println("Username"+username+" Password"+Passkey);
 		try {
 
 			String qlString = "FROM CustomerCheck";
-			TypedQuery<CustomerCheck> query = em.createQuery(qlString,
-					CustomerCheck.class);
+			TypedQuery<CustomerCheck> query = em.createQuery(qlString, CustomerCheck.class);
 
-			ArrayList<CustomerCheck> check=(ArrayList<CustomerCheck>) query.getResultList();
-			che=query.getResultList().get(0);
-				
-				System.out.println("check ");
-		
-			
-			
+			ArrayList<CustomerCheck> check = (ArrayList<CustomerCheck>) query.getResultList();
+			che = query.getResultList().get(0);
+
+			System.out.println("check ");
+
 			// if(query.getResultList()!=null && query.getResultList().size()>0)
-			}
-			
-		 catch (Exception exception) {
+		}
+
+		catch (Exception exception) {
 			System.out.println(exception);
-			//LOG.error(exception);
+			// LOG.error(exception);
 		} finally {
 
 			em.close();
@@ -79,19 +75,19 @@ public class CustomerCheckDao extends WifiDao implements Serializable,CustomerCh
 		return che;
 
 	}
+
 	public void addCustomerCheck(CustomerCheck check) {
 		em = getEm();
-System.out.println("in add check");
+		System.out.println("in add check");
 		try {
 			em.getTransaction().begin();
-			
-				em.persist(check);
-			
+
+			em.persist(check);
+
 			em.getTransaction().commit();
 		} catch (Exception exception) {
 			if (em.getTransaction().isActive())
 				em.getTransaction().rollback();
-			
 
 		} finally {
 
@@ -99,20 +95,21 @@ System.out.println("in add check");
 		}
 
 	}
+
 	public void updateCustomerCheck(CustomerCheck check) {
 		em = getEm();
 		System.out.println("in update check");
 		try {
-			
+
 			em.getTransaction().begin();
-			
+
 			em.merge(check);
 			em.getTransaction().commit();
-		
+
 		} catch (Exception exception) {
 			if (em.getTransaction().isActive())
 				em.getTransaction().rollback();
-			//LOG.error(exception.getMessage());
+			// LOG.error(exception.getMessage());
 
 		} finally {
 

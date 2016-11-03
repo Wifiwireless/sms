@@ -41,8 +41,9 @@ public class CheckOrderJob implements Job{
 		CustomerDaoInterface customerdao = JndiLookup.getCustomerDetails();
 		NumberDetailsInterface numberDetailsDao = JndiLookup.getNumberDetailsDao();
 		HttpClient httpClient = new DefaultHttpClient();
+		System.out.println("getCustomersDetailsNotPaid called :");
 		List<CustomerDetails> unPaidcustomerDetailsList = customerdao.getCustomersDetailsNotPaid();
-if(unPaidcustomerDetailsList!=null){
+        if(unPaidcustomerDetailsList!=null){
 		for (CustomerDetails unPaidcustomerDetails : unPaidcustomerDetailsList) {
 			Gson gson = new Gson();
 			HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/orders?customer_id="
@@ -76,11 +77,15 @@ if(unPaidcustomerDetailsList!=null){
 
 					NumberDetails NumberDetails = numberDetailsDao
 							.getNumberDetails(unPaidcustomerDetails.getExtension(), unPaidcustomerDetails.getSecret());
-					if (NumberDetails != null) {
-						 generateVerificationEmail(unPaidcustomerDetails,NumberDetails.getMsisdn());
-						System.out.println("Email sent to :" + unPaidcustomerDetails.getEmail());
-					} else {
-						System.out.println("Numbet details not present for this customer :");
+					if (NumberDetails != null && NumberDetails.getPaidflag()) {
+						 Mail.generateVerificationEmail(unPaidcustomerDetails,NumberDetails.getMsisdn(),true);
+						 System.out.println("Email sent to :" + unPaidcustomerDetails.getEmail());
+					}else if(NumberDetails != null && !NumberDetails.getPaidflag()){
+						 Mail.generateVerificationEmail(unPaidcustomerDetails,NumberDetails.getMsisdn(),false);
+						 System.out.println("Piad Flag :"+NumberDetails.getPaidflag());
+						 
+					}else{
+						 System.out.println("Numbet details not present for this customer :");
 					}
 
 				}
@@ -100,23 +105,6 @@ if(unPaidcustomerDetailsList!=null){
 	
 	}
 
-	public static Boolean generateVerificationEmail(CustomerDetails customerDetails, String msisdn) {
-		String subject = "UtalkWifi Application Credentials";
-		Map<String, String> rootMap = new HashMap<String, String>();
-
-		rootMap.put("username", customerDetails.getExtension());
-		rootMap.put("password", customerDetails.getSecret());
-		rootMap.put("number", msisdn);
-		rootMap.put("date", "" + new Date());
-		try {
-			Mail.email(customerDetails.getEmail(), subject, rootMap, "email.ftl");
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
+	
 
 }
