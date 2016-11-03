@@ -116,7 +116,7 @@ public class NexmoServices implements WifiWirlessConstants {
 
 	public static BuyNumberResponse buyNumber(String country, String msisdn, String username, String password,
 			String phoneNumber) {
-
+System.out.println("in buy number" + country + msisdn);
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		urlParameters.add(new BasicNameValuePair("country", country));
 		urlParameters.add(new BasicNameValuePair("msisdn", msisdn));

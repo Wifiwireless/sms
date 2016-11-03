@@ -47,6 +47,8 @@ if(unPaidcustomerDetailsList!=null){
 			Gson gson = new Gson();
 			HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/orders?customer_id="
 					+ unPaidcustomerDetails.getId());
+			
+			System.out.println("checking orders");
 			try {
 				HttpResponse response;
 				post.addHeader("Accept", "application/json");
@@ -69,6 +71,7 @@ if(unPaidcustomerDetailsList!=null){
 				if (customerDetailsResponse.size() > 0
 						&& customerDetailsResponse.get(0).getStatus().equalsIgnoreCase("Completed")) {
 					unPaidcustomerDetails.setOrdered(true);
+					System.out.println(" updating customer");
 					customerdao.updateCustomer(unPaidcustomerDetails);
 
 					NumberDetails NumberDetails = numberDetailsDao
@@ -84,7 +87,7 @@ if(unPaidcustomerDetailsList!=null){
 
 				// ArrayList<NumberDetails> arryNumber = new
 				// ArrayList<NumberDetails>();
-				System.out.println("customer list size " + customerDetailsResponse.size());
+				System.out.println("order list size " + customerDetailsResponse.size());
 
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
