@@ -141,10 +141,10 @@ public class NexmoServices implements WifiWirlessConstants {
 			if (response.getStatusLine().getStatusCode() == 200) {
 
 				NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
-				numberInterface.checkandUpdate(msisdn, username, password);
+				numberInterface.checkandUpdatePaidFlag(msisdn, username, password);
 
 				BuyNumberResponse byNumResp = new BuyNumberResponse();
-				updateNumber(country, msisdn, phoneNumber);
+				updateNumberInNexmo(country, msisdn, phoneNumber);
 				callDid(username, msisdn);
 
 				byNumResp.setSuccess("success");
@@ -179,7 +179,7 @@ public class NexmoServices implements WifiWirlessConstants {
 
 	}
 
-	public static BuyNumberResponse updateNumber(String country, String msisdn, String phoneNo) {
+	public static BuyNumberResponse updateNumberInNexmo(String country, String msisdn, String phoneNo) {
 
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		urlParameters.add(new BasicNameValuePair("country", country));

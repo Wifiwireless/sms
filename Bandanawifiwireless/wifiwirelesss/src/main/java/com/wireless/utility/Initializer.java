@@ -21,6 +21,7 @@ public class Initializer implements ServletContextListener{
 	public void contextInitialized(ServletContextEvent arg0) {
 		System.out.println("Context Initialized");
 		Schedulars.schedular();
+		Schedulars.checkPaidFlagScheduler();
 		//Schedulars.checkBillScheduler();
 	/*	Map<String, String> rootMap = new HashMap<String, String>();
 

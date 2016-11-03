@@ -1,6 +1,7 @@
 package com.wifiwireless.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -167,7 +168,7 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 		return numbers;
 
 	}
-	public Boolean checkandUpdate(String msisdn,String username,String password) {
+	public Boolean checkandUpdatePaidFlag(String msisdn,String username,String password) {
 		em = getEm();
 		
 		try {
@@ -200,6 +201,34 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 		}
 		return false;
 
+	}
+	public List<NumberDetails> getNumberDetailsByPaidFlag(boolean paidFlag) {
+		em = getEm();
+		List<NumberDetails> numbers = null;
+		try {
+
+			String qlString = "SELECT number FROM NumberDetails number  "
+					+ "WHERE  number.paidflag=:paidflag";
+
+			TypedQuery<NumberDetails> query = em.createQuery(qlString,
+					NumberDetails.class);
+
+			query.setParameter("paidflag", paidFlag);
+			if (query.getResultList() != null){
+				
+				numbers = query.getResultList();
+				
+			}
+			
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			System.out.println(exception);
+			//LOG.error(exception);
+		} finally {
+
+			em.close();
+		}
+		return numbers;
 	}
 
 	

@@ -12,6 +12,7 @@ import org.quartz.impl.StdSchedulerFactory;
 
 import com.wireless.job.CheckBillJob;
 import com.wireless.job.CheckOrderJob;
+import com.wireless.job.CheckPaidFlagJob;
 import com.wireless.job.CustomerUpdateJob;
 
 public class Schedulars {
@@ -88,7 +89,34 @@ public class Schedulars {
     	
     }
     
-	 
+	
+   public static void checkPaidFlagScheduler(){
+	   try {
+   		
+			System.out.println("checkPaidFlagScheduler Schedular started :");
+			
+   		    JobDetail job = new JobDetail();
+			job.setName("checkPaidFlagScheduler");
+			job.setJobClass(CheckPaidFlagJob.class);
+			
+   		    CronTrigger trigger = new CronTrigger();
+       	    trigger.setName("checkPaidFlagTriggerName");
+			trigger.setCronExpression("0/15 * * * * ?");//0 */2 * * *
+			
+			
+			checkBillScheduler = new StdSchedulerFactory().getScheduler();
+			checkBillScheduler.start();
+			checkBillScheduler.scheduleJob(job, trigger);
+	    	
+	    	
+		} catch (SchedulerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+   }
     
 	public static Scheduler getCheckBillScheduler() {
 		return checkBillScheduler;

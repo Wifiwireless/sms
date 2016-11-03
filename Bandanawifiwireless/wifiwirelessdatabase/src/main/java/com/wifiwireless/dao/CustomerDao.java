@@ -179,6 +179,8 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 					CustomerDetails.class);
 			query.setParameter("ordered", false);
 			
+			System.out.println("In getCustomersDetailsNotPaid");
+			System.out.println("In getCustomersDetailsNotPaid size"+query.getResultList().size());
 			if(query.getResultList().size()>0)
 			customerDetails = query.getResultList();
 		
