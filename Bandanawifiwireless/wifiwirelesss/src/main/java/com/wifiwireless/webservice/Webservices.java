@@ -108,7 +108,7 @@ public class Webservices {
 	}
 
 
-	public static BuyNumberResponse buyNumber(BuyNumber buyNumber) {
+	public static BuyNumberResponse buyNumber(BuyNumber buyNumber,String extId) {
 
 		log.info("country is " + buyNumber.getCountry());
 		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
@@ -116,7 +116,7 @@ public class Webservices {
 		NumberDetails numberss = numberInterface.getNumberDetails(buyNumber.getUsername(), buyNumber.getPassword());
 
 		return NexmoServices.buyNumber(buyNumber.getCountry(), buyNumber.getMsisdn(), buyNumber.getUsername(),
-				buyNumber.getPassword(), numberss.getPhnno());
+				buyNumber.getPassword(), numberss.getPhnno(),numberss.getUsername(),extId);
 
 	}
 

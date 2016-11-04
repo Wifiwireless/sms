@@ -69,6 +69,9 @@ public class CustomerDetails implements Serializable {
 	@Column(name = "ordered")
 	private Boolean ordered;
 
+	
+	@Column(name = "extId")
+	private String extId;
 	public String getCompany() {
 		return company;
 	}
@@ -259,6 +262,14 @@ public class CustomerDetails implements Serializable {
 
 	public void setOrdered(Boolean ordered) {
 		this.ordered = ordered;
+	}
+
+	public String getExtId() {
+		return extId;
+	}
+
+	public void setExtId(String extId) {
+		this.extId = extId;
 	}
 
 }

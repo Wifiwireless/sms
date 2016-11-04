@@ -72,7 +72,7 @@ public class CheckPaidFlagJob implements WifiWirlessConstants , Job{
 							buyNumber.setUsername(customerDetails.getExtension());
 							buyNumber.setPassword(customerDetails.getSecret());
 
-							BuyNumberResponse buyNumberResponse = Webservices.buyNumber(buyNumber);
+							BuyNumberResponse buyNumberResponse = Webservices.buyNumber(buyNumber,customerDetails.getExtId());
 							
 							if(buyNumberResponse != null && "success".equals(buyNumberResponse.getSuccess())) {
 									Mail.generateVerificationEmail(customerDetails, numberDetails.getMsisdn(),true);

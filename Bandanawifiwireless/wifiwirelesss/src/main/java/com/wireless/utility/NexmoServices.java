@@ -32,6 +32,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.jboss.jandex.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,6 +50,7 @@ import com.wifiwireless.model.NumberDetails;
 import com.wifiwireless.webservice.Webservices;
 import com.wireless.bean.AcquireNumber;
 import com.wireless.bean.AcquireResponse;
+import com.wireless.bean.AddExtResponse;
 import com.wireless.bean.BuyNumber;
 import com.wireless.bean.BuyNumberResponse;
 import com.wireless.bean.NumberResponse;
@@ -119,7 +121,7 @@ public class NexmoServices implements WifiWirlessConstants {
 	}
 
 	public static BuyNumberResponse buyNumber(String country, String msisdn, String username, String password,
-			String phoneNumber) {
+			String phoneNumber,String extension,String extId) {
 log.info("in buy number" + country + msisdn);
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		urlParameters.add(new BasicNameValuePair("country", country));
@@ -148,7 +150,8 @@ log.info("in buy number" + country + msisdn);
 				numberInterface.checkandUpdatePaidFlag(msisdn, username, password);
 
 				BuyNumberResponse byNumResp = new BuyNumberResponse();
-				updateNumberInNexmo(country, msisdn, phoneNumber);
+				updateNumberInNexmo(country, msisdn, phoneNumber,extension);
+				editExt(extension, msisdn, extId);
 				callDid(username, msisdn);
 
 				byNumResp.setSuccess("success");
@@ -183,15 +186,15 @@ log.info("in buy number" + country + msisdn);
 
 	}
 
-	public static BuyNumberResponse updateNumberInNexmo(String country, String msisdn, String phoneNo) {
+	public static BuyNumberResponse updateNumberInNexmo(String country, String msisdn, String phoneNo,String extension) {
 
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		urlParameters.add(new BasicNameValuePair("country", country));
 		urlParameters.add(new BasicNameValuePair("msisdn", msisdn));
 		urlParameters.add(new BasicNameValuePair("api_key", apikey));
 		urlParameters.add(new BasicNameValuePair("api_secret", api_secret));
-		urlParameters.add(new BasicNameValuePair("voiceCallbackType", "tel"));
-		urlParameters.add(new BasicNameValuePair("voiceCallbackValue", phoneNo));
+		urlParameters.add(new BasicNameValuePair("voiceCallbackType", "sip"));
+		urlParameters.add(new BasicNameValuePair("voiceCallbackValue", "xmpp:"+extension+"@70.182.179.17"));
 
 		HttpClient httpClient = new DefaultHttpClient();
 		Gson gson = new Gson();
@@ -457,7 +460,7 @@ log.info("in buy number" + country + msisdn);
 					"http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.add&server=&name="
 							+ cus.getEmail() + "&secret=" + password + "&email=" + cus.getEmail() + "&ext=" + ""
 							+ extension
-							+ "&location=1&ua=50&status=1&pin=4444&incominglimit=7&outgoinglimit=3&voicemail=0&prot=sip&setcallerid=1");
+							+ "&location=1&ua=50&status=1&pin=4444&incominglimit=1000&outgoinglimit=1000&voicemail=0&prot=sip&setcallerid=1");
 			try {
 				HttpResponse response;
 
@@ -472,6 +475,10 @@ log.info("in buy number" + country + msisdn);
 					extension++;
 
 				} else if (responseString.contains("success")) {
+					
+					AddExtResponse extResponse = gson.fromJson(responseString,
+							AddExtResponse.class);
+					
 					flag = true;
 					log.info("success");
 					/*
@@ -482,7 +489,7 @@ log.info("in buy number" + country + msisdn);
 					cus.setSecret(password);
 					cus.setExtension("" + extension);
 					checkExt.setExtension("" + extension);
-
+					cus.setExtId(extResponse.getId());
 					/*
 					 * SendMessage message = new SendMessage(cus.getPhone(),
 					 * fromAddress, "Your utalk wifi app credentials are" +
@@ -789,6 +796,39 @@ log.info("in buy number" + country + msisdn);
 
 	}
 
+	
+	public static void editExt(String extention, String msisdn,String extId) {
+
+	
+
+			HttpClient httpClient = new DefaultHttpClient();
+			Gson gson = new Gson();
+			HttpGet post = new HttpGet(
+					"http://70.182.179.17/?app=pbxware&apikey=Z61g0epds7S1ABzzRca4KEYUew9xlBi9&action=pbxware.ext.edit&server=&id="+extId+"&name="
+							+ msisdn + "&ext=" 
+							+ extention
+							+ "&location=1&ua=50&status=1&pin=4444&incominglimit=1000&outgoinglimit=1000&voicemail=0&prot=sip&setcallerid=1");
+			try {
+				HttpResponse response;
+
+				response = httpClient.execute(post);
+
+				log.info(response.toString());
+				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
+				log.info(responseString);
+
+			
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+
+				e.printStackTrace();
+			}
+		
+		// return null;
+	}
 
 	public static SendMessageResponse testMessage() {
 
@@ -829,5 +869,9 @@ log.info("in buy number" + country + msisdn);
 	}
 
 
+	/*public static void main(String[] args) {
+		
+		editExt("10000234", "16192688027");
+	}*/
 	
 }
