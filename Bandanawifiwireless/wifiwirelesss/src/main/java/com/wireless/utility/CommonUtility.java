@@ -20,15 +20,17 @@ public class CommonUtility {
 			
 			if (!phoneUtil.isValidNumber(phoneNumberProto)){
 				
-				System.out.println("in valid for us");
+				System.out.println("invalid for us");
  return msisdn;
 			}else{
 				
-				if(!msisdn.startsWith("+1")){
+				if(!msisdn.startsWith("+1")&&msisdn.length()<=10){
 					msisdn = "+1"+msisdn;
-					System.out.println(msisdn);
+					System.out.println("valid for us");
+
+				}else{
+					System.out.println("invalid for us "+msisdn);
 				}
-				System.out.println("valid for us");
 				 return msisdn;
 
 			}
@@ -44,6 +46,6 @@ public class CommonUtility {
 	
 	
 	public static void main(String[] args) {
-		checkMsisdn("494634536");
+		checkMsisdn("+919172801171");
 	}
 }
