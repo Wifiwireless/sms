@@ -4,12 +4,18 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import org.quartz.SchedulerException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.wireless.job.CheckPaidFlagJob;
 
 public class Initializer implements ServletContextListener{
 
+	private static final Logger log = LoggerFactory.getLogger(Initializer.class);
+	
 	public void contextDestroyed(ServletContextEvent arg0) {
 		try {
-			System.out.println("Schedular Stop");
+			log.info("Schedular Stop");
 			Schedulars.getScheduler().shutdown();
 			
 		} catch (SchedulerException e) {
@@ -19,9 +25,10 @@ public class Initializer implements ServletContextListener{
 	}
 
 	public void contextInitialized(ServletContextEvent arg0) {
-		System.out.println("Context Initialized");
+		log.info("Context Initialized");
 		Schedulars.schedular();
 		Schedulars.checkPaidFlagScheduler();
+		Schedulars.checkNexmoBalanceScheduler();
 		//Schedulars.checkBillScheduler();
 	/*	Map<String, String> rootMap = new HashMap<String, String>();
 

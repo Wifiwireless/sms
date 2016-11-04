@@ -22,6 +22,8 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.jboss.resteasy.annotations.ResponseObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.mail.imap.protocol.Status;
 import com.wifiwireless.constant.JndiLookup;
@@ -46,6 +48,7 @@ import com.wireless.bean.UnreadSms;
 import com.wireless.email.Mail;
 import com.wireless.utility.NexmoServices;
 import com.wireless.utility.PushNotificationService;
+import com.wireless.utility.Schedulars;
 import com.wireless.utility.WifiWirlessConstants;
 
 import freemarker.template.TemplateException;
@@ -53,26 +56,11 @@ import freemarker.template.TemplateException;
 @Path("/")
 public class Webservices {
 
-	/*
-	 * @POST
-	 * 
-	 * @Path("sendEmailTest")
-	 * 
-	 * @Consumes(MediaType.APPLICATION_JSON) public void sendEmailTest() {
-	 * System.out.println("sending email------------------------");
-	 * ArrayList<String> arrPassAndUsernme = new ArrayList<String>();
-	 * arrPassAndUsernme.add("123"); arrPassAndUsernme.add("123");
-	 * arrPassAndUsernme.add("123");
-	 * arrPassAndUsernme.add("kirti2091@gmail.com");
-	 * NexmoServices.generateVerificationEmail(arrPassAndUsernme);
-	 * 
-	 * }
-	 */
-
+	private static final Logger log = LoggerFactory.getLogger(Webservices.class);
 
 	public static NumberResponse getNumber(AcquireNumber acquireNumber) {
-		System.out.println("in get number"+acquireNumber);
-		System.out.println("Acquire Number"+acquireNumber);
+		log.info("in get number"+acquireNumber);
+		log.info("Acquire Number"+acquireNumber);
 		NumberResponse numberResponse = null;
 		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
 		if (acquireNumber.getUsername() != null && acquireNumber.getPassword() != null
@@ -86,14 +74,14 @@ public class Webservices {
 				NumberDetails number = new NumberDetails(acquireNumber.getCountry(), acquireNumber.getPattern(), false,
 						acquireNumber.getMobileNumber());
 				
-				System.out.println("Username :"+acquireNumber.getUsername());
+				log.info("Username :"+acquireNumber.getUsername());
 
-				System.out.println("Hardcoded country is " + acquireNumber.getCountry());
+				log.info("Hardcoded country is " + acquireNumber.getCountry());
 				// Save to database
 				// number.setCountry(acquireNumber.getCountry());
 				numberResponse = NexmoServices.acquireNumber(acquireNumber.getCountry(), acquireNumber.getPattern());
 
-				System.out.println("number response	" + numberResponse.getMsisdn());
+				log.info("number response	" + numberResponse.getMsisdn());
 				if (numberResponse.getMsisdn() != null) {// save to db
 					number.setUsername(numberss.getUsername());
 					number.setPassword(numberss.getPassword());
@@ -122,7 +110,7 @@ public class Webservices {
 
 	public static BuyNumberResponse buyNumber(BuyNumber buyNumber) {
 
-		System.out.println("country is " + buyNumber.getCountry());
+		log.info("country is " + buyNumber.getCountry());
 		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
 
 		NumberDetails numberss = numberInterface.getNumberDetails(buyNumber.getUsername(), buyNumber.getPassword());
@@ -137,13 +125,13 @@ public class Webservices {
 	@Produces(MediaType.APPLICATION_JSON)
 	public SendMessageResponse sendMessage(SendMessage sendMessage) {
 
-		System.out.println("Sending Message");
+		log.info("Sending Message");
 		NumberDetailsInterface numberInterface = JndiLookup.getNumberDetailsDao();
 		String msidn = numberInterface.checkNumber(sendMessage.getFrom(), sendMessage.getPassword());
 
 		if (sendMessage.getFrom() != null && sendMessage.getPassword() != null && sendMessage.getTo() != null
 				&& sendMessage.getBody() != null) {
-			System.out.println("country is ");
+			log.info("country is ");
 			if (msidn != "") {
 				sendMessage.setFrom(msidn);
 				return NexmoServices.sendMessage(sendMessage);
@@ -166,23 +154,23 @@ public class Webservices {
 			@QueryParam("network-code") String networkcode, @QueryParam("messageId") String messageId,
 			@QueryParam("price") String price, @QueryParam("status") String status, @QueryParam("scts") String scts,
 			@QueryParam("err-code") String errorCode, @QueryParam("message-timestamp") String messagetimestamp) {
-		System.out.println("Receipt received------------------------");
-		System.out.println("msisdn" + msisdn + "netwr" + networkcode + errorCode + messageId + messagetimestamp + msisdn
+		log.info("Receipt received------------------------");
+		log.info("msisdn" + msisdn + "netwr" + networkcode + errorCode + messageId + messagetimestamp + msisdn
 				+ networkcode + price + scts + status + to);
 
-		System.out.println("status " + status);
-		System.out.println("Receipt received------------------------");
+		log.info("status " + status);
+		log.info("Receipt received------------------------");
 		MessageReciepts msgReciepts = new MessageReciepts(msisdn, to, networkcode, messageId, status, scts, errorCode,
 				new Date());
 		MessageRecieptsInterface messageREcieptsInteface = JndiLookup.getMessageRecieptsDao();
 		messageREcieptsInteface.addMesages(msgReciepts);
 
-		// System.out.println("country is " + buyNumber.getCountry());
-		System.out.println("Receipt received------------------------");
-		System.out.println("msisdn" + msisdn);
+		// log.info("country is " + buyNumber.getCountry());
+		log.info("Receipt received------------------------");
+		log.info("msisdn" + msisdn);
 
-		System.out.println("status " + status);
-		System.out.println("Receipt received------------------------");
+		log.info("status " + status);
+		log.info("Receipt received------------------------");
 
 	}
 
@@ -190,7 +178,7 @@ public class Webservices {
 	@Path("getnew")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void getnew() {
-		System.out.println("Receipt received------------------------");
+		log.info("Receipt received------------------------");
 		// NexmoServices.test();
 
 	}
@@ -202,9 +190,9 @@ public class Webservices {
 	public Response getnew(@QueryParam("msisdn") String msisdn, @QueryParam("to") String to,
 			@QueryParam("messageId") String messageId, @QueryParam("text") String text, @QueryParam("type") String type,
 			@QueryParam("timestamp") String timestamp) {
-		System.out.println("Reply received------------------------" + text);
+		log.info("Reply received------------------------" + text);
 
-		System.out.println("Reply came from------------------------" + msisdn);
+		log.info("Reply came from------------------------" + msisdn);
 
 		NumberDetailsInterface detailsInterface = JndiLookup.getNumberDetailsDao();
 		NumberDetails numberDetails = detailsInterface.getNumberDetailsByMsisdn(to);
@@ -224,12 +212,12 @@ public class Webservices {
 		 * JndiLookup.getNumberDetailsDao(); NumberDetails
 		 * numberDetails=detailsInterface.getNumberDetailsByMsisdn(to); text =
 		 * "You have received a reply from "+msisdn +"\n "+text;
-		 * if(numberDetails.getPhnno()!=null){ System.out.println(
+		 * if(numberDetails.getPhnno()!=null){ log.info(
 		 * "Reply Sending to------------------------"
 		 * +numberDetails.getPhnno()); SendMessage message = new SendMessage();
 		 * message.setFrom(WifiWirlessConstants.fromAddress);
 		 * message.setTo(numberDetails.getPhnno()); message.setBody(text);
-		 * System.out.println(message.toString());
+		 * log.info(message.toString());
 		 * NexmoServices.sendMessage(message); }
 		 */
 		return Response.status(200).build();
@@ -241,7 +229,7 @@ public class Webservices {
 	@Path("sendEmailTest")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void sendEmailTest() {
-		System.out.println("sending email------------------------");
+		log.info("sending email------------------------");
 	
 		CustomerDaoInterface customerDao = JndiLookup.getCustomerDetails();
 		List<CustomerDetails> customerDetails = customerDao.getAllCustomers();
@@ -283,17 +271,17 @@ public class Webservices {
 				fetchMessage.getPassword());
 		ArrayList<Messages> arrayReply = JndiLookup.getMessageDao().getMessageByMsisdn(details.getMsisdn());
 
-		System.out.println("---------------fetching sms-------------");
-		System.out.println("---------------fetching sms-------------");
+		log.info("---------------fetching sms-------------");
+		log.info("---------------fetching sms-------------");
 
-		System.out.println("---------------fetching sms-------------");
+		log.info("---------------fetching sms-------------");
 
 		if (arrayReply.size() > 0) {
 			for (Messages reply : arrayReply) {
 				UnreadMessage message = new UnreadMessage();
 				message.setSender(reply.getSource());
-				System.out.println("checking reply time");
-				System.out.println("checking reply time" + reply.getMessagetime());
+				log.info("checking reply time");
+				log.info("checking reply time" + reply.getMessagetime());
 
 				if (reply.getMessagetime() != null) {
 					message.setSending_date(
@@ -311,7 +299,7 @@ public class Webservices {
 		sms.setItem(arrayList);
 		fetchMessageResponse.setDate("" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(new Date()));
 		fetchMessageResponse.setUnread_smss(sms);
-		System.out.println(fetchMessageResponse.toString());
+		log.info(fetchMessageResponse.toString());
 		return fetchMessageResponse;
 
 	}
@@ -322,8 +310,8 @@ public class Webservices {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response pushTokenReorter(PushToken pushtoken) {
 
-		System.out.println("Push Token :" + pushtoken.getUsername());
-		System.out.println("Push Token :" + pushtoken.getAppId());
+		log.info("Push Token :" + pushtoken.getUsername());
+		log.info("Push Token :" + pushtoken.getAppId());
 
 		CustomerDaoInterface customerDao = JndiLookup.getCustomerDetails();
 		CustomerDetails customerDetails = customerDao.getCustomerDetailsByUsername(pushtoken.getUsername());

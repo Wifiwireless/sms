@@ -17,15 +17,20 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.wifiwireless.constant.JndiLookup;
 import com.wifiwireless.interfaces.CustomerDaoInterface;
 import com.wifiwireless.model.CustomerDetails;
 import com.wireless.email.Mail;
+import com.wireless.utility.Schedulars;
 
 public class CheckBillJob implements Job {
 
+	private static final Logger log = LoggerFactory.getLogger(CheckBillJob.class);
+	
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 		// TODO Auto-generated method stub
 
@@ -56,11 +61,11 @@ public class CheckBillJob implements Job {
 						if (checkDate.getMonth() == currentDate.getMonth()
 								&& checkDate.getDate() == currentDate.getDate()
 								&& checkDate.getYear() == currentDate.getYear()) {
-							System.out.println("Matched");
+							log.info("Matched");
 							// send email of pay billing after 25 days
-							System.out.println("modified date :" + modifiedDate);
-							System.out.println("date after 25 days Date :" + checkDate);
-							System.out.println("current date :" + new Date());
+							log.info("modified date :" + modifiedDate);
+							log.info("date after 25 days Date :" + checkDate);
+							log.info("current date :" + new Date());
 							sendPayBillEmail(customerDetails);
 
 						}
@@ -75,10 +80,10 @@ public class CheckBillJob implements Job {
 						if (deactiveDate.getMonth() == currentDate.getMonth()
 								&& deactiveDate.getDate() == currentDate.getDate()
 								&& deactiveDate.getYear() == currentDate.getYear()) {
-							System.out.println("Deactivate account");
-							System.out.println("modified date :" + modifiedDate);
-							System.out.println("date after 30 days Date:" + deactiveDate);
-							System.out.println("current date :" + new Date());
+							log.info("Deactivate account");
+							log.info("modified date :" + modifiedDate);
+							log.info("date after 30 days Date:" + deactiveDate);
+							log.info("current date :" + new Date());
 
 							// Deactivate account after 30 days
 							
@@ -91,13 +96,13 @@ public class CheckBillJob implements Job {
 						e.printStackTrace();
 					}
 				} else {
-					System.out.println("customer dont have modified date ");
+					log.info("customer dont have modified date ");
 				}
 
 			}
 		} else {
 
-			System.out.println("No Customer Founds :" + customerDetailsList);
+			log.info("No Customer Founds :" + customerDetailsList);
 		}
 	}
 
@@ -130,9 +135,9 @@ public class CheckBillJob implements Job {
 
 			response = httpClient.execute(post);
 
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println("Account Disabled succesfully :" + responseString);
+			log.info("Account Disabled succesfully :" + responseString);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

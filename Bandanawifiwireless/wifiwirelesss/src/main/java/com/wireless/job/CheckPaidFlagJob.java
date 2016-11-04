@@ -11,6 +11,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -24,11 +26,13 @@ import com.wireless.bean.BuyNumber;
 import com.wireless.bean.BuyNumberResponse;
 import com.wireless.bean.NexmoBalance;
 import com.wireless.email.Mail;
+import com.wireless.utility.Schedulars;
 import com.wireless.utility.WifiWirlessConstants;
 
 public class CheckPaidFlagJob implements WifiWirlessConstants , Job{
 
-
+	private static final Logger log = LoggerFactory.getLogger(CheckPaidFlagJob.class);
+	
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 		HttpClient httpClient = new DefaultHttpClient();
 		NumberDetailsInterface numberDetailsDao = JndiLookup.getNumberDetailsDao();
@@ -44,10 +48,10 @@ public class CheckPaidFlagJob implements WifiWirlessConstants , Job{
 			post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
 			post.addHeader("X-Auth-Token", "cd10af7566dc4882999d1452b361d1f827629df8");
 			response = httpClient.execute(post);
-			System.out.println(response.getStatusLine().getStatusCode());
+			log.info(""+response.getStatusLine().getStatusCode());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
 			
-			System.out.println("Nexmo Account Balance :"+responseString);
+			log.info("Nexmo Account Balance :"+responseString);
 			
 			NexmoBalance  nexmoBalance = gson.fromJson(responseString, new TypeToken<NexmoBalance>(){ }.getType());
 			
@@ -60,8 +64,8 @@ public class CheckPaidFlagJob implements WifiWirlessConstants , Job{
 				  for (NumberDetails numberDetails : numberDetailsList) {
 					   CustomerDaoInterface customerdao = JndiLookup.getCustomerDetails();
 					   CustomerDetails customerDetails = customerdao.getCustomerDetailsByUsername(numberDetails.getUsername());
-					   
-					   if(customerDetails != null && customerDetails.getOrdered()){
+					   log.info("CustomerDetails.getOrdered() "+customerDetails.getOrdered());
+					   if(customerDetails != null && customerDetails.getOrdered() != null && customerDetails.getOrdered()){
 						    BuyNumber buyNumber = new BuyNumber();
 							buyNumber.setCountry("US");
 							buyNumber.setMsisdn(numberDetails.getMsisdn());
@@ -73,10 +77,10 @@ public class CheckPaidFlagJob implements WifiWirlessConstants , Job{
 							if(buyNumberResponse != null && "success".equals(buyNumberResponse.getSuccess())) {
 									Mail.generateVerificationEmail(customerDetails, numberDetails.getMsisdn(),true);
 							}else{
-									System.out.println("CheckPaidFlagJob BuyNumberResponse " + buyNumberResponse);
+									log.info("CheckPaidFlagJob BuyNumberResponse " + buyNumberResponse);
 						    }
 					   }else{
-						   System.out.println("CustomerDetails Not Found in Number Details : ");
+						   log.info("CustomerDetails Not Found in Number Details : ");
 					   }
 					    
 				  }
@@ -92,4 +96,6 @@ public class CheckPaidFlagJob implements WifiWirlessConstants , Job{
 		}
 		
 	}
+	
+	
 }

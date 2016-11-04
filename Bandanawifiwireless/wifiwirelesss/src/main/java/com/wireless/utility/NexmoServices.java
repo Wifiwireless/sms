@@ -32,6 +32,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -61,6 +63,8 @@ import freemarker.template.TemplateException;
 
 public class NexmoServices implements WifiWirlessConstants {
 
+	private static final Logger log = LoggerFactory.getLogger(NexmoServices.class);
+	
 	public static NumberResponse acquireNumber(String country, String pattern) {
 
 		// https://rest.nexmo.com/number/search?api_key=abcdefghi&api_secret=12345678&country=US&pattern=1619&search_pattern=0&features=sms,voice&size=1
@@ -79,7 +83,7 @@ public class NexmoServices implements WifiWirlessConstants {
 				String responseString;
 
 				responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-				System.out.println(responseString);
+				log.info(responseString);
 
 				AcquireResponse numberResponse = gson.fromJson(responseString, AcquireResponse.class);
 				if (numberResponse.getNumbers() != null && numberResponse.getNumbers().size() > 0) {
@@ -99,7 +103,7 @@ public class NexmoServices implements WifiWirlessConstants {
 				}
 
 			} else {
-				System.out.println("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
+				log.info("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
 
 			}
 		} catch (IllegalStateException e) {
@@ -116,7 +120,7 @@ public class NexmoServices implements WifiWirlessConstants {
 
 	public static BuyNumberResponse buyNumber(String country, String msisdn, String username, String password,
 			String phoneNumber) {
-System.out.println("in buy number" + country + msisdn);
+log.info("in buy number" + country + msisdn);
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		urlParameters.add(new BasicNameValuePair("country", country));
 		urlParameters.add(new BasicNameValuePair("msisdn", msisdn));
@@ -134,9 +138,9 @@ System.out.println("in buy number" + country + msisdn);
 			post.setHeader("Accept", "application/json");
 
 			response = httpClient.execute(post);
-			System.out.println("response  code" + response.getStatusLine().getStatusCode());
+			log.info("response  code" + response.getStatusLine().getStatusCode());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 
 			if (response.getStatusLine().getStatusCode() == 200) {
 
@@ -201,7 +205,7 @@ System.out.println("in buy number" + country + msisdn);
 
 			response = httpClient.execute(post);
 
-			System.out.println(response.getStatusLine().getStatusCode());
+			log.info(""+response.getStatusLine().getStatusCode());
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -219,7 +223,7 @@ System.out.println("in buy number" + country + msisdn);
 		HttpClient httpClient = new DefaultHttpClient();
 		Gson gson = new Gson();
 
-		System.out.println("sending message to " + message.getTo());
+		log.info("sending message to " + message.getTo());
 		/*
 		 * if(!message.getTo().startsWith("1")){
 		 * message.setTo("+1"+message.getTo()); }
@@ -227,8 +231,8 @@ System.out.println("in buy number" + country + msisdn);
 
 		message.setTo(CommonUtility.checkMsisdn(message.getTo().trim()));
 
-		System.out.println("sending message to " + message.getTo());
-		System.out.println("sending message from " + message.getFrom());
+		log.info("sending message to " + message.getTo());
+		log.info("sending message from " + message.getFrom());
 
 		MessagesInterface messageinterface = JndiLookup.getMessageDao();
 		HttpGet get = new HttpGet("https://rest.nexmo.com/sms/json?api_key=" + apikey + "&api_secret=" + api_secret
@@ -244,7 +248,7 @@ System.out.println("in buy number" + country + msisdn);
 				String responseString;
 
 				responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-				System.out.println(responseString);
+				log.info(responseString);
 
 				SendMessageResponse msgResponse = gson.fromJson(responseString, SendMessageResponse.class);
 				if (msgResponse.getMessages().size() > 0 && msgResponse.getMessages() != null) {
@@ -261,11 +265,11 @@ System.out.println("in buy number" + country + msisdn);
 					messagesdatabase.setMessagetime(new Date());
 					messageinterface.addMesages(messagesdatabase);
 				}
-				System.out.println("message sent");
+				log.info("message sent");
 				return msgResponse;
 
 			} else {
-				System.out.println("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
+				log.info("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
 
 			}
 		} catch (IllegalStateException e) {
@@ -290,7 +294,7 @@ System.out.println("in buy number" + country + msisdn);
 		check = checkdao.getData();
 		int cid = check.getLength() + 1;
 		// int did=Integer.parseInt(check.getDid());
-		System.out.println("Last Id is" + cid);
+		log.info("Last Id is" + cid);
 		Gson gson = new Gson();
 
 		HttpGet post = new HttpGet("https://store-wiusit9d78.mybigcommerce.com/api/v2/customers?min_id=" + cid);
@@ -303,81 +307,47 @@ System.out.println("in buy number" + country + msisdn);
 			post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
 			post.addHeader("X-Auth-Token", "cd10af7566dc4882999d1452b361d1f827629df8");
 			response = httpClient.execute(post);
-			System.out.println(response.toString());
+			log.info(response.toString());
 			if (response.getStatusLine().getStatusCode() == 200) {
 				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-				System.out.println(responseString);
+				log.info(responseString);
 				ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
 						new TypeToken<List<CustomerDetails>>() {
 						}.getType());
-				// ArrayList<NumberDetails> arryNumber = new
-				// ArrayList<NumberDetails>();
-				System.out.println("customer list size " + customerDetails.size());
+			
+				log.info("customer list size " + customerDetails.size());
 				ArrayList<CustomerDetails> savecustomerDetails = new ArrayList<CustomerDetails>();
 				if (customerDetails != null && customerDetails.size() > 0) {
 					for (CustomerDetails cus : customerDetails) {
 
-						
-						
-						/*
-						 * Calendar calendar = Calendar.getInstance();
-						 * calendar.setTime(d); calendar.add(Calendar.SECOND,
-						 * 2); d = calendar.getTime();
-						 */
+		
 						NumberDetails number = new NumberDetails();
-						System.out.println("new dataa");
+						log.info("new dataa");
 
 						check.setLength(cus.getId());
 						checkdao.updateCustomerCheck(check);
 						cus = callPbx(cus, checkdao);
-
+						number.setPaidflag(false);
 						number.setUsername(cus.getExtension());
 						number.setPassword(cus.getSecret());
 						cus.setIspbxAccountCreated(true);
-						System.out.println(cus);
-						numberDetailsInterface.addNumberDetails(number);
-						savecustomerDetails.add(cus);
+						log.info(cus.toString());
+						
+						numberDetailsInterface.addNumberDetails(number);//save number details
+						
+						cus.setOrdered(false);
+						
+						savecustomerDetails.add(cus);//save customer details
 
-						// get Number
-						AcquireNumber acquireNumber = new AcquireNumber();
-						acquireNumber.setUsername(cus.getExtension());
-						acquireNumber.setPassword(cus.getSecret());
-						number.setPaidflag(false);
-						acquireNumber.setPattern("1619");
-						acquireNumber.setCountry("US");
-						acquireNumber.setMobileNumber(cus.getPhone());
-
-						NumberResponse numberResponse = Webservices.getNumber(acquireNumber);
-
-						// buy Number
-
-						if (numberResponse != null) {
-
-							BuyNumber buyNumber = new BuyNumber();
-
-							buyNumber.setCountry(numberResponse.getCountry());
-							buyNumber.setMsisdn(numberResponse.getMsisdn());
-							buyNumber.setUsername(cus.getExtension());
-							buyNumber.setPassword(cus.getSecret());
-
-							BuyNumberResponse buyNumberResponse = Webservices.buyNumber(buyNumber);
-
-							if (buyNumberResponse != null && "success".equals(buyNumberResponse.getSuccess())) {
-							//	generateVerificationEmail(cus, numberResponse.getMsisdn());
-							} else {
-								System.out.println("BuyNumberResponse " + buyNumberResponse);
-							}
-
-						}
 					}
 
 				}
 				if (savecustomerDetails.size() > 0) {
 					customerdao.addCustomer(savecustomerDetails);
-					System.out.println("new customers added");
+					log.info("new customers added");
 				}
 			} else {
-				System.out.println("no new customer");
+				log.info("no new customer");
 			}
 
 		} catch (IllegalStateException e) {
@@ -408,12 +378,12 @@ System.out.println("in buy number" + country + msisdn);
 
 			response = httpClient.execute(post);
 
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 
 		} catch (Exception e) {
-			System.out.println(e);
+			log.error(""+e);
 		}
 
 	}
@@ -434,13 +404,12 @@ System.out.println("in buy number" + country + msisdn);
 			post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
 			post.addHeader("X-Auth-Token", "cd10af7566dc4882999d1452b361d1f827629df8");
 			response = httpClient.execute(post);
-			System.out.println(response.getStatusLine().getStatusCode());
+			log.info(""+response.getStatusLine().getStatusCode());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 			ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
 					new TypeToken<List<CustomerDetails>>() {
 					}.getType());
-			System.out.println(customerDetails.size());
 			/*
 			 * ArrayList<CustomerDetails> savecustomerDetails=new
 			 * ArrayList<CustomerDetails>(); ArrayList<CustomerDetails>
@@ -454,7 +423,7 @@ System.out.println("in buy number" + country + msisdn);
 			 * customerdao.addCustomer(savecustomerDetails);
 			 * checkdao.addCustomerCheck(check);
 			 * 
-			 * System.out.println(customerDetails.get(0).getFirst_name());
+			 * log.info(customerDetails.get(0).getFirst_name());
 			 * 
 			 * }
 			 */} catch (IllegalStateException e) {
@@ -477,7 +446,7 @@ System.out.println("in buy number" + country + msisdn);
 		if (checkExt != null) {
 			extension = Integer.parseInt(checkExt.getExtension());
 		} else {
-			System.out.println("predefined extension is null");
+			log.info("predefined extension is null");
 			return null;
 		}
 		while (!flag) {
@@ -494,17 +463,17 @@ System.out.println("in buy number" + country + msisdn);
 
 				response = httpClient.execute(post);
 
-				System.out.println(response.toString());
+				log.info(response.toString());
 				String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-				System.out.println(responseString);
+				log.info(responseString);
 
 				if (responseString.contains("Extension is already reserved.")) {
-					System.out.println("get new extension");
+					log.info("get new extension");
 					extension++;
 
 				} else if (responseString.contains("success")) {
 					flag = true;
-					System.out.println("success");
+					log.info("success");
 					/*
 					 * arrPassAndExt.add(password);
 					 * arrPassAndExt.add(""+extension); arrPassAndExt.add(name);
@@ -555,12 +524,12 @@ System.out.println("in buy number" + country + msisdn);
 	 * post.addHeader("X-Auth-Client", "EF6GI26V2A1KEO5283A1ZC37HB");
 	 * post.addHeader("X-Auth-Token",
 	 * "cd10af7566dc4882999d1452b361d1f827629df8"); response =
-	 * httpClient.execute(post); System.out.println(response.toString()); String
+	 * httpClient.execute(post); log.info(response.toString()); String
 	 * responseString = IOUtils.toString(response.getEntity().getContent(),
-	 * "UTF-8"); System.out.println(responseString); ArrayList<CustomerDetails>
+	 * "UTF-8"); log.info(responseString); ArrayList<CustomerDetails>
 	 * customerDetails = gson.fromJson(responseString, new
 	 * TypeToken<List<CustomerDetails>>() { }.getType());
-	 * System.out.println(customerDetails.size()); ArrayList<CustomerDetails>
+	 * log.info(customerDetails.size()); ArrayList<CustomerDetails>
 	 * savecustomerDetails=new ArrayList<CustomerDetails>();
 	 * ArrayList<CustomerDetails> updatecustomer=new
 	 * ArrayList<CustomerDetails>(); for (CustomerDetails cus : customerDetails)
@@ -571,7 +540,7 @@ System.out.println("in buy number" + country + msisdn);
 	 * customerdao.addCustomer(savecustomerDetails);
 	 * checkdao.addCustomerCheck(check);
 	 * 
-	 * System.out.println(customerDetails.get(0).getFirst_name());
+	 * log.info(customerDetails.get(0).getFirst_name());
 	 * 
 	 * } }catch (IllegalStateException e) { // TODO Auto-generated catch block }
 	 * catch (IOException e) { // TODO Auto-generated catch block
@@ -596,13 +565,13 @@ System.out.println("in buy number" + country + msisdn);
 
 			response = httpClient.execute(post);
 
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 			ArrayList<CustomerDetails> customerDetails = gson.fromJson(responseString,
 					new TypeToken<List<CustomerDetails>>() {
 					}.getType());
-			System.out.println(customerDetails.get(0).getFirst_name());
+			log.info(customerDetails.get(0).getFirst_name());
 
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
@@ -636,9 +605,9 @@ System.out.println("in buy number" + country + msisdn);
 			 */
 			response = httpClient.execute(post);
 
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -671,9 +640,9 @@ System.out.println("in buy number" + country + msisdn);
 			 */
 			response = httpClient.execute(post);
 
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -706,9 +675,9 @@ System.out.println("in buy number" + country + msisdn);
 			 */
 			response = httpClient.execute(post);
 
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -746,14 +715,14 @@ System.out.println("in buy number" + country + msisdn);
 
 			response = httpClient.execute(post);
 
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 			/*
 			 * ArrayList<CustomerDetails> customerDetails=
 			 * gson.fromJson(responseString, new
 			 * TypeToken<List<CustomerDetails>>(){}.getType());
-			 * System.out.println(customerDetails.get(0).getFirst_name());
+			 * log.info(customerDetails.get(0).getFirst_name());
 			 */
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
@@ -797,16 +766,16 @@ System.out.println("in buy number" + country + msisdn);
 
 			response = httpClient.execute(post);
 
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			System.out.println(responseString);
+			log.info(responseString);
 			/*
 			 * String responseString = IOUtils.toString(response.getEntity()
-			 * .getContent(), "UTF-8"); // System.out.println(responseString);
+			 * .getContent(), "UTF-8"); // log.info(responseString);
 			 * ArrayList<CustomerDetails> customerDetails=
 			 * gson.fromJson(responseString, new
 			 * TypeToken<List<CustomerDetails>>(){}.getType());
-			 * System.out.println(customerDetails.get(0).getFirst_name());
+			 * log.info(customerDetails.get(0).getFirst_name());
 			 */
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
@@ -839,12 +808,12 @@ System.out.println("in buy number" + country + msisdn);
 				String responseString;
 
 				responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-				System.out.println(responseString);
+				log.info(responseString);
 
-				System.out.println("message sent");
+				log.info("message sent");
 
 			} else {
-				System.out.println("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
+				log.info("ERROR - CODE [" + response.getStatusLine().getStatusCode() + "]");
 
 			}
 		} catch (IllegalStateException e) {
