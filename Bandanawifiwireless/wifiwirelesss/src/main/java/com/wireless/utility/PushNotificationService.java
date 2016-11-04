@@ -11,21 +11,25 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.wifiwireless.constant.JndiLookup;
 import com.wifiwireless.interfaces.CustomerDaoInterface;
 import com.wifiwireless.model.CustomerDetails;
+import com.wireless.job.CheckPaidFlagJob;
 
 public class PushNotificationService {
 
+	private static final Logger log = LoggerFactory.getLogger(PushNotificationService.class);
 	
 	public static void main(String[] args) {
 		pushNotification(null);
 	}
 	public static void pushNotification(String username){
 		
-		System.out.println("Push Notification :");
+		log.info("Push Notification :");
 		
 		
 		CustomerDaoInterface customerDao = JndiLookup.getCustomerDetails();
@@ -66,9 +70,9 @@ public class PushNotificationService {
 				post.setHeader("Accept", "application/json");
 
 				response = httpClient.execute(post);
-	            System.out.println("response  code"+response.getStatusLine().getStatusCode());
+	            log.info("response  code"+response.getStatusLine().getStatusCode());
 	            String responseString = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-	            System.out.println(responseString);
+	            log.info(responseString);
 	            
 			}catch(Exception e){
 				e.printStackTrace();

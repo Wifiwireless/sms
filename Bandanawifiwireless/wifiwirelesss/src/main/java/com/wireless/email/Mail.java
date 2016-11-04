@@ -19,8 +19,12 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wifiwireless.model.CustomerDetails;
 import com.wireless.utility.NexmoServices;
+import com.wireless.utility.Schedulars;
 
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.template.Configuration;
@@ -29,6 +33,8 @@ import freemarker.template.TemplateException;
 
 public class Mail {
 
+	private static final Logger log = LoggerFactory.getLogger(Mail.class);
+	
 	public static void email(String emailid, String subject, Map<String, String> rootMap, String temp)
 			throws IOException, TemplateException {
 
@@ -37,32 +43,7 @@ public class Mail {
 		props.put("mail.smtp.host", "127.0.0.1");
 		props.put("mail.smtp.port", "25");
 
-		// * Testing---
-		/*
-		 * props.put("mail.smtp.auth", "true");
-		 * props.put("mail.smtp.starttls.enable", "true");
-		 * props.put("mail.smtp.host", "smtp.gmail.com");
-		 * props.put("mail.smtp.port", "587");
-		 */
-		/*
-		 * javax.mail.Session session = Session.getInstance(props, new
-		 * javax.mail.Authenticator() { protected PasswordAuthentication
-		 * getPasswordAuthentication() { System.out.println(authUsername +
-		 * authPAss); return new PasswordAuthentication(authUsername, authPAss);
-		 * } });
-		 */
-		/*
-		 * props.put("mail.smtp.host", "smtp.gmail.com");
-		 * props.put("mail.smtp.socketFactory.port", "465");
-		 * props.put("mail.smtp.socketFactory.class",
-		 * "javax.net.ssl.SSLSocketFactory"); props.put("mail.smtp.auth",
-		 * "true"); props.put("mail.smtp.port", "465");
-		 * 
-		 * Session session = Session.getDefaultInstance(props, new
-		 * javax.mail.Authenticator() { protected PasswordAuthentication
-		 * getPasswordAuthentication() { return new
-		 * PasswordAuthentication(authUsername,authPAss); } });
-		 */
+		
 		Session session = Session.getDefaultInstance(props);
 
 		try {
@@ -70,9 +51,16 @@ public class Mail {
 			Message message = new MimeMessage(session);
 
 			message.setFrom(new InternetAddress("info@utalkwifi.com", "Utalkwifi App support"));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailid));
-			message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("kirti.mandwade@gmail.com"));
-
+			
+			if("balanceMail".equals(emailid)){
+				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("notiont@gmail.com"));
+				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("g.curcio@wifiwirelessinc.com"));
+				message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("kirti.mandwade@gmail.com"));
+			}else{
+				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailid));
+				message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("kirti.mandwade@gmail.com"));
+			}
+			
 			message.setSubject(subject);
 
 			BodyPart bodypart = new MimeBodyPart();
@@ -89,11 +77,13 @@ public class Mail {
 			template.process(rootMap, out);
 
 			bodypart.setContent(out.toString(), "text/html");
-
+			
 			Transport.send(message);
-			System.out.println("email sent to " + emailid);
+			
+			log.info("email sent to " + emailid);
 
 		} catch (MessagingException e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}
@@ -105,8 +95,9 @@ public class Mail {
 
 		rootMap.put("username", customerDetails.getExtension());
 		rootMap.put("password", customerDetails.getSecret());
-		
+		log.info("isNumberReady"+isNumberReady);
 		if(isNumberReady){
+			log.info("MSISDN in email:"+msisdn);
 			rootMap.put("number", msisdn);
 		}else{
 			rootMap.put("number", "Due to technical problem we will asign you number 1 hour later.");

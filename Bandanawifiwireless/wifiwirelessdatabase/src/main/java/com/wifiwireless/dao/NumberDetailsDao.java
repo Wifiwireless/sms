@@ -7,11 +7,15 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wifiwireless.interfaces.NumberDetailsInterface;
 import com.wifiwireless.model.NumberDetails;
 @Stateless
 public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,Serializable{
 	
+	private static final Logger log = LoggerFactory.getLogger(NumberDetailsDao.class);
 	EntityManager em = null;
 
 	/**
@@ -60,13 +64,13 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 	}
 	public String checkNumber(String username,String Passkey) {
 		em = getEm();
-		System.out.println("email"+username+"   Password"+Passkey);
+		log.info("email"+username+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
 					+ "WHERE  number.username=:username and number.password=:password";
 
-			System.out.println("------------------------------------------------");
+			log.info("------------------------------------------------");
 			TypedQuery<NumberDetails> query = em.createQuery(qlString,
 					NumberDetails.class);
 
@@ -75,10 +79,10 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 			if (query.getResultList().size() > 0){
 				
 				NumberDetails numbers=query.getSingleResult();
-				System.out.println(numbers.getPaidflag());
+				log.info(""+numbers.getPaidflag());
 				if(numbers.getPaidflag())	
 				{
-					System.out.println("in true got number  ");
+					log.info("in true got number  ");
 					return numbers.getMsisdn();
 					
 				}
@@ -91,7 +95,6 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 			
 		} catch (Exception exception) {
 			exception.printStackTrace();
-			System.out.println(exception);
 			//LOG.error(exception);
 		} finally {
 
@@ -105,7 +108,7 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 	public NumberDetails getNumberDetails(String username,String Passkey) {
 		em = getEm();
 		NumberDetails numbers=new NumberDetails();
-		System.out.println("email"+username+"   Password"+Passkey);
+		log.info("email"+username+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM NumberDetails number  "
@@ -119,14 +122,13 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 			if (query.getResultList().size() > 0){
 				
 				numbers=query.getSingleResult();
-				System.out.println(numbers.getPaidflag());
+				log.info(""+numbers.getPaidflag());
 				
 			// if(query.getResultList()!=null && query.getResultList().size()>0)
 			}
 			
 		} catch (Exception exception) {
 			exception.printStackTrace();
-			System.out.println(exception);
 			//LOG.error(exception);
 		} finally {
 
@@ -152,15 +154,13 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 			if (query.getResultList().size() > 0){
 				
 				numbers=query.getSingleResult();
-				System.out.println(numbers.getUsername());
+				log.info(numbers.getUsername());
 				
 			// if(query.getResultList()!=null && query.getResultList().size()>0)
 			}
 			
 		} catch (Exception exception) {
 			exception.printStackTrace();
-			System.out.println(exception);
-			//LOG.error(exception);
 		} finally {
 
 			em.close();
@@ -222,7 +222,6 @@ public class NumberDetailsDao extends WifiDao implements NumberDetailsInterface,
 			
 		} catch (Exception exception) {
 			exception.printStackTrace();
-			System.out.println(exception);
 			//LOG.error(exception);
 		} finally {
 

@@ -7,12 +7,16 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wifiwireless.interfaces.MessagesInterface;
 import com.wifiwireless.model.Messages;
-import com.wifiwireless.model.NumberDetails;
+
 @Stateless
 public class MessagesDao extends WifiDao implements MessagesInterface,Serializable{
 	
+	private static final Logger log = LoggerFactory.getLogger(MessagesDao.class);
 	EntityManager em = null;
 
 	/**
@@ -77,16 +81,16 @@ public class MessagesDao extends WifiDao implements MessagesInterface,Serializab
 			if (query.getResultList().size() > 0){
 				
 				replies=(ArrayList<Messages>)query.getResultList();
-				System.out.println("replies found "+replies.size());
+				log.info("replies found "+replies.size());
 				
 			// if(query.getResultList()!=null && query.getResultList().size()>0)
 			}else{
-				System.out.println("replies found "+replies.size());
+				log.info("replies found "+replies.size());
 			}
 			
 		} catch (Exception exception) {
 			exception.printStackTrace();
-			System.out.println(exception);
+		
 			//LOG.error(exception);
 		} finally {
 

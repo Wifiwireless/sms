@@ -8,14 +8,17 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wifiwireless.interfaces.CustomerDaoInterface;
 import com.wifiwireless.model.CustomerDetails;
-import com.wifiwireless.model.MessageReciepts;
-import com.wifiwireless.model.NumberDetails;
+
 
 @Stateless
 public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInterface {
 	
+	private static final Logger log = LoggerFactory.getLogger(CustomerDao.class);
 	EntityManager em = null;
 
 	/**
@@ -23,7 +26,7 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 	 */
 	public String checkNumber(String extension,String secret) {
 		em = getEm();
-		//System.out.println("Username"+username+"   Password"+Passkey);
+		//log.info("Username"+username+"   Password"+Passkey);
 		try {
 
 			String qlString = "SELECT number FROM CustomerDetails number  "
@@ -47,7 +50,7 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 			
 		 catch (Exception exception) {
 			 exception.printStackTrace();
-			System.out.println(exception);
+		
 			//LOG.error(exception);
 		} finally {
 
@@ -134,7 +137,7 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
         
         }catch(Exception e){
         	e.printStackTrace();
-        	System.out.println("Execption while retrieviing customers : "+e);
+        	log.info("Execption while retrieviing customers : "+e);
         }finally {
 			em.close();
 		}
@@ -159,7 +162,7 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 		
 		}catch (Exception exception) {
 			 exception.printStackTrace();
-			System.out.println(exception);
+
 			//LOG.error(exception);
 		} finally {
 
@@ -179,14 +182,14 @@ public class CustomerDao extends WifiDao implements Serializable,CustomerDaoInte
 					CustomerDetails.class);
 			query.setParameter("ordered", false);
 			
-			System.out.println("In getCustomersDetailsNotPaid");
-			System.out.println("In getCustomersDetailsNotPaid size"+query.getResultList().size());
+			log.info("In getCustomersDetailsNotPaid");
+			log.info("In getCustomersDetailsNotPaid size"+query.getResultList().size());
 			if(query.getResultList().size()>0)
 			customerDetails = query.getResultList();
 		
 		}catch (Exception exception) {
 			 exception.printStackTrace();
-			System.out.println(exception);
+			
 			//LOG.error(exception);
 		} finally {
 
